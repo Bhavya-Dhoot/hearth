@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.next/
+cdk.out/
+coverage/
+.turbo/
+*.log
+.env
+.env.local
+apps/*/.data/
+apps/*/.outbox/
+apps/auth-server/.keys/
+.DS_Store

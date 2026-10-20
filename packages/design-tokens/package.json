@@ -1,0 +1,11 @@
+{
+  "name": "@hearth/design-tokens",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./tokens.json": "./tokens.json", "./tokens.css": "./dist/tokens.css" },
+  "scripts": { "build": "tsx scripts/build.ts", "typecheck": "tsc -p tsconfig.json", "test": "vitest run --passWithNoTests" },
+  "dependencies": {  },
+  "devDependencies": { "@types/node": "22.20.5", "typescript": "5.9.3", "vitest": "5.0.5", "@vitest/coverage-v8": "5.0.5", "tsx": "4.23.15" }
+}
