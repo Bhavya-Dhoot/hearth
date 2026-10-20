@@ -1,0 +1,11 @@
+{
+  "app": "npx tsx bin/hearth.ts",
+  "output": "cdk.out",
+  "context": {
+    "senderEmail": "hearth-noreply@example.com",
+    "hostSim": true,
+    "agentcore": false,
+    "useResend": false,
+    "@aws-cdk/core:defaultCrossStackReferences": "strong"
+  }
+}

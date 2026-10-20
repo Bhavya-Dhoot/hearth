@@ -1,0 +1,139 @@
+name: deploy
+
+# Manual deploy to AWS, then run the latency bench against the deployed URL.
+# One-time prerequisites (see infra/cdk/README.md): `cdk bootstrap`, a GitHub OIDC identity provider
+# in IAM, and a deploy role whose ARN is stored in the repository secret AWS_DEPLOY_ROLE_ARN.
+on:
+  workflow_dispatch:
+    inputs:
+      region:
+        description: AWS region
+        default: us-east-1
+        required: true
+      sender_email:
+        description: SES sender identity (SES sends a verification email on first deploy)
+        required: true
+      agentcore:
+        description: Also deploy the AgentCore Runtime variant
+        type: boolean
+        default: false
+      use_resend:
+        description: Inject the RESEND_API_KEY secret into the MCP server (requires repo secret RESEND_API_KEY)
+        type: boolean
+        default: false
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+permissions:
+  id-token: write # OIDC
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      AWS_REGION: ${{ inputs.region }}
+      CDK_DEFAULT_REGION: ${{ inputs.region }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ inputs.region }}
+
+      - name: Export CDK_DEFAULT_ACCOUNT
+        run: echo "CDK_DEFAULT_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)" >> "$GITHUB_ENV"
+
+      # AgentCore Runtime only runs ARM64 images; the runner is x86, so build them under QEMU.
+      - name: Set up QEMU for the ARM64 AgentCore image
+        if: ${{ inputs.agentcore }}
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
+
+      - name: Context flags
+        env:
+          SENDER_EMAIL: ${{ inputs.sender_email }}
+          AGENTCORE: ${{ inputs.agentcore }}
+          USE_RESEND: ${{ inputs.use_resend }}
+        run: |
+          echo "CDK_FLAGS=-c senderEmail=$SENDER_EMAIL -c agentcore=$AGENTCORE -c useResend=$USE_RESEND" >> "$GITHUB_ENV"
+
+      # Secrets live in the data stack so they exist (and can be filled) before any container starts.
+      - name: Deploy data stack (table + secrets)
+        run: pnpm --filter @hearth/infra-cdk exec cdk deploy HearthData --require-approval never $CDK_FLAGS
+
+      - name: Populate secrets
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          current() { aws secretsmanager get-secret-value --secret-id "$1" --query SecretString --output text; }
+          put() { aws secretsmanager put-secret-value --secret-id "$1" --secret-string "$2" > /dev/null; echo "set $1"; }
+
+          # Auth signing key: generate once, never rotate implicitly.
+          if [ "$(current hearth/HEARTH_AUTH_PRIVATE_JWK)" = "REPLACE_ME" ]; then
+            put hearth/HEARTH_AUTH_PRIVATE_JWK "$(node infra/cdk/scripts/gen-auth-jwk.mjs)"
+          fi
+          if [ -n "$STRIPE_SECRET_KEY" ]; then put hearth/STRIPE_SECRET_KEY "$STRIPE_SECRET_KEY"; fi
+          if [ -n "$RESEND_API_KEY" ]; then put hearth/RESEND_API_KEY "$RESEND_API_KEY"; fi
+
+      - name: Deploy services
+        run: pnpm --filter @hearth/infra-cdk exec cdk deploy --all --require-approval never --outputs-file "$GITHUB_WORKSPACE/cdk-outputs.json" $CDK_FLAGS
+
+      - name: Read stack outputs
+        id: out
+        run: |
+          MCP_URL=$(jq -r '.HearthService.McpUrl' cdk-outputs.json)
+          echo "mcp_url=$MCP_URL" >> "$GITHUB_OUTPUT"
+          echo "mcp_base=${MCP_URL%/mcp}" >> "$GITHUB_OUTPUT"
+          echo "auth_issuer=$(jq -r '.HearthService.AuthIssuerUrl' cdk-outputs.json)" >> "$GITHUB_OUTPUT"
+          echo "table=$(jq -r '.HearthData.TableName' cdk-outputs.json)" >> "$GITHUB_OUTPUT"
+          {
+            echo "### Hearth deployed"
+            echo "- MCP URL: \`$MCP_URL\`"
+            echo "- Auth issuer: \`$(jq -r '.HearthService.AuthIssuerUrl' cdk-outputs.json)\`"
+            echo "- Guardrail: \`$(jq -r '.HearthService.GuardrailId' cdk-outputs.json)\` v\`$(jq -r '.HearthService.GuardrailVersion' cdk-outputs.json)\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Wait for the deployed services
+        env:
+          MCP_BASE: ${{ steps.out.outputs.mcp_base }}
+          AUTH_ISSUER: ${{ steps.out.outputs.auth_issuer }}
+        run: |
+          wait_for() {
+            for i in $(seq 1 90); do
+              if curl -fsS "$1" > /dev/null 2>&1; then echo "up: $1"; return 0; fi
+              sleep 5
+            done
+            echo "timed out waiting for $1"; return 1
+          }
+          wait_for "$AUTH_ISSUER/.well-known/oauth-authorization-server"
+          wait_for "$MCP_BASE/healthz"
+
+      # The MCP server seeds the Okafor house into DynamoDB on first boot, so no separate seed step.
+      - name: Latency bench against the deployed URL (fails if p95 >= 500 ms)
+        env:
+          HEARTH_MCP_BASE: ${{ steps.out.outputs.mcp_base }}
+          HEARTH_AUTH_ISSUER: ${{ steps.out.outputs.auth_issuer }}
+        run: pnpm bench
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hearth-deployed-reports
+          path: |
+            apps/mcp-server/reports
+            cdk-outputs.json
+          if-no-files-found: warn

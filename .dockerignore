@@ -1,0 +1,19 @@
+# Build context for every image is the repo root (see apps/*/Dockerfile and infra/cdk).
+# Dependencies and build output are recreated inside the image, never copied from the host.
+**/node_modules
+**/.next
+**/dist
+**/.turbo
+**/coverage
+**/cdk.out
+# Local runtime state: never ship data, signing keys, mail, or screenshots
+**/.data
+**/.keys
+**/.outbox
+**/.screens
+**/*.log
+.git
+.github
+.env
+.env.*
+infra/cdk/test

@@ -1,0 +1,97 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  # Local topology: the same defaults the apps use when nothing is set.
+  HEARTH_AUTH_ISSUER: http://localhost:4100
+  HEARTH_MCP_BASE: http://localhost:4200
+  HEARTH_HOST_BASE: http://localhost:3000
+
+jobs:
+  verify:
+    name: typecheck, test, conformance, bench, replay
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      # pnpm version comes from "packageManager" in package.json.
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm typecheck
+      - run: pnpm test
+      - name: Build widgets (served by the MCP server as ui:// resources)
+        run: pnpm --filter @hearth/widgets build
+
+      - name: Start auth-server and mcp-server
+        run: |
+          mkdir -p .ci-logs
+          pnpm --filter @hearth/auth-server start > .ci-logs/auth-server.log 2>&1 &
+          pnpm --filter @hearth/mcp-server start > .ci-logs/mcp-server.log 2>&1 &
+      - name: Wait for health
+        run: |
+          wait_for() {
+            for i in $(seq 1 60); do
+              if curl -fsS "$1" > /dev/null 2>&1; then echo "up: $1"; return 0; fi
+              sleep 1
+            done
+            echo "timed out waiting for $1"; return 1
+          }
+          wait_for "$HEARTH_AUTH_ISSUER/.well-known/oauth-authorization-server"
+          wait_for "$HEARTH_MCP_BASE/healthz"
+
+      # The MCP server seeds the Okafor house on first boot; this makes it explicit and idempotent.
+      - run: pnpm seed
+      - run: pnpm conformance
+      - run: pnpm bench
+      - run: pnpm replay all
+
+      - name: Server logs on failure
+        if: failure()
+        run: |
+          for f in .ci-logs/*.log; do echo "::group::$f"; tail -n 200 "$f"; echo "::endgroup::"; done
+      - name: Upload reports (conformance, latency bench, replay)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hearth-reports
+          path: apps/mcp-server/reports
+          if-no-files-found: warn
+
+  infra:
+    name: cdk typecheck, test, synth
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @hearth/infra-cdk typecheck
+      - run: pnpm --filter @hearth/infra-cdk test
+      # No AWS credentials needed; Docker images are built at deploy time, not at synth.
+      - run: pnpm --filter @hearth/infra-cdk synth
+      - name: Build the three images (catches Dockerfile and lockfile drift)
+        run: |
+          docker build -f apps/mcp-server/Dockerfile -t hearth-mcp .
+          docker build -f apps/auth-server/Dockerfile -t hearth-auth .
+          docker build -f apps/host-sim/Dockerfile -t hearth-host .
