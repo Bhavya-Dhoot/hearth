@@ -1,0 +1,146 @@
+/* Static states first (they are the reduced-motion design); animation is layered on under no-preference. */
+
+.bar {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-end: 0;
+  block-size: 4px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.base,
+.sweep {
+  position: absolute;
+  inset-block: 0;
+  background: var(--color-brass);
+}
+
+.base {
+  inset-inline: 0;
+  opacity: 0.2;
+  transform-origin: 50% 50%;
+}
+
+.sweep {
+  inset-inline-start: 0;
+  inline-size: 30%;
+  opacity: 0;
+}
+
+.bar[data-phase="listening"] .base {
+  opacity: 1;
+}
+
+.bar[data-phase="speaking"] .base {
+  opacity: 0.7;
+}
+
+/* thinking: a short bright segment on a faint rule */
+.bar[data-phase="thinking"] .base {
+  opacity: 0.2;
+}
+.bar[data-phase="thinking"] .sweep {
+  opacity: 1;
+  inset-inline-start: 35%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bar[data-phase="listening"] .base {
+    animation: pulse 1400ms ease-in-out infinite;
+  }
+  .bar[data-phase="speaking"] .base {
+    animation: breathe 1100ms ease-in-out infinite alternate;
+  }
+  .bar[data-phase="thinking"] .sweep {
+    inset-inline-start: 0;
+    animation: sweep 1250ms cubic-bezier(0.45, 0, 0.25, 1) infinite;
+  }
+  .base {
+    transition: opacity 160ms;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes breathe {
+  from {
+    transform: scaleX(0.55);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(340%);
+  }
+}
+
+/* ---------- ring: the same states drawn on the rim of the voice-only puck ---------- */
+
+.ring {
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.ring .base,
+.ring .sweep {
+  inset: 0;
+  inline-size: auto;
+  background: none;
+  border-radius: 50%;
+  border: 4px solid transparent;
+}
+
+.ring .base {
+  border-block-start-color: var(--color-brass);
+  border-inline-start-color: var(--color-brass);
+  transform: rotate(45deg);
+  opacity: 0.35;
+}
+
+.ring .sweep {
+  border-block-start-color: var(--color-brass);
+  opacity: 0;
+}
+
+.ring[data-phase="listening"] .base {
+  opacity: 1;
+}
+.ring[data-phase="speaking"] .base {
+  opacity: 0.7;
+}
+.ring[data-phase="thinking"] .sweep {
+  opacity: 1;
+  inset-inline-start: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .ring[data-phase="thinking"] .sweep {
+    animation: spin 1250ms linear infinite;
+  }
+  .ring[data-phase="speaking"] .base {
+    animation: none;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

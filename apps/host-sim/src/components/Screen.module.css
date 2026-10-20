@@ -1,0 +1,343 @@
+/* A device screen. Drawn at the device's true pixel size; the frame scales it to fit the stage.
+   Type and spacing come from the [data-device] vars in @hearth/design-tokens/tokens.css. */
+
+.screen {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--fs-body);
+  line-height: 1.3;
+  display: grid;
+  user-select: none;
+}
+
+.screen :global(.label) {
+  font-size: var(--fs-mono);
+  letter-spacing: 0.08em;
+}
+
+.status {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5);
+}
+
+.status span[data-phase="listening"],
+.status span[data-phase="thinking"],
+.status span[data-phase="speaking"] {
+  color: var(--color-brass);
+}
+
+.status span[data-replay="failed"] {
+  color: var(--color-copper);
+}
+
+.lines {
+  display: grid;
+  gap: var(--space-3);
+  min-inline-size: 0;
+}
+
+.heard {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.25;
+  text-wrap: pretty;
+}
+
+.heard[data-kind="say"]::before,
+.said[data-kind="say"]::before {
+  content: "\201C";
+}
+.heard[data-kind="say"]::after,
+.said[data-kind="say"]::after {
+  content: "\201D";
+}
+
+/* the customer's own words, floated over the widget just long enough to read (Show 8 only; the other
+   layouts keep it in the voice column) */
+.said {
+  display: none;
+}
+
+.screen[data-device="echo-show-8"][data-widget="true"] .said {
+  display: block;
+  position: absolute;
+  inset-block-start: 20px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  max-inline-size: 70%;
+  padding: 8px 24px;
+  background: var(--bg);
+  border: 1px solid var(--color-graphite);
+  border-radius: var(--radius-chip);
+  color: var(--text);
+  font-size: var(--fs-small);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .screen[data-device="echo-show-8"][data-widget="true"] .said {
+    animation: said 3200ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+}
+
+@keyframes said {
+  0% {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+  8%,
+  80% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.alexa {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: var(--fs-display);
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 7;
+  overflow: hidden;
+}
+
+.voice {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--gap);
+  min-inline-size: 0;
+  min-block-size: 0;
+}
+
+.main {
+  min-inline-size: 0;
+  min-block-size: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+}
+
+/* ---------------------------------------------------------------- Echo Show 8: 1280 x 800 */
+
+.screen[data-device="echo-show-8"] {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  column-gap: var(--space-7);
+  padding: var(--pad);
+  border-radius: 10px;
+}
+
+.screen[data-device="echo-show-8"] .voice {
+  grid-column: 1;
+  grid-row: 1;
+  padding-block-end: var(--space-2);
+}
+
+.screen[data-device="echo-show-8"] .main {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.screen[data-device="echo-show-8"][data-widget="true"] {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: 712px 88px;
+  padding: 0;
+  column-gap: 0;
+}
+
+.screen[data-device="echo-show-8"][data-widget="true"] .main {
+  grid-column: 1;
+  grid-row: 1;
+  display: block;
+}
+
+/* with a widget on screen the spoken line becomes a caption strip */
+.screen[data-widget="true"] .voice {
+  grid-column: 1;
+  grid-row: 2;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-5);
+  padding: 0 var(--pad);
+  background: var(--surface);
+  border-block-start: 1px solid var(--line-soft);
+}
+
+.screen[data-widget="true"] .status span:nth-child(2) {
+  display: none;
+}
+
+.screen[data-widget="true"] .heard {
+  display: none;
+}
+
+.screen[data-widget="true"] .alexa {
+  font-family: var(--font-body), sans-serif;
+  font-weight: 450;
+  font-size: var(--fs-small);
+  line-height: 1.2;
+  letter-spacing: 0;
+  -webkit-line-clamp: 2;
+}
+
+.screen[data-device="echo-show-8"] .lines {
+  align-content: end;
+}
+
+.screen[data-widget="true"] .lines {
+  align-content: center;
+  flex: 1;
+}
+
+/* ---------------------------------------------------------------- Echo Show 15: 1920 x 1080 */
+
+.screen[data-device="echo-show-15"] {
+  grid-template-columns: 560px minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  column-gap: var(--space-6);
+  padding: var(--pad);
+  border-radius: 4px;
+}
+
+.screen[data-device="echo-show-15"] .voice {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.screen[data-device="echo-show-15"] .main {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.screen[data-device="echo-show-15"] .lines {
+  align-content: end;
+}
+
+.screen[data-device="echo-show-15"][data-widget="false"] .alexa {
+  font-size: calc(var(--fs-display) * 1.3);
+}
+
+.screen[data-device="echo-show-15"][data-widget="true"] .main {
+  display: block;
+  background: var(--bg);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  outline: 1px solid var(--line-soft);
+}
+
+.screen[data-device="echo-show-15"][data-widget="true"] .voice {
+  grid-row: 1;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 0;
+  background: none;
+  border: 0;
+}
+
+.screen[data-device="echo-show-15"][data-widget="true"] .status span:nth-child(2) {
+  display: inline;
+}
+
+.screen[data-device="echo-show-15"][data-widget="true"] .heard {
+  display: block;
+}
+
+.screen[data-device="echo-show-15"][data-widget="true"] .alexa {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: var(--fs-lead);
+  line-height: 1.12;
+  -webkit-line-clamp: 9;
+}
+
+.screen[data-device="echo-show-15"][data-widget="true"] .lines {
+  flex: none;
+  align-content: end;
+}
+
+/* ---------------------------------------------------------------- Phone: 390 x 844, light */
+
+.screen[data-device="phone"] {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  padding: 47px 0 34px;
+  border-radius: 44px;
+  user-select: text;
+}
+
+.screen[data-device="phone"] .voice {
+  grid-row: 1;
+  grid-column: 1;
+  padding: var(--space-4) var(--pad) var(--space-3);
+  gap: var(--space-3);
+}
+
+.screen[data-device="phone"] .main {
+  grid-row: 2;
+  grid-column: 1;
+  justify-content: flex-start;
+  overflow-y: auto;
+  padding: var(--space-2) var(--pad) var(--space-4);
+}
+
+.screen[data-device="phone"] .alexa {
+  font-size: 24px;
+  line-height: 1.15;
+  -webkit-line-clamp: 5;
+}
+
+.screen[data-device="phone"] .heard {
+  font-size: var(--fs-body);
+}
+
+.screen[data-device="phone"][data-widget="true"] .voice {
+  flex-direction: column;
+  align-items: stretch;
+  background: none;
+  border: 0;
+  padding: var(--space-4) var(--pad) var(--space-3);
+}
+
+.screen[data-device="phone"][data-widget="true"] .alexa {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.15;
+  -webkit-line-clamp: 4;
+}
+
+.screen[data-device="phone"][data-widget="true"] .status span:nth-child(2) {
+  display: inline;
+}
+
+.screen[data-device="phone"][data-widget="true"] .heard {
+  display: block;
+}
+
+.screen[data-device="phone"][data-widget="true"] .main {
+  padding: 0;
+  display: block;
+}
+
+.screen[data-device="phone"] .main > iframe {
+  inline-size: 100%;
+}

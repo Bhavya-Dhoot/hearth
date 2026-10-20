@@ -1,0 +1,460 @@
+/* The inspector is a tool: mono, dense, and quieter than the stage. */
+
+.rail {
+  position: relative;
+  min-block-size: 0;
+  min-inline-size: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-inline-start: 1px solid var(--hair);
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  line-height: 1.45;
+}
+
+.handle {
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+  min-block-size: 56px;
+  padding: 0 var(--space-4);
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+}
+
+.handle:hover {
+  color: var(--color-brass);
+}
+
+.count {
+  margin-inline-start: auto;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+}
+
+.handleIcon {
+  flex: none;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 0;
+  flex: 1;
+}
+
+.rail[data-open="false"] .panel {
+  display: none;
+}
+
+.rail[data-open="false"] .handle {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  min-block-size: 0;
+  flex: 1;
+}
+
+.rail[data-open="false"] .handle .label {
+  writing-mode: vertical-rl;
+}
+
+.rail[data-open="false"] .count {
+  margin: 0;
+}
+
+.rail[data-open="false"] .handleIcon {
+  order: -1;
+}
+
+/* ---------------- head ---------------- */
+
+.head {
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  display: grid;
+  gap: var(--space-4);
+  border-block-end: 1px solid var(--hair);
+}
+
+.titleRow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.titleRow h2 {
+  font-family: var(--font-display), serif;
+  font-size: 1.25rem;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.close {
+  display: inline-grid;
+  place-items: center;
+  inline-size: 32px;
+  block-size: 32px;
+  background: none;
+  border: 0;
+  color: var(--text-muted);
+  border-radius: 8px;
+  align-self: center;
+}
+
+.close:hover {
+  color: var(--color-brass);
+}
+
+.replay {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.replayButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.replayBtn,
+.stop,
+.tools button,
+.clear {
+  font: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  background: none;
+  border: 1px solid var(--color-graphite);
+  border-radius: 8px;
+  min-block-size: 32px;
+  padding: 0 var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  transition: border-color var(--motion-fast), color var(--motion-fast), transform var(--motion-fast);
+}
+
+.replayBtn:hover:not(:disabled),
+.stop:hover,
+.tools button:hover,
+.clear:hover {
+  border-color: var(--color-brass);
+  color: var(--color-brass);
+}
+
+.replayBtn:active:not(:disabled),
+.tools button:active {
+  transform: translateY(1px);
+}
+
+.replayBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.replayBtn[data-active="true"] {
+  background: var(--color-brass);
+  border-color: var(--color-brass);
+  color: var(--color-soot);
+}
+
+.replayLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  text-wrap: pretty;
+}
+
+.replayLine[data-state="failed"] {
+  color: var(--color-copper);
+}
+
+.replayLine[data-state="done"] {
+  color: var(--color-verdigris);
+}
+
+/* ---------------- facts ---------------- */
+
+.facts {
+  margin: 0;
+  padding: var(--space-4) var(--space-5);
+  display: grid;
+  gap: var(--space-2);
+  border-block-end: 1px solid var(--hair);
+}
+
+.fact {
+  display: grid;
+  grid-template-columns: 9.5em minmax(0, 1fr);
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.fact dd {
+  margin: 0;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.fact dd[data-tone="good"] {
+  color: var(--color-verdigris);
+}
+.fact dd[data-tone="bad"] {
+  color: var(--color-copper);
+}
+.fact dd[data-tone="warn"] {
+  color: var(--color-brass);
+}
+
+.fact code {
+  font-family: inherit;
+}
+
+.note {
+  margin: 0;
+  padding: var(--space-3) var(--space-5);
+  color: var(--color-brass);
+  border-block-end: 1px solid var(--hair);
+  text-wrap: pretty;
+}
+
+.tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-5);
+}
+
+.streamHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-5);
+  border-block-start: 1px solid var(--hair);
+}
+
+.clear {
+  min-block-size: 24px;
+  border-color: transparent;
+  color: var(--text-muted);
+}
+
+/* ---------------- stream ---------------- */
+
+.stream {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 var(--space-4);
+  overflow-y: auto;
+  flex: 1;
+  min-block-size: 0;
+}
+
+.row + .row {
+  border-block-start: 1px solid color-mix(in srgb, var(--color-graphite) 22%, transparent);
+}
+
+.rowHead {
+  inline-size: 100%;
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  background: none;
+  border: 0;
+  text-align: start;
+  font: inherit;
+  color: var(--text);
+}
+
+.rowHead:hover {
+  background: color-mix(in srgb, var(--color-parchment) 5%, transparent);
+}
+
+.time {
+  color: var(--label);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.6875rem;
+}
+
+.arrow {
+  display: inline-grid;
+  place-items: center;
+  color: var(--text-muted);
+}
+
+.row[data-dir="out"] .arrow {
+  color: var(--color-brass);
+}
+
+.method {
+  display: flex;
+  gap: var(--space-2);
+  min-inline-size: 0;
+  align-items: baseline;
+}
+
+.method b {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.method em {
+  font-style: normal;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.row[data-dir="out"] .method b {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.status {
+  color: var(--color-copper);
+  font-weight: 600;
+}
+
+.row[data-failed] .method b {
+  color: var(--color-copper);
+}
+
+.ms {
+  color: var(--label);
+  font-variant-numeric: tabular-nums;
+}
+
+.badge {
+  font-variant-numeric: tabular-nums;
+  padding: 0 var(--space-2);
+  border-radius: var(--radius-chip);
+  border: 1px solid currentColor;
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.badge[data-tone="fast"] {
+  color: var(--color-verdigris);
+}
+.badge[data-tone="ok"] {
+  color: var(--color-brass);
+}
+.badge[data-tone="slow"] {
+  color: var(--color-copper);
+}
+
+.json {
+  margin: 0;
+  padding: var(--space-3) var(--space-5) var(--space-4);
+  max-block-size: 280px;
+  overflow: auto;
+  background: var(--bg);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.6875rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.empty {
+  padding: var(--space-5);
+  color: var(--text-muted);
+  display: grid;
+  gap: var(--space-3);
+  text-wrap: pretty;
+}
+
+.empty ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  display: grid;
+  gap: var(--space-1);
+  color: var(--text);
+}
+
+.empty li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 2.2em 1fr;
+}
+
+.empty li::before {
+  content: "0" counter(step);
+  color: var(--color-brass);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------- phones: a bottom sheet ---------------- */
+
+@media (max-width: 899px) {
+  .rail {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-end: 0;
+    z-index: 20;
+    block-size: min(78dvh, 680px);
+    border-inline-start: 0;
+    border-block-start: 1px solid var(--hair);
+    transition: transform var(--motion-fast);
+  }
+
+  .rail[data-open="false"] {
+    transform: translateY(calc(100% - 56px));
+  }
+
+  .rail[data-open="false"] .panel {
+    display: flex;
+  }
+
+  .rail[data-open="false"] .handle,
+  .handle {
+    display: flex;
+    flex-direction: row;
+    min-block-size: 56px;
+    flex: none;
+    padding: 0 var(--space-4);
+  }
+
+  .rail[data-open="false"] .handle .label {
+    writing-mode: horizontal-tb;
+  }
+
+  .rail[data-open="false"] .handleIcon {
+    order: 0;
+  }
+
+  .rail[data-open="false"] .count {
+    margin-inline-start: auto;
+  }
+
+  .rail[data-open="true"] .handle {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .rail[data-open="true"] .handle {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .close {
+    display: inline-grid;
+  }
+}

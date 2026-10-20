@@ -1,0 +1,119 @@
+/* Workshop Editorial for the host chrome. Colour, radius, space and motion come from
+   @hearth/design-tokens/tokens.css (generated from packages/design-tokens/tokens.json). */
+
+:root {
+  color-scheme: dark;
+  /* next/font faces under the token names from @hearth/design-tokens */
+  --font-display: var(--nf-display), "Fraunces Variable", "Fraunces", serif;
+  --font-body: var(--nf-body), "Instrument Sans Variable", "Instrument Sans", sans-serif;
+  --font-mono: var(--nf-mono), "JetBrains Mono Variable", "JetBrains Mono", monospace;
+  /* graphite, lifted just enough for small mono labels to clear 4.5:1 on soot */
+  --label: color-mix(in srgb, var(--color-graphite) 38%, var(--color-linen));
+  --hair: color-mix(in srgb, var(--color-graphite) 50%, transparent);
+  --focus: var(--color-brass);
+  --tracking: 0.12em;
+  --header-h: 60px;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --label: var(--color-graphite);
+  --hair: color-mix(in srgb, var(--color-graphite) 35%, transparent);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-block-size: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), "Instrument Sans", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--color-brass);
+  color: var(--color-soot);
+}
+
+/* The mono label: the "engineering credibility" device (PRD 10.4 #3). */
+.label {
+  font-family: var(--font-mono), "JetBrains Mono", monospace;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking);
+  text-transform: uppercase;
+  color: var(--label);
+  line-height: 1.3;
+}
+
+.sr-only {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* thin, quiet scrollbars where the rails scroll */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-graphite) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,135 @@
+.composer {
+  inline-size: 100%;
+  max-inline-size: 860px;
+  margin-inline: auto;
+  display: grid;
+  gap: var(--space-2);
+}
+
+.row {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+}
+
+.mic,
+.wake,
+.send,
+.mute {
+  min-block-size: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-button);
+  border: 1px solid var(--color-graphite);
+  background: none;
+  color: var(--text);
+  font-weight: 500;
+  white-space: nowrap;
+  padding-inline: var(--space-4);
+  transition: border-color var(--motion-fast), color var(--motion-fast), background var(--motion-fast), transform var(--motion-fast);
+  touch-action: manipulation;
+}
+
+.mic {
+  background: var(--color-brass);
+  border-color: var(--color-brass);
+  color: var(--color-soot);
+  font-weight: 600;
+  touch-action: none;
+  user-select: none;
+}
+
+.mic:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-brass) 86%, var(--color-parchment));
+}
+
+.mic[data-live] {
+  background: var(--color-parchment);
+  border-color: var(--color-parchment);
+}
+
+.wake:hover:not(:disabled),
+.send:hover:not(:disabled),
+.mute:hover {
+  border-color: var(--color-brass);
+  color: var(--color-brass);
+}
+
+.mic:active:not(:disabled),
+.wake:active:not(:disabled),
+.send:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.mic:disabled,
+.wake:disabled,
+.send:disabled,
+.input:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.send,
+.mute {
+  inline-size: 48px;
+  padding-inline: 0;
+}
+
+.mute[aria-pressed="true"] {
+  color: var(--color-brass);
+  border-color: var(--color-brass);
+}
+
+.input {
+  flex: 1;
+  min-inline-size: 0;
+  background: none;
+  border: 0;
+  border-block-end: 1px solid var(--color-graphite);
+  color: var(--text);
+  padding: 0 var(--space-2);
+  font-size: 1rem;
+  border-radius: 0;
+  transition: border-color var(--motion-fast);
+}
+
+.input::placeholder {
+  color: var(--label);
+}
+
+.input:focus {
+  outline: none;
+  border-block-end-color: var(--color-brass);
+}
+
+.hint {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--label);
+  min-block-size: 1.4em;
+  text-wrap: pretty;
+}
+
+.hint[data-live] {
+  color: var(--color-brass);
+}
+
+@media (max-width: 639px) {
+  .row {
+    flex-wrap: wrap;
+  }
+  .mic {
+    flex: 1 1 100%;
+    min-block-size: 56px;
+  }
+  .wake {
+    flex: none;
+  }
+  .input {
+    flex: 1 1 8rem;
+    min-block-size: 48px;
+  }
+}

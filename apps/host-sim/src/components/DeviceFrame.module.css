@@ -1,0 +1,127 @@
+.fitHost {
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 0;
+  min-inline-size: 0;
+  display: grid;
+  place-items: center;
+}
+
+.fitBox {
+  position: relative;
+  flex: none;
+}
+
+.fitInner {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  transform-origin: 0 0;
+}
+
+.frame {
+  position: relative;
+}
+
+/* ---- shared body ---- */
+.body {
+  position: absolute;
+  inset-inline: 0;
+  inset-block-start: 0;
+  inset-block-end: var(--foot);
+  padding: var(--bz);
+}
+
+.glass {
+  position: relative;
+  inline-size: 100%;
+  block-size: 100%;
+  overflow: hidden;
+  background: var(--color-soot);
+}
+
+.camera {
+  position: absolute;
+  inset-block-start: calc(var(--bz) / 2 - 5px);
+  inset-inline-start: 50%;
+  inline-size: 10px;
+  block-size: 10px;
+  margin-inline-start: -5px;
+  border-radius: 50%;
+  background: var(--color-soot);
+  outline: 2px solid color-mix(in srgb, var(--color-graphite) 40%, var(--color-soot));
+}
+
+/* ---- Echo Show 8: matte charcoal, deep bezel, a plain stand ---- */
+.frame[data-hardware="echo-show-8"] .body {
+  background: color-mix(in srgb, var(--color-ash) 82%, var(--color-parchment));
+  border-radius: 40px;
+  outline: 1px solid color-mix(in srgb, var(--color-parchment) 14%, transparent);
+  outline-offset: -1px;
+}
+
+.frame[data-hardware="echo-show-8"] .glass {
+  border-radius: 10px;
+  outline: 3px solid var(--color-soot);
+}
+
+.foot {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline-start: 50%;
+  inline-size: 360px;
+  block-size: var(--foot);
+  margin-inline-start: -180px;
+  background: color-mix(in srgb, var(--color-ash) 70%, var(--color-parchment));
+  border-radius: 0 0 28px 28px;
+  outline: 1px solid color-mix(in srgb, var(--color-parchment) 10%, transparent);
+  outline-offset: -1px;
+}
+
+/* ---- Echo Show 15: a thin wall frame, landscape ---- */
+.frame[data-hardware="echo-show-15"] .body {
+  background: color-mix(in srgb, var(--color-graphite) 34%, var(--color-soot));
+  border-radius: 12px;
+  outline: 1px solid color-mix(in srgb, var(--color-parchment) 16%, transparent);
+  outline-offset: -1px;
+}
+
+.frame[data-hardware="echo-show-15"] .glass {
+  border-radius: 4px;
+}
+
+.frame[data-hardware="echo-show-15"] .camera {
+  inline-size: 6px;
+  block-size: 6px;
+  margin-inline-start: -3px;
+  inset-block-start: 4px;
+  outline-width: 1px;
+}
+
+/* ---- Phone: flat rounded rect, light screen ---- */
+.frame[data-hardware="phone"] .body {
+  background: color-mix(in srgb, var(--color-graphite) 40%, var(--color-soot));
+  border-radius: 56px;
+  outline: 1px solid color-mix(in srgb, var(--color-parchment) 18%, transparent);
+  outline-offset: -1px;
+}
+
+.frame[data-hardware="phone"] .glass {
+  border-radius: 44px;
+  background: var(--color-parchment);
+}
+
+.frame[data-hardware="phone"] .camera {
+  display: none;
+}
+
+.island {
+  position: absolute;
+  inset-block-start: calc(var(--bz) + 11px);
+  inset-inline-start: 50%;
+  inline-size: 112px;
+  block-size: 30px;
+  margin-inline-start: -56px;
+  border-radius: 999px;
+  background: var(--color-soot);
+}
