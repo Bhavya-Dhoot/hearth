@@ -113,6 +113,8 @@
 
 .chips {
   flex-basis: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -125,7 +127,7 @@
   margin: 0;
 }
 
-.sim .label:first-child {
+.sim :global(.label):first-child {
   color: var(--text-muted);
 }
 
@@ -203,7 +205,7 @@
     gap: var(--space-2) var(--space-4);
   }
 
-  .brand .label {
+  .brand :global(.label) {
     display: none;
   }
 

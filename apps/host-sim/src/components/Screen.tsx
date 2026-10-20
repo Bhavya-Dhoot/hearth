@@ -26,6 +26,11 @@ function idleLine(s: HostSession): string {
   return "Hearth is ready. Ask about your house.";
 }
 
+/** Suggestions are for a blank screen only: never beside a widget, a caption, a running replay or a turn in flight. */
+function conversationIdle(s: HostSession): boolean {
+  return !s.widget && !s.heard && !s.alexa && !s.interim && s.phase === "idle" && s.replay?.state !== "running";
+}
+
 export function Screen({ session, device }: { session: HostSession; device: ScreenDevice }) {
   const spec = DEVICES[device];
   const linked = session.link === "linked";
@@ -40,7 +45,7 @@ export function Screen({ session, device }: { session: HostSession; device: Scre
     [widgetApi],
   );
 
-  const line = session.phase === "thinking" && showWidget ? (session.heard?.text ?? "") : session.alexa || idleLine(session);
+  const line = session.phase === "thinking" && showWidget ? "One moment." : session.alexa || idleLine(session);
   const replay = session.replay;
 
   let main: React.ReactNode;
@@ -57,7 +62,7 @@ export function Screen({ session, device }: { session: HostSession; device: Scre
         register={register}
       />
     );
-  } else if (linked) main = <Suggestions session={session} compact={device === "phone"} />;
+  } else if (linked && conversationIdle(session)) main = <Suggestions session={session} compact={device === "phone"} />;
   else main = null;
 
   return (
@@ -85,7 +90,7 @@ export function Screen({ session, device }: { session: HostSession; device: Scre
           {session.phase === "listening" && session.interim ? (
             <p className={styles.heard}>{session.interim}</p>
           ) : (
-            session.heard && (!showWidget || device !== "echo-show-8") && (
+            session.heard && (
               <p className={styles.heard} data-kind={session.heard.kind}>
                 {session.heard.text}
               </p>
@@ -95,11 +100,6 @@ export function Screen({ session, device }: { session: HostSession; device: Scre
         </div>
       </header>
       <main className={styles.main}>{main}</main>
-      {showWidget && session.heard && (
-        <p key={session.heard.seq} className={styles.said} data-kind={session.heard.kind}>
-          {session.heard.text}
-        </p>
-      )}
       <LightBar phase={session.phase} />
     </div>
   );

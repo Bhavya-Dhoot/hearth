@@ -65,6 +65,9 @@
   max-block-size: 420px;
   overflow-y: auto;
   scroll-behavior: smooth;
+  /* older lines fade out under the label instead of being sliced mid-glyph */
+  padding-block-start: 24px;
+  mask-image: linear-gradient(to bottom, transparent 0, black 24px);
 }
 
 .log li {

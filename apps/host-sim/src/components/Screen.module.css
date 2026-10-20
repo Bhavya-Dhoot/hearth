@@ -48,60 +48,11 @@
   text-wrap: pretty;
 }
 
-.heard[data-kind="say"]::before,
-.said[data-kind="say"]::before {
+.heard[data-kind="say"]::before {
   content: "\201C";
 }
-.heard[data-kind="say"]::after,
-.said[data-kind="say"]::after {
+.heard[data-kind="say"]::after {
   content: "\201D";
-}
-
-/* the customer's own words, floated over the widget just long enough to read (Show 8 only; the other
-   layouts keep it in the voice column) */
-.said {
-  display: none;
-}
-
-.screen[data-device="echo-show-8"][data-widget="true"] .said {
-  display: block;
-  position: absolute;
-  inset-block-start: 20px;
-  inset-inline-start: 50%;
-  transform: translateX(-50%);
-  max-inline-size: 70%;
-  padding: 8px 24px;
-  background: var(--bg);
-  border: 1px solid var(--color-graphite);
-  border-radius: var(--radius-chip);
-  color: var(--text);
-  font-size: var(--fs-small);
-  line-height: 1.2;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .screen[data-device="echo-show-8"][data-widget="true"] .said {
-    animation: said 3200ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  }
-}
-
-@keyframes said {
-  0% {
-    opacity: 0;
-    translate: 0 -8px;
-  }
-  8%,
-  80% {
-    opacity: 1;
-    translate: 0 0;
-  }
-  100% {
-    opacity: 0;
-  }
 }
 
 .alexa {
@@ -157,7 +108,7 @@
 
 .screen[data-device="echo-show-8"][data-widget="true"] {
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: 712px 88px;
+  grid-template-rows: 680px 120px;
   padding: 0;
   column-gap: 0;
 }
@@ -187,6 +138,20 @@
 
 .screen[data-widget="true"] .heard {
   display: none;
+}
+
+/* Show 8 caption strip: the customer's words sit on a quiet line above Alexa's reply, never over the widget */
+.screen[data-device="echo-show-8"][data-widget="true"] .heard {
+  display: block;
+  font-size: calc(var(--fs-small) * 0.78);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.screen[data-device="echo-show-8"][data-widget="true"] .lines {
+  gap: var(--space-1);
 }
 
 .screen[data-widget="true"] .alexa {

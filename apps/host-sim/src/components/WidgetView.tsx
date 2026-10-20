@@ -101,11 +101,11 @@ export function WidgetView({ widget, device, onAction, onError, register, sizing
       data-scale={scale < 1 ? scale.toFixed(3) : undefined}
     />
   );
-  return sizing === "scale" ? (
-    <div className={styles.clip} style={{ inlineSize: ctx.maxWidth, blockSize: avail }}>
+  // The wrapper is always present so the iframe keeps its place in the tree when the device (and so the sizing)
+  // changes mid-conversation; a remounted iframe would leave the bridge talking to a dead element.
+  return (
+    <div className={sizing === "scale" ? styles.clip : styles.plain} style={sizing === "scale" ? { inlineSize: ctx.maxWidth, blockSize: avail } : undefined}>
       {frameEl}
     </div>
-  ) : (
-    frameEl
   );
 }

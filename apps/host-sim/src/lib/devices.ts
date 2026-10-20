@@ -27,7 +27,7 @@ export const DEVICES: Record<DeviceClass, DeviceSpec> = {
     screen: { w: 1280, h: 800 },
     bezel: 44,
     foot: 36,
-    widget: { w: 1280, h: 712 },
+    widget: { w: 1280, h: 680 },
     theme: "dark",
   },
   "echo-show-15": {

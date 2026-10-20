@@ -59,7 +59,7 @@
   flex: 1;
 }
 
-.rail[data-open="false"] .handle .label {
+.rail[data-open="false"] .handle :global(.label) {
   writing-mode: vertical-rl;
 }
 
@@ -430,7 +430,7 @@
     padding: 0 var(--space-4);
   }
 
-  .rail[data-open="false"] .handle .label {
+  .rail[data-open="false"] .handle :global(.label) {
     writing-mode: horizontal-tb;
   }
 
