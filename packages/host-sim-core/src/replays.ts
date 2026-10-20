@@ -21,8 +21,14 @@ export interface Replay {
   expectTools: string[];
 }
 
+/** MCP origin for replay media: env in Node (HEARTH_MCP_BASE) or the Next public env in the browser. */
+function replayMcpBase(): string {
+  const env = typeof process !== "undefined" ? process.env : undefined;
+  return env?.HEARTH_MCP_BASE ?? env?.NEXT_PUBLIC_HEARTH_MCP_BASE ?? `http://localhost:${Ports.mcp}`;
+}
+
 const LABEL_PHOTO = photoToUtterance({
-  photoUrl: mediaUrl(`http://localhost:${Ports.mcp}`, "water-heater-label.svg"),
+  photoUrl: mediaUrl(replayMcpBase(), "water-heater-label.svg"),
   brand: "Rheem",
   model: "XE50T10H45U0",
   serial: "RHLN1834567890",

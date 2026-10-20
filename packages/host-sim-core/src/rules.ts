@@ -727,7 +727,9 @@ class Brain {
     }
     if (s.addHint) parts.push(ensureEnd(s.addHint));
 
-    if (s.partNeeded) {
+    const alreadyOrdered = s.partNeeded !== undefined && mem.orderedPartSku !== null && mem.parts?.partRole === s.partNeeded.partRole;
+    if (alreadyOrdered) parts.push("Your part is already on order.");
+    if (s.partNeeded && !alreadyOrdered) {
       mem.autoOrderFirst = false;
       return this.call(
         "find_exact_part",
@@ -784,7 +786,8 @@ class Brain {
     if (!c) return this.unreadable(r);
     if (mem.checkout?.forRepair) mem.orderedPartSku = mem.checkout.sku;
     mem.checkout = null;
-    return this.speak(`${ensureEnd(c.summary)} It arrives ${longDate(c.etaDate)}.`, false);
+    const eta = /\barriv/i.test(c.summary) ? "" : ` It arrives ${longDate(c.etaDate)}.`;
+    return this.speak(`${ensureEnd(c.summary)}${eta}`, false);
   }
 
   private onBrief(r: ToolCallResult): OrchestratorDecision {
@@ -795,7 +798,10 @@ class Brain {
     mem.offer = { kind: "handoff", trade: b.trade };
     mem.issue = null;
     mem.pendingQuestions = [];
-    const parts = ["I've put together a job brief for the pro."];
+    const triage = [...this.state.turns].reverse().find((t): t is Extract<Turn, { role: "tool" }> => t.role === "tool" && t.name === "triage_issue");
+    const reason = triage?.result.structuredContent?.["escalateReason"];
+    const parts = typeof reason === "string" && reason.length > 0 ? [`This one's past DIY. ${ensureEnd(reason)}`] : [];
+    parts.push("I've put together a job brief for the pro.");
     if (this.voiceOnly) parts.push(`It covers your ${b.asset.brand} ${b.asset.model}, ${b.asset.ageYears} ${plural(b.asset.ageYears, "year", "years")} old.`);
     parts.push(ensureEnd(b.handoffLine));
     return this.speak(parts.join(" "), true);
@@ -857,7 +863,7 @@ class Brain {
     const parts = [`Your ${first.assetName} is flagged: ${ensureEnd(first.title)}${more}`];
     const step = first.remedy[0];
     if (step) parts.push(`First step: ${ensureEnd(step)}`);
-    parts.push(first.isSample ? `This is a sample recall. ${label}` : label);
+    parts.push(label);
     return this.speak(parts.join(" "), false);
   }
 

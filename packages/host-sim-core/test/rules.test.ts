@@ -133,7 +133,7 @@ describe("the five demo journeys", () => {
     const brief = lastArgs(fake, "prepare_pro_brief");
     expect(brief.attempted).toEqual(["Turn off the cold water shut-off valve under your sink"]);
     expect(brief.assetId).toBe("asset_disposal");
-    expect(t.say).toBe("I've put together a job brief for the pro. Want me to find a plumber?");
+    expect(t.say).toBe("This one's past DIY. Internal seal failure on a 9-year-old unit. I've put together a job brief for the pro. Want me to find a plumber?");
     expect(t.ui?.widget).toBe("pro-brief-card");
     // After a brief, "next" no longer walks the old repair.
     const after = await s.say("Next.");

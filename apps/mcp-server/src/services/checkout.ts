@@ -200,7 +200,7 @@ export async function completeSession(core: Core, ctx: Ctx, input: CompleteCheck
 
       const receiptUrl = `${core.mcpBase}/receipts/${orderId}`;
       const summary = plain(
-        `Order ${orderNumber} confirmed: ${row.qty}× ${name} for ${money(row.total)}, paid with ${spokenPayment(row.paymentDisplay)}. It arrives ${longDate(row.etaDate)}.`,
+        `Order ${orderNumber} confirmed: ${row.qty}× ${name} for ${money(row.total)}, paid with ${spokenPayment(row.paymentDisplay)}. It arrives ${longDate(row.etaDate)}.${row.stripePiId.startsWith("pi_sim_") ? " Simulated payment: no card was charged." : " Stripe test mode: no real charge."}`,
       );
       const emailStatus = await core.email.send(
         orderConfirmationEmail({

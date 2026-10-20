@@ -33,7 +33,7 @@ async function main(): Promise<void> {
   const forceSeed = seedSetting === "1" || seedSetting === "true";
   const skipSeed = seedSetting === "0" || seedSetting === "false";
   if (forceSeed || (!skipSeed && (await repo.getHomeForUser(SEED_USER)) === null)) {
-    await loadSeed(repo, { mcpBase: urls.mcpBase });
+    await loadSeed(repo, { mcpBase: urls.mcpBase, now: new Date() });
     logger.info("seed_loaded", { user: SEED_USER });
   }
 
