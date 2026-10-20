@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Generic circuit breaker with the handle in the tripped middle position between ON and OFF">
+<title>Generic circuit breaker with the handle in the tripped middle position between ON and OFF</title>
+<defs>
+<style>
+.l{fill:none;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.t{fill:none;stroke:#F3EAD8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m{fill:none;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.d{fill:none;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:#1F1C18}
+.o{fill:#1F1C18;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.om{fill:#1F1C18;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.od{fill:#1F1C18;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.h1{fill:url(#h1);stroke:none}
+.h2{fill:url(#h2);stroke:none}
+.h3{fill:url(#h3);stroke:none}
+.dots{fill:url(#dots);stroke:none}
+.red{fill:#BF4A30;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.redl{fill:none;stroke:#E6DCC6;stroke-width:2;stroke-linecap:round}
+.paper{fill:#E6DCC6;stroke:#F3EAD8;stroke-width:2.2;stroke-linejoin:round}
+.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#E6DCC6;letter-spacing:.04em}
+.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#1F1C18;letter-spacing:.04em}
+.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#6B655C;letter-spacing:.06em}
+</style>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#3F5872" stroke-width="1.5"/></pattern>
+<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.8"/></pattern>
+<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#6B655C"/><circle cx="9" cy="9" r="1.3" fill="#6B655C"/></pattern>
+</defs>
+<rect width="1200" height="900" fill="#1F1C18"/>
+<rect width="1200" height="900" fill="url(#grid)" opacity=".08"/>
+<rect x="60" y="70" width="1080" height="760" class="od"/><rect x="60" y="70" width="1080" height="760" class="dots"/><rect x="160" y="140" width="240" height="620" rx="14" class="od"/><rect x="210" y="200" width="140" height="440" rx="10" class="od"/><rect x="218" y="230" width="124" height="140" rx="8" class="od"/><path d="M232 266L328 266" class="m"/><path d="M232 288L328 288" class="m"/><path d="M232 310L328 310" class="m"/><path d="M232 332L328 332" class="m"/><text x="250" y="690" font-size="24" class="gx" font-weight="700">OFF</text><text x="258" y="186" font-size="24" class="gx" font-weight="700">ON</text><rect x="800" y="140" width="240" height="620" rx="14" class="od"/><rect x="850" y="200" width="140" height="440" rx="10" class="od"/><rect x="858" y="230" width="124" height="140" rx="8" class="od"/><path d="M872 266L968 266" class="m"/><path d="M872 288L968 288" class="m"/><path d="M872 310L968 310" class="m"/><path d="M872 332L968 332" class="m"/><text x="890" y="690" font-size="24" class="gx" font-weight="700">OFF</text><text x="898" y="186" font-size="24" class="gx" font-weight="700">ON</text><rect x="480" y="140" width="240" height="620" rx="14" class="o"/><rect x="530" y="200" width="140" height="440" rx="10" class="od"/><rect x="538" y="360" width="124" height="140" rx="8" class="o"/><path d="M552 396L648 396" class="m"/><path d="M552 418L648 418" class="m"/><path d="M552 440L648 440" class="m"/><path d="M552 462L648 462" class="m"/><text x="570" y="690" font-size="24" class="tx" font-weight="700">OFF</text><text x="578" y="186" font-size="24" class="tx" font-weight="700">ON</text><rect x="538" y="230" width="124" height="140" rx="8" class="d" stroke-dasharray="5 7"/><rect x="538" y="490" width="124" height="140" rx="8" class="d" stroke-dasharray="5 7"/><text x="580" y="436" font-size="36" class="tx" font-weight="700">20</text><path d="M720 400L720 570M728.6 554.2L720 570L711.4 554.2" class="l"/><path d="M760 570L760 260M751.4 275.8L760 260L768.6 275.8" class="l"/>
+</svg>

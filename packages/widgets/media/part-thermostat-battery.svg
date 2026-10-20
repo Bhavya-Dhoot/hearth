@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-label="Two AA batteries for a thermostat, positive nubs to the right">
+<title>Two AA batteries for a thermostat, positive nubs to the right</title>
+<defs>
+<style>
+.l{fill:none;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.t{fill:none;stroke:#F3EAD8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m{fill:none;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.d{fill:none;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:#1F1C18}
+.o{fill:#1F1C18;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.om{fill:#1F1C18;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.od{fill:#1F1C18;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.h1{fill:url(#h1);stroke:none}
+.h2{fill:url(#h2);stroke:none}
+.h3{fill:url(#h3);stroke:none}
+.dots{fill:url(#dots);stroke:none}
+.red{fill:#BF4A30;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.redl{fill:none;stroke:#E6DCC6;stroke-width:2;stroke-linecap:round}
+.paper{fill:#E6DCC6;stroke:#F3EAD8;stroke-width:2.2;stroke-linejoin:round}
+.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#E6DCC6;letter-spacing:.04em}
+.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#1F1C18;letter-spacing:.04em}
+.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#6B655C;letter-spacing:.06em}
+</style>
+<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#3F5872" stroke-width="1.5"/></pattern>
+<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.8"/></pattern>
+<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#6B655C"/><circle cx="9" cy="9" r="1.3" fill="#6B655C"/></pattern>
+</defs>
+<rect width="600" height="600" fill="#1F1C18"/>
+<rect width="600" height="600" fill="url(#grid)" opacity=".08"/>
+<rect x="110" y="170" width="340" height="100" rx="14" class="o"/><rect x="450" y="202" width="18" height="36" rx="4" class="o"/><rect x="130" y="244" width="300" height="20" class="h2"/><rect x="166" y="170" width="214" height="100" class="paper"/><path d="M166 170L166 270" class="l"/><path d="M380 170L380 270" class="l"/><text x="184" y="214" font-size="34" class="ink" font-weight="700">AA</text><text x="184" y="244" font-size="15" class="ink" >1.5V ALKALINE</text><text x="394" y="210" font-size="30" class="tx" font-weight="700">+</text><text x="124" y="210" font-size="30" class="tx" font-weight="700">−</text><path d="M426 178L426 262" class="m"/><rect x="110" y="320" width="340" height="100" rx="14" class="o"/><rect x="450" y="352" width="18" height="36" rx="4" class="o"/><rect x="130" y="394" width="300" height="20" class="h2"/><rect x="166" y="320" width="214" height="100" class="paper"/><path d="M166 320L166 420" class="l"/><path d="M380 320L380 420" class="l"/><text x="184" y="364" font-size="34" class="ink" font-weight="700">AA</text><text x="184" y="394" font-size="15" class="ink" >1.5V ALKALINE</text><text x="394" y="360" font-size="30" class="tx" font-weight="700">+</text><text x="124" y="360" font-size="30" class="tx" font-weight="700">−</text><path d="M426 328L426 412" class="m"/>
+</svg>

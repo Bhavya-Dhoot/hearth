@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-label="Slip-joint washer: tapered poly washer front view and exploded with nut and tailpiece">
+<title>Slip-joint washer: tapered poly washer front view and exploded with nut and tailpiece</title>
+<defs>
+<style>
+.l{fill:none;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.t{fill:none;stroke:#F3EAD8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m{fill:none;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.d{fill:none;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:#1F1C18}
+.o{fill:#1F1C18;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.om{fill:#1F1C18;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.od{fill:#1F1C18;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.h1{fill:url(#h1);stroke:none}
+.h2{fill:url(#h2);stroke:none}
+.h3{fill:url(#h3);stroke:none}
+.dots{fill:url(#dots);stroke:none}
+.red{fill:#BF4A30;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.redl{fill:none;stroke:#E6DCC6;stroke-width:2;stroke-linecap:round}
+.paper{fill:#E6DCC6;stroke:#F3EAD8;stroke-width:2.2;stroke-linejoin:round}
+.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#E6DCC6;letter-spacing:.04em}
+.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#1F1C18;letter-spacing:.04em}
+.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#6B655C;letter-spacing:.06em}
+</style>
+<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#3F5872" stroke-width="1.5"/></pattern>
+<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.8"/></pattern>
+<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#6B655C"/><circle cx="9" cy="9" r="1.3" fill="#6B655C"/></pattern>
+</defs>
+<rect width="600" height="600" fill="#1F1C18"/>
+<rect width="600" height="600" fill="url(#grid)" opacity=".08"/>
+<circle cx="300" cy="190" r="118" class="o"/><circle cx="300" cy="190" r="98" class="om"/><circle cx="300" cy="190" r="70" class="o"/><circle cx="300" cy="190" r="52" class="od"/><path d="M182 190A118 118 0 0 0 418 190A98 98 0 0 1 202 190Z" class="h2"/><circle cx="300" cy="190" r="84" class="d" stroke-dasharray="2 7"/><circle cx="300" cy="190" r="52" class="od"/><path d="M60 450H540" class="d" stroke-dasharray="6 8"/><rect x="70" y="400" width="100" height="100" rx="8" class="o"/><path d="M86 410L86 490" class="m"/><path d="M100 410L100 490" class="m"/><path d="M114 410L114 490" class="m"/><path d="M128 410L128 490" class="m"/><path d="M142 410L142 490" class="m"/><path d="M156 410L156 490" class="m"/><rect x="170" y="428" width="24" height="44" class="om"/><path d="M250 404L292 420L292 480L250 496Z" class="om"/><path d="M250 404L292 420L292 480L250 496Z" class="h2"/><rect x="322" y="406" width="14" height="88" rx="2" class="om"/><rect x="380" y="422" width="150" height="56" class="o"/><rect x="500" y="422" width="30" height="56" class="h2"/><path d="M386 430L524 430" class="m"/>
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" role="img" aria-label="Toilet fill valve: float cup, refill tube, threaded shank, locknut and supply coupling nut">
+<title>Toilet fill valve: float cup, refill tube, threaded shank, locknut and supply coupling nut</title>
+<defs>
+<style>
+.l{fill:none;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.t{fill:none;stroke:#F3EAD8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m{fill:none;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.d{fill:none;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:#1F1C18}
+.o{fill:#1F1C18;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.om{fill:#1F1C18;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.od{fill:#1F1C18;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.h1{fill:url(#h1);stroke:none}
+.h2{fill:url(#h2);stroke:none}
+.h3{fill:url(#h3);stroke:none}
+.dots{fill:url(#dots);stroke:none}
+.red{fill:#BF4A30;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.redl{fill:none;stroke:#E6DCC6;stroke-width:2;stroke-linecap:round}
+.paper{fill:#E6DCC6;stroke:#F3EAD8;stroke-width:2.2;stroke-linejoin:round}
+.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#E6DCC6;letter-spacing:.04em}
+.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#1F1C18;letter-spacing:.04em}
+.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#6B655C;letter-spacing:.06em}
+</style>
+<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#3F5872" stroke-width="1.5"/></pattern>
+<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.8"/></pattern>
+<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#6B655C"/><circle cx="9" cy="9" r="1.3" fill="#6B655C"/></pattern>
+</defs>
+<rect width="600" height="600" fill="#1F1C18"/>
+<rect width="600" height="600" fill="url(#grid)" opacity=".08"/>
+<rect x="260" y="110" width="40" height="330" class="o"/><rect x="286" y="110" width="14" height="330" class="h2"/><rect x="240" y="66" width="80" height="54" rx="10" class="o"/><path d="M240 86L320 86" class="m"/><path d="M240 100L320 100" class="m"/><rect x="268" y="44" width="24" height="24" rx="4" class="o"/><rect x="310" y="82" width="60" height="12" rx="5" class="o"/><rect x="198" y="230" width="164" height="100" rx="10" class="o"/><path d="M198 254L362 254" class="m"/><rect x="330" y="230" width="32" height="100" class="h2"/><rect x="198" y="330" width="164" height="12" rx="4" class="om"/><path d="M370 88Q430 90 430 150V300" class="l" fill="none"/><path d="M378 88Q440 90 440 150V300" class="m" fill="none"/><rect x="418" y="296" width="34" height="28" rx="4" class="om"/><rect x="252" y="440" width="56" height="70" class="o"/><path d="M260 452L300 452" class="m"/><path d="M260 468L300 468" class="m"/><path d="M260 484L300 484" class="m"/><ellipse cx="280" cy="440" rx="62" ry="14" class="o"/><path d="M218 440Q230 458 280 458Q330 458 342 440" class="om"/><rect x="230" y="513" width="100" height="30" rx="3" class="o"/><path d="M255 515L255 541" class="m"/><path d="M305 515L305 541" class="m"/><rect x="245" y="558" width="70" height="28" rx="3" class="o"/><path d="M262.5 560L262.5 584" class="m"/><path d="M297.5 560L297.5 584" class="m"/>
+</svg>

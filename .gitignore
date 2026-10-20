@@ -11,3 +11,5 @@ apps/*/.data/
 apps/*/.outbox/
 apps/auth-server/.keys/
 .DS_Store
+.screens/
+reports/*.tmp

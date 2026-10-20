@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-label="Hearth: a house gable with a flame in its hearth opening">
+<title>Hearth</title>
+<rect width="1024" height="1024" fill="#141210"/>
+<g fill="none" stroke="#C9A24D" stroke-width="58" stroke-linecap="round" stroke-linejoin="round">
+<path d="M276 500V800H748V500"/>
+<path d="M176 566L512 254L848 566"/>
+</g>
+<g transform="translate(512 768) scale(1.18) translate(-512 -768)"><path d="M512 500C522 566 604 604 604 688C604 736 566 768 512 768C458 768 420 736 420 688C420 636 458 616 470 566C486 588 498 598 508 596C502 558 504 528 512 500Z" fill="#C9A24D"/>
+<path d="M512 636C532 666 556 684 556 712C556 736 538 752 512 752C486 752 468 736 468 712C468 684 492 666 512 636Z" fill="#141210"/></g>
+</svg>

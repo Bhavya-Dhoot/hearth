@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Bottom of the dishwasher tub with the cylindrical filter twisted out of the sump">
+<title>Bottom of the dishwasher tub with the cylindrical filter twisted out of the sump</title>
+<defs>
+<style>
+.l{fill:none;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.t{fill:none;stroke:#F3EAD8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m{fill:none;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.d{fill:none;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:#1F1C18}
+.o{fill:#1F1C18;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.om{fill:#1F1C18;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.od{fill:#1F1C18;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.h1{fill:url(#h1);stroke:none}
+.h2{fill:url(#h2);stroke:none}
+.h3{fill:url(#h3);stroke:none}
+.dots{fill:url(#dots);stroke:none}
+.red{fill:#BF4A30;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.redl{fill:none;stroke:#E6DCC6;stroke-width:2;stroke-linecap:round}
+.paper{fill:#E6DCC6;stroke:#F3EAD8;stroke-width:2.2;stroke-linejoin:round}
+.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#E6DCC6;letter-spacing:.04em}
+.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#1F1C18;letter-spacing:.04em}
+.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#6B655C;letter-spacing:.06em}
+</style>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#3F5872" stroke-width="1.5"/></pattern>
+<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.8"/></pattern>
+<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#6B655C"/><circle cx="9" cy="9" r="1.3" fill="#6B655C"/></pattern>
+</defs>
+<rect width="1200" height="900" fill="#1F1C18"/>
+<rect width="1200" height="900" fill="url(#grid)" opacity=".08"/>
+<path d="M60 50L260 130L260 470L60 850Z" class="o"/><path d="M60 50L260 130L260 470L60 850Z" class="h1"/><path d="M1140 50L940 130L940 470L1140 850Z" class="o"/><path d="M1140 50L940 130L940 470L1140 850Z" class="h3"/><rect x="260" y="130" width="680" height="340" class="o"/><rect x="260" y="130" width="680" height="340" class="dots"/><path d="M260 470L940 470L1140 850L60 850Z" class="o"/><path d="M60 300L260 300" class="m"/><path d="M1140 300L940 300" class="m"/><path d="M60 330L260 320" class="d"/><path d="M1140 330L940 320" class="d"/><rect x="560" y="200" width="80" height="40" rx="6" class="om"/><circle cx="600" cy="220" r="10" class="d"/><path d="M262 500L938 500" class="d"/><path d="M330 470L200 850M870 470L1000 850" class="d"/><g transform="rotate(-8 330 740)"><rect x="180" y="722" width="300" height="40" rx="20" class="o"/><circle cx="330" cy="742" r="22" class="om"/><circle cx="330" cy="742" r="8" class="d"/><circle cx="210" cy="742" r="4" class="od"/><circle cx="244" cy="742" r="4" class="od"/><circle cx="278" cy="742" r="4" class="od"/><circle cx="382" cy="742" r="4" class="od"/><circle cx="416" cy="742" r="4" class="od"/><circle cx="450" cy="742" r="4" class="od"/></g><ellipse cx="600" cy="700" rx="236" ry="70" class="o"/><ellipse cx="600" cy="700" rx="196" ry="52" class="om"/><ellipse cx="600" cy="706" rx="156" ry="38" class="od"/><ellipse cx="600" cy="706" rx="156" ry="38" class="h1"/><rect x="411" y="684" width="18" height="12" rx="2" class="om"/><rect x="771" y="684" width="18" height="12" rx="2" class="om"/><rect x="591" y="646" width="18" height="12" rx="2" class="om"/><path d="M524 570V676Q524 700 600 700Q676 700 676 676V570" class="o"/><path d="M524 570V676Q524 700 600 700Q676 700 676 676V570Z" class="h1"/><path d="M524 570V676Q524 700 600 700Q676 700 676 676V570Z" class="h3"/><ellipse cx="600" cy="570" rx="76" ry="22" class="o"/><ellipse cx="600" cy="570" rx="50" ry="14" class="od"/><path d="M524 612Q600 634 676 612M524 646Q600 668 676 646" class="m"/><rect x="578" y="532" width="44" height="30" rx="4" class="o"/><rect x="550" y="520" width="100" height="16" rx="6" class="o"/><path d="M500 560Q506 498 600 490Q694 498 704 552" class="m" fill="none" stroke-dasharray="3 7"/><path d="M696 520L706 556M709.2 542.4L706 556L696.2 546.0" class="m"/>
+</svg>

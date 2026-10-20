@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-label="Underside of the garbage disposal: red reset button and the hex socket in the centre of the bottom plate">
+<title>Underside of the garbage disposal: red reset button and the hex socket in the centre of the bottom plate</title>
+<defs>
+<style>
+.l{fill:none;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.t{fill:none;stroke:#F3EAD8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m{fill:none;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.d{fill:none;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:#1F1C18}
+.o{fill:#1F1C18;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.om{fill:#1F1C18;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.od{fill:#1F1C18;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.h1{fill:url(#h1);stroke:none}
+.h2{fill:url(#h2);stroke:none}
+.h3{fill:url(#h3);stroke:none}
+.dots{fill:url(#dots);stroke:none}
+.red{fill:#BF4A30;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.redl{fill:none;stroke:#E6DCC6;stroke-width:2;stroke-linecap:round}
+.paper{fill:#E6DCC6;stroke:#F3EAD8;stroke-width:2.2;stroke-linejoin:round}
+.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#E6DCC6;letter-spacing:.04em}
+.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#1F1C18;letter-spacing:.04em}
+.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#6B655C;letter-spacing:.06em}
+</style>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#3F5872" stroke-width="1.5"/></pattern>
+<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.8"/></pattern>
+<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.6"/></pattern>
+<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#6B655C"/><circle cx="9" cy="9" r="1.3" fill="#6B655C"/></pattern>
+</defs>
+<rect width="1200" height="900" fill="#1F1C18"/>
+<rect width="1200" height="900" fill="url(#grid)" opacity=".08"/>
+<rect x="60" y="40" width="1080" height="800" class="od"/><rect x="60" y="40" width="1080" height="800" class="dots"/><path d="M60 40H1140V150H60Z" class="o"/><path d="M60 150H1140V132H60Z" class="h1"/><path d="M60 150Q600 190 1140 150" class="m"/><rect x="60" y="40" width="44" height="800" class="o"/><rect x="1096" y="40" width="44" height="800" class="o"/><path d="M82 60V820M1118 60V820" class="d" stroke-dasharray="3 7"/><path d="M60 800H1140V840H60Z" class="o"/><path d="M60 800H1140V840H60Z" class="h1"/><path d="M60 800L1140 800" class="l"/><rect x="380" y="150" width="440" height="20" rx="4" class="o"/><rect x="420" y="170" width="360" height="36" rx="4" class="o"/><path d="M440 176L440 200" class="m"/><path d="M500 176L500 200" class="m"/><path d="M560 176L560 200" class="m"/><path d="M620 176L620 200" class="m"/><path d="M680 176L680 200" class="m"/><path d="M740 176L740 200" class="m"/><rect x="440" y="206" width="320" height="30" rx="4" class="o"/><rect x="430" y="236" width="340" height="190" class="o"/><rect x="700" y="236" width="70" height="190" class="h2"/><path d="M442 248L442 416" class="m"/><rect x="770" y="284" width="70" height="44" class="o"/><rect x="770" y="310" width="70" height="18" class="h2"/><rect x="814" y="276" width="14" height="60" rx="3" class="om"/><rect x="840" y="292" width="16" height="28" rx="3" class="om"/><rect x="170" y="356" width="160" height="46" class="o"/><rect x="170" y="389.12" width="160" height="12.88" class="h2"/><path d="M174 362L326 362" class="m"/><rect x="330" y="346" width="100" height="66" class="o"/><rect x="330" y="392" width="100" height="20" class="h2"/><rect x="412" y="336" width="22" height="86" rx="3" class="om"/><circle cx="423" cy="352" r="4" class="m"/><circle cx="423" cy="406" r="4" class="m"/><rect x="424" y="426" width="352" height="26" rx="4" class="o"/><path d="M452 430L452 448" class="m"/><path d="M500 430L500 448" class="m"/><path d="M548 430L548 448" class="m"/><path d="M596 430L596 448" class="m"/><path d="M644 430L644 448" class="m"/><path d="M692 430L692 448" class="m"/><path d="M740 430L740 448" class="m"/><path d="M430 452V666M770 452V666" class="l"/><path d="M700 452H770V666L700 700Z" class="h2"/><rect x="500" y="478" width="200" height="68" rx="3" class="paper"/><text x="516" y="508" font-size="22" class="ink" font-weight="700">BADGER 5</text><text x="516" y="534" font-size="16" class="ink" >1/2 HP</text><path d="M468 452L468 650" class="m"/><path d="M740 452L740 640" class="d"/><path d="M500 590L700 590" class="d"/><path d="M500 600L700 600" class="d"/><ellipse cx="600" cy="666" rx="170" ry="72" class="o"/><ellipse cx="600" cy="666" rx="132" ry="54" class="om"/><ellipse cx="596" cy="664" rx="56" ry="21" class="od"/><path d="M619.4 677.5L596 691L572.6 677.5L572.6 650.5L596 637L619.4 650.5Z" class="o"/><path d="M607.3 670.5L596 677L584.7 670.5L584.7 657.5L596 651L607.3 657.5Z" class="od"/><ellipse cx="656" cy="694" rx="30" ry="16" class="om"/><ellipse cx="656" cy="692" rx="23" ry="11" class="red"/><text x="628" y="726" font-size="13" class="tx" >RESET</text>
+</svg>
