@@ -1,0 +1,227 @@
+/* Preview page chrome. Tokens only, same as the widgets; it renders at the phone type scale so it stays dense. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+p,
+ol,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+ol {
+  list-style: none;
+}
+
+.display {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 144;
+  font-weight: 560;
+  font-size: calc(var(--fs-display) * 1.2);
+  line-height: 1.05;
+}
+
+.mono,
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+}
+
+.mono-label {
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.dim {
+  color: var(--text-dim);
+}
+
+.small {
+  font-size: calc(var(--fs-body) * 0.9);
+}
+
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4);
+  padding: var(--space-6) var(--space-6) var(--space-4);
+  border-bottom: 2px solid var(--text);
+}
+
+.top__lede {
+  max-width: 48em;
+}
+
+.tabs,
+.voices {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.tab,
+.voice {
+  appearance: none;
+  min-height: 36px;
+  padding: 0 var(--space-4);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-chip);
+  background: transparent;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tab--on {
+  border-color: var(--color-brass);
+  background: var(--color-brass);
+  color: var(--color-soot);
+}
+
+.tab:focus-visible,
+.voice:focus-visible {
+  outline: 3px solid var(--brass-ink);
+  outline-offset: 2px;
+}
+
+.matrix {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  padding: var(--space-6);
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.entry__title {
+  font-family: var(--font-display);
+  font-variation-settings: "opsz" 72;
+  font-weight: 560;
+  font-size: calc(var(--fs-display) * 0.9);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.frame__stage {
+  overflow: hidden;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-button);
+  background: var(--surface);
+}
+
+.frame__iframe {
+  display: block;
+  border: 0;
+  transform-origin: 0 0;
+  background: transparent;
+}
+
+.frame__sim {
+  color: var(--text-dim);
+  letter-spacing: 0.14em;
+  font-size: calc(var(--fs-mono) * 0.85);
+}
+
+.frame__log {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-height: calc(var(--fs-mono) * 1.5 * 3);
+  color: var(--text-dim);
+  font-size: calc(var(--fs-mono) * 0.9);
+}
+
+.frame__row {
+  overflow-wrap: anywhere;
+}
+
+.frame__row--error {
+  color: var(--copper-ink);
+}
+
+.frame__dir {
+  display: inline-block;
+  min-width: 9.5em;
+  color: var(--text);
+  opacity: 0.6;
+}
+
+.frame__voice {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  border: 1.5px dashed var(--line);
+  border-radius: var(--radius-button);
+}
+
+.frame__speech {
+  font-family: var(--font-display);
+  font-size: calc(var(--fs-display) * 0.75);
+  line-height: 1.2;
+}
+
+.row--voice-only {
+  align-items: stretch;
+}
+
+.actionlog {
+  position: sticky;
+  bottom: 0;
+  max-height: 32vh;
+  overflow: auto;
+  padding: var(--space-3) var(--space-6);
+  border-top: 2px solid var(--text);
+  background: var(--bg);
+}
+
+.actionlog summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.actionlog__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding-top: var(--space-2);
+}
+
+.actionlog__row {
+  overflow-wrap: anywhere;
+  font-size: calc(var(--fs-mono) * 0.95);
+}

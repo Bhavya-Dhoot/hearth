@@ -1,0 +1,23 @@
+/** Phosphor (bold) raw SVG strings. Every icon in a widget comes from here; none are hand-drawn. */
+export { default as arrowRight } from "@phosphor-icons/core/assets/bold/arrow-right-bold.svg?raw";
+export { default as arrowClockwise } from "@phosphor-icons/core/assets/bold/arrow-clockwise-bold.svg?raw";
+export { default as arrowUpRight } from "@phosphor-icons/core/assets/bold/arrow-up-right-bold.svg?raw";
+export { default as calendar } from "@phosphor-icons/core/assets/bold/calendar-blank-bold.svg?raw";
+export { default as camera } from "@phosphor-icons/core/assets/bold/camera-bold.svg?raw";
+export { default as check } from "@phosphor-icons/core/assets/bold/check-bold.svg?raw";
+export { default as clock } from "@phosphor-icons/core/assets/bold/clock-bold.svg?raw";
+export { default as creditCard } from "@phosphor-icons/core/assets/bold/credit-card-bold.svg?raw";
+export { default as houseSimple } from "@phosphor-icons/core/assets/bold/house-simple-bold.svg?raw";
+export { default as imageBroken } from "@phosphor-icons/core/assets/bold/image-broken-bold.svg?raw";
+export { default as linkSimple } from "@phosphor-icons/core/assets/bold/link-simple-bold.svg?raw";
+export { default as mapPin } from "@phosphor-icons/core/assets/bold/map-pin-bold.svg?raw";
+export { default as microphone } from "@phosphor-icons/core/assets/bold/microphone-bold.svg?raw";
+export { default as package } from "@phosphor-icons/core/assets/bold/package-bold.svg?raw";
+export { default as receipt } from "@phosphor-icons/core/assets/bold/receipt-bold.svg?raw";
+export { default as shieldCheck } from "@phosphor-icons/core/assets/bold/shield-check-bold.svg?raw";
+export { default as skipForward } from "@phosphor-icons/core/assets/bold/skip-forward-bold.svg?raw";
+export { default as truck } from "@phosphor-icons/core/assets/bold/truck-bold.svg?raw";
+export { default as warning } from "@phosphor-icons/core/assets/bold/warning-bold.svg?raw";
+export { default as warningOctagon } from "@phosphor-icons/core/assets/bold/warning-octagon-bold.svg?raw";
+export { default as wrench } from "@phosphor-icons/core/assets/bold/wrench-bold.svg?raw";
+export { default as x } from "@phosphor-icons/core/assets/bold/x-bold.svg?raw";

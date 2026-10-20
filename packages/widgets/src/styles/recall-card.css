@@ -1,0 +1,174 @@
+.recalls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  min-width: 0;
+}
+
+.recalls__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px solid var(--text);
+}
+
+.recalls__title {
+  margin-top: var(--space-2);
+  font-size: var(--fs-lead);
+  max-width: 16em;
+}
+
+.recalls__head > div:first-child {
+  flex: 1 1 18em;
+}
+
+.dataset {
+  display: flex;
+  flex: 0 1 18em;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.dataset__chip {
+  letter-spacing: 0.14em;
+}
+
+.dataset__label {
+  font-size: calc(var(--fs-mono) * 0.86);
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.flag {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas:
+    "head remedy"
+    "hazard remedy";
+  gap: var(--space-5) calc(var(--gap) * 1.5);
+  padding: var(--space-6);
+  border: 2px solid var(--line-soft);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+}
+
+.flag__head {
+  grid-area: head;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.flag__stamp {
+  padding: var(--space-3) var(--space-2) var(--space-1) var(--space-2);
+}
+
+.flag__stamp .stamp {
+  font-size: calc(var(--fs-mono) * 1.9);
+}
+
+.flag__id {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 0;
+}
+
+.flag__title {
+  font-size: calc(var(--fs-title) * 1.05);
+}
+
+.flag__ref {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  letter-spacing: 0.06em;
+}
+
+.flag__sample {
+  min-height: calc(var(--fs-mono) * 1.5);
+  font-size: calc(var(--fs-mono) * 0.8);
+  letter-spacing: 0.12em;
+}
+
+.flag__hazard {
+  grid-area: hazard;
+  font-size: var(--fs-small);
+  line-height: 1.35;
+}
+
+.flag__label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--copper-ink);
+}
+
+.remedy {
+  grid-area: remedy;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-width: 0;
+}
+
+.remedy__steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.remedy__step {
+  display: grid;
+  grid-template-columns: calc(var(--fs-title) * 1.1) minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-3);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.remedy__n {
+  font-size: calc(var(--fs-title) * 1.3);
+  line-height: 0.95;
+  text-align: center;
+}
+
+.recalls__empty {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-6) 0;
+}
+
+.recalls__icon {
+  width: calc(var(--fs-display) * 1.4);
+  height: calc(var(--fs-display) * 1.4);
+  color: var(--text-dim);
+}
+
+[data-device="phone"] .flag {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "head"
+    "hazard"
+    "remedy";
+  padding: var(--space-4);
+  gap: var(--space-4);
+}
+
+[data-device="phone"] .recalls__title {
+  font-size: var(--fs-display);
+}
+
+[data-device="phone"] .flag__stamp .stamp {
+  font-size: calc(var(--fs-mono) * 1.7);
+}

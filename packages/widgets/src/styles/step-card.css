@@ -1,0 +1,208 @@
+.step {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: calc(var(--gap) * 1.5);
+  min-height: 100%;
+}
+
+.step--plain {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+}
+
+.step__media {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.step__numeral {
+  font-size: var(--fs-hero);
+  color: var(--text-dim);
+  opacity: 0.55;
+}
+
+.step__where {
+  position: relative;
+  align-self: flex-start;
+  background: var(--surface);
+}
+
+/* Blueprint sheet: the grid lives only here, behind the photo. */
+.sheet {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border: 1.5px solid var(--line-soft);
+  border-radius: var(--radius-card);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.blueprint {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.blueprint path {
+  fill: none;
+  stroke: var(--color-slate);
+  stroke-width: 1;
+  stroke-opacity: var(--grid-opacity, 0.08);
+}
+
+.blueprint .blueprint__major {
+  stroke-opacity: calc(var(--grid-opacity, 0.08) * 2);
+}
+
+/* Slate is close to the dark surface, so the same 1px line needs more opacity to read there. */
+[data-theme="dark"] .sheet {
+  --grid-opacity: 0.3;
+}
+
+.photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--ratio, 1.3333);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: calc(var(--radius-button) * 0.7);
+  background: var(--surface-raised);
+}
+
+.photo__missing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-3);
+  height: 100%;
+  padding: var(--space-5);
+  border: 1.5px dashed var(--line);
+  border-radius: calc(var(--radius-button) * 0.7);
+}
+
+.photo__missing .icon {
+  width: 2em;
+  height: 2em;
+  color: var(--text-dim);
+}
+
+.step__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  min-width: 0;
+}
+
+.step__counter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-5);
+}
+
+.step__count {
+  font-size: calc(var(--fs-mono) * 1.3);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--brass-ink);
+}
+
+.ticks {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tick {
+  width: var(--space-6);
+  height: var(--space-2);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-chip);
+}
+
+.tick--past {
+  border-color: var(--text-dim);
+  background: var(--text-dim);
+}
+
+.tick--now {
+  border-color: var(--brass-ink);
+  background: var(--brass-ink);
+}
+
+.step__instruction {
+  margin-top: calc(var(--space-1) * -1);
+}
+
+.step__detail {
+  color: var(--text-muted);
+  max-width: 34em;
+}
+
+.step__tools {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-4);
+}
+
+.step__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.step__hint {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  color: var(--text-dim);
+}
+
+.step__hint .icon {
+  margin-top: 0.15em;
+}
+
+.step__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--space-4);
+  margin-top: auto;
+  padding-top: var(--space-4);
+}
+
+[data-device="phone"] .step,
+[data-device="phone"] .step--plain {
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-5);
+}
+
+[data-device="phone"] .sheet {
+  flex: none;
+  padding: var(--space-3);
+}
+
+[data-device="phone"] .step__numeral {
+  display: none;
+}
+
+[data-device="phone"] .step__actions {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+[data-device="phone"] .step__actions .btn {
+  width: 100%;
+}
