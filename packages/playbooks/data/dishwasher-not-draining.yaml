@@ -1,0 +1,41 @@
+id: dishwasher-not-draining
+title: "Dishwasher not draining"
+symptoms:
+  - "dishwasher&notdraining"
+  - "dishwasher&clog"
+  - "dishwasher"
+assetCategory: dishwasher
+trade: appliance
+questions: []
+steps:
+  - instruction: "Stop the cycle and scoop the standing water out with a cup."
+    detail: "Soak up the rest with a towel. You can't inspect the filter properly while the tub is full."
+    tools: ["cup", "towel"]
+  - instruction: "Pull out the bottom rack and find the filter in the tub floor."
+    detail: "On your {asset.model|dishwasher} it's the cylinder in the back corner, as in the photo."
+    caution: "Wear gloves, because broken glass sometimes hides around the filter."
+    photoOf: dishwasher
+    addHint: "Say 'add my dishwasher' and I'll remember it."
+  - instruction: "Twist the filter counterclockwise, lift it out and rinse it under the tap."
+    detail: "Scrub the mesh with a soft brush to clear food and grease. Check the sump underneath for debris too."
+    tools: ["soft brush", "rubber gloves", "new dishwasher filter"]
+    partRole: dishwasher_filter
+    partAssetCategory: dishwasher
+  - instruction: "Run the disposal for ten seconds with the cold tap on."
+    detail: "A dishwasher drains through your disposal, so a clog there blocks the dishwasher too."
+    caution: "Never put your hand into the disposal, even when the switch is off."
+    canSkip: true
+  - instruction: "Lift the cap off the air gap on your sink and rinse out any debris, if you have one."
+    detail: "It's the small chrome cylinder next to the faucet. Skip this step if you don't have one."
+    canSkip: true
+  - instruction: "Fit the filter back, lock it with a clockwise twist, and run a short rinse cycle."
+    detail: "Watch the tub. The water should be gone by the end of the drain phase."
+partRoles: [dishwasher_filter]
+hardStops: []
+escalateIf:
+  - keywords: ["error&code", "pump&hum", "pump&noise", "still&full", "still&wont drain", "still&standing"]
+    reason: "A dishwasher that still holds water after a clean filter and a clear disposal has a failing drain pump, and that needs an appliance technician."
+estimatedMinutes: 25
+tools: ["cup", "towel", "soft brush", "rubber gloves"]
+followUpDays: 3
+followUpTitle: "Check the dishwasher drains fully"

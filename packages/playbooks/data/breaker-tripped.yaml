@@ -1,0 +1,38 @@
+id: breaker-tripped
+title: "Tripped breaker"
+symptoms:
+  - "breaker"
+  - "outlet&dead"
+  - "outlet&nopower"
+  - "nopower&anyroom"
+assetCategory: panel
+trade: electrician
+questions: []
+steps:
+  - instruction: "Unplug or switch off whatever was running on that circuit."
+    detail: "Most trips come from too many things on one circuit, so take the load off before you reset anything."
+  - instruction: "Open the door of your electrical panel, not the metal cover underneath."
+    detail: "Yours is {shutoff.location|in the garage}. Look for the one breaker sitting in the middle position or fully OFF."
+    caution: "Keep your hands dry and stand on a dry floor. Never remove the metal cover."
+    photoOf: panel
+    fallbackImage: generic-breaker.svg
+    addHint: "Say 'add my electrical panel' and I'll remember it."
+  - instruction: "Push that one breaker firmly to OFF, then back to ON, one time."
+    detail: "It should click and stay in place. If it trips again, stop right there."
+    caution: "Reset it once only. If it trips again, don't try a second time and call an electrician."
+    photoOf: panel
+    fallbackImage: generic-breaker.svg
+    addHint: "Say 'add my electrical panel' and I'll remember it."
+  - instruction: "Plug devices back in one at a time and check that every outlet works."
+    detail: "If it trips as soon as you add one particular device, that device is the problem and should stay unplugged."
+partRoles: []
+hardStops:
+  - category: electrical
+    keywords: ["trips again", "tripped again", "keeps tripping", "tripping again", "wont reset", "wont stay", "spark", "burning smell", "hot&breaker", "buzz&panel", "panel cover", "replace&breaker", "new breaker"]
+escalateIf:
+  - keywords: ["every day", "every few", "every time", "all the time", "more than once", "weekly"]
+    reason: "A breaker that trips repeatedly is protecting you from a fault or an overload, and an electrician needs to trace which one."
+estimatedMinutes: 10
+tools: ["flashlight"]
+followUpDays: 3
+followUpTitle: "Check the breaker hasn't tripped again"

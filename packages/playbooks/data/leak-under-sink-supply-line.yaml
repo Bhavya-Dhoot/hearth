@@ -1,0 +1,67 @@
+id: leak-under-sink-supply-line
+title: "Leak under the sink: supply line"
+symptoms:
+  - "leak&under&sink"
+  - "leak&sink"
+  - "hose&leak"
+  - "hose&sink"
+  - "hose"
+  - "valve&leak"
+  - "dishwasher&leak"
+  - "dishwasher&hose"
+assetCategory: sink_shutoff
+trade: plumber
+questions:
+  - id: source
+    text: "Is it dripping from the pipes, or pooling from the dishwasher side?"
+    options: ["pipes", "dishwasher side"]
+    routes:
+      "dishwasher": leak-under-sink-supply-line
+      "disposal": disposal-leak-body
+      "pipe|trap|drain|nut|joint|dripping": leak-under-sink-ptrap
+steps:
+  - instruction: "Clear the cabinet under your sink and set a bowl under the leak."
+    detail: "Move the cleaning supplies out, put a bowl or small bucket under the wet connection, and lay a towel underneath."
+    photoOf: sink_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my shut-off valve' and I'll remember it."
+  - instruction: "Close both shut-off valves under your sink."
+    detail: "Yours are {shutoff.location|under the sink}. Turn each handle clockwise, by hand, until it stops."
+    caution: "Turn gently. If a valve won't move or the water keeps coming, stop and close your main water shut-off instead."
+    photoOf: sink_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my shut-off valve' and I'll remember it."
+  - instruction: "Dry the supply lines and find the wet connection."
+    detail: "Wipe each braided line and both ends with a paper towel, then open the faucet briefly to release the pressure. Run a dry fingertip along the nuts at the valve and at the faucet until one turns wet."
+    photoOf: sink_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my shut-off valve' and I'll remember it."
+  - instruction: "Snug the wet nut an eighth of a turn with an adjustable wrench."
+    detail: "Hold the valve steady with one hand while you tighten the nut. Stop at the first firm resistance, because over-tightening cracks the seat."
+    caution: "If the braided line is kinked, frayed or rusty at the ends, skip tightening and replace it."
+    tools: ["adjustable wrench", "towel"]
+    partRole: supply_line
+    partAssetCategory: sink_shutoff
+    canSkip: true
+  - instruction: "Replace the supply line if it still weeps."
+    detail: "Unscrew both ends, set the new line in place, then tighten each nut by hand and an eighth of a turn more with the wrench. Your valve outlets take a 3/8 inch compression fitting."
+    tools: ["adjustable wrench", "bowl or bucket", "towel", "new braided supply line"]
+    photoOf: sink_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my shut-off valve' and I'll remember it."
+    partRole: supply_line
+    partAssetCategory: sink_shutoff
+  - instruction: "Open the shut-offs slowly and check that every joint stays dry."
+    detail: "Turn each valve counterclockwise a little at a time, run the faucet for a minute, then press a dry paper towel to both ends of each line. Check again in an hour."
+    photoOf: sink_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my shut-off valve' and I'll remember it."
+partRoles: [supply_line]
+hardStops: []
+escalateIf:
+  - keywords: ["still leak", "still drip", "still weep", "still wet", "valve&wont turn", "valve&stuck", "valve&corroded"]
+    reason: "A valve that drips at the stem or won't close needs a plumber, because forcing it can break the pipe behind the wall."
+estimatedMinutes: 30
+tools: ["adjustable wrench", "bowl or bucket", "towel", "new braided supply line"]
+followUpDays: 7
+followUpTitle: "Check under the kitchen sink is still dry"

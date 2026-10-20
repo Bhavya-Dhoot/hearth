@@ -1,0 +1,35 @@
+id: smoke-detector-chirp
+title: "Smoke detector chirping"
+symptoms:
+  - "smoke&chirp"
+  - "smoke&battery"
+  - "chirp&battery"
+  - "smoke"
+assetCategory: smoke_detector
+trade: electrician
+questions: []
+steps:
+  - instruction: "Stand under each alarm and listen for the one that chirps every 30 to 60 seconds."
+    detail: "Chirps echo down hallways, so check the alarm closest to where you hear it loudest."
+  - instruction: "Twist the chirping alarm off its mounting plate."
+    detail: "If it's wired into the ceiling, pull the plug on the back. The alarm keeps its own battery as a backup."
+    caution: "Use a stable step stool and have someone steady it."
+    tools: ["step stool"]
+  - instruction: "Swap in a fresh 9-volt battery."
+    detail: "Slide the old one out of the compartment and press the new one in until it clicks. Write today's date on the new battery with a marker."
+    tools: ["new 9-volt battery"]
+    partRole: 9v_battery
+    partAssetCategory: smoke_detector
+  - instruction: "Hold the test button for five seconds to check the alarm sounds."
+    detail: "It should be loud and clear. Warn everyone in the house first."
+  - instruction: "Remount the alarm and check the date printed on its back."
+    detail: "Smoke alarms wear out after ten years. If yours is older than that, replace the whole alarm."
+partRoles: ["9v_battery"]
+hardStops: []
+escalateIf:
+  - keywords: ["still chirp", "new battery&chirp", "chirp&new battery", "10 years", "ten years", "expired"]
+    reason: "An alarm that keeps chirping with a fresh battery has reached the end of its life. {asset.ageSentence|} It needs a replacement unit."
+estimatedMinutes: 10
+tools: ["step stool", "new 9-volt battery"]
+followUpDays: 365
+followUpTitle: "Replace the smoke detector batteries"

@@ -1,0 +1,40 @@
+id: water-heater-no-hot
+title: "No hot water"
+symptoms:
+  - "nohot"
+  - "waterheater&dead"
+  - "waterheater"
+assetCategory: water_heater
+trade: plumber
+questions: []
+steps:
+  - instruction: "Read the label on your {asset.name|water heater} and confirm it's electric."
+    detail: "An electric unit has no pilot light to worry about. If yours runs on gas, stop here."
+    caution: "Never relight a gas pilot yourself. Call a plumber or your gas company."
+    photoOf: water_heater
+    addHint: "Say 'add my water heater' and I'll remember it."
+  - instruction: "Open your electrical panel door and check that the water heater breaker is ON."
+    detail: "Yours is {shutoff.location|in the garage}. A tripped breaker sits in the middle or fully OFF. Reset it once if it's tripped."
+    caution: "Keep your hands dry and never remove the metal cover. If it trips again, stop and call an electrician."
+    photoOf: panel
+    fallbackImage: generic-breaker.svg
+    addHint: "Say 'add my electrical panel' and I'll remember it."
+  - instruction: "Turn the water heater breaker OFF, then open the upper access panel on the tank."
+    detail: "Press the red reset button on the upper thermostat once, then put the insulation and the panel back."
+    caution: "Power must be off at the breaker before you open the panel. Don't touch any wiring."
+    canSkip: true
+  - instruction: "Turn the breaker back ON and give the tank an hour to heat."
+    detail: "A 50 gallon tank takes about an hour to recover. Don't run the hot tap in the meantime."
+  - instruction: "Run a hot tap after an hour and check the water is hot."
+    detail: "If it's still cold or only lukewarm, a heating element has failed, and a pro should replace it."
+partRoles: []
+hardStops:
+  - category: gas
+    keywords: ["pilot", "relight", "gas valve", "gas water heater", "gas&smell", "smell&gas"]
+escalateIf:
+  - keywords: ["leak", "puddl", "water around", "water on the floor", "rust", "rumbl", "pop"]
+    reason: "Water around the tank, rusty water or a rumbling sound points to a failing tank. {asset.ageSentence|} A tank that leaks can't be repaired."
+estimatedMinutes: 20
+tools: ["flashlight"]
+followUpDays: 1
+followUpTitle: "Check the hot water is still running"

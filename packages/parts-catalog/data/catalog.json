@@ -1,0 +1,720 @@
+[
+  {
+    "sku": "HR-PT-150-WSH",
+    "name": "1-1/2 inch Slip-Joint Washer, Tapered, 2-Pack",
+    "partRole": "ptrap_washer",
+    "price": 4.29,
+    "image": "part-slip-washer.svg",
+    "fits": {
+      "trapSize": "1-1/2",
+      "joint": "slip"
+    },
+    "brand": "Brightwater",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-PT-150-WSN",
+    "name": "1-1/2 inch Slip-Joint Washer, Nylon Reinforced, 3-Pack",
+    "partRole": "ptrap_washer",
+    "price": 5.79,
+    "image": "part-slip-washer.svg",
+    "fits": {
+      "trapSize": "1-1/2",
+      "joint": "slip"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-PT-150-KIT",
+    "name": "1-1/2 inch P-Trap Repair Kit: 2 Washers and 2 Slip Nuts, PVC",
+    "partRole": "ptrap_washer",
+    "price": 8.49,
+    "image": "part-slip-washer.svg",
+    "fits": {
+      "trapSize": "1-1/2",
+      "joint": "slip",
+      "material": "PVC"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-PT-150-W10",
+    "name": "1-1/2 inch Slip-Joint Washer, Contractor 10-Pack",
+    "partRole": "ptrap_washer",
+    "price": 11.99,
+    "image": "part-slip-washer.svg",
+    "fits": {
+      "trapSize": "1-1/2",
+      "joint": "slip"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-PT-125-WSH",
+    "name": "1-1/4 inch Slip-Joint Washer, Tapered, 2-Pack",
+    "partRole": "ptrap_washer",
+    "price": 3.99,
+    "image": "part-slip-washer.svg",
+    "fits": {
+      "trapSize": "1-1/4",
+      "joint": "slip"
+    },
+    "brand": "Brightwater",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-PT-ASST",
+    "name": "Slip-Joint Washer Assortment, 1-1/4 and 1-1/2 inch, 8 Pieces",
+    "partRole": "ptrap_washer",
+    "price": 6.99,
+    "image": "part-slip-washer.svg",
+    "fits": {
+      "trapSize": "assorted"
+    },
+    "compatible": {
+      "joint": "slip"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-SL-20-BRD",
+    "name": "20 inch Braided Stainless Supply Line, 3/8 inch Compression",
+    "partRole": "supply_line",
+    "price": 9.49,
+    "image": "part-supply-line.svg",
+    "fits": {
+      "valveOutlet": "3/8 compression"
+    },
+    "brand": "Brightwater",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-SL-12-BRD",
+    "name": "12 inch Braided Stainless Supply Line, 3/8 inch Compression",
+    "partRole": "supply_line",
+    "price": 7.99,
+    "image": "part-supply-line.svg",
+    "fits": {
+      "valveOutlet": "3/8 compression"
+    },
+    "brand": "Brightwater",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-SL-DW-60",
+    "name": "Dishwasher Supply Line, 60 inch Braided, 3/8 inch Compression",
+    "partRole": "supply_line",
+    "price": 14.99,
+    "image": "part-supply-line.svg",
+    "fits": {
+      "valveOutlet": "3/8 compression"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-SL-30-BRD",
+    "name": "30 inch Braided Stainless Supply Line, 3/8 inch Compression",
+    "partRole": "supply_line",
+    "price": 11.29,
+    "image": "part-supply-line.svg",
+    "fits": {
+      "valveOutlet": "3/8 compression"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-SL-16-BRD",
+    "name": "16 inch Braided Stainless Supply Line, 3/8 inch Compression",
+    "partRole": "supply_line",
+    "price": 8.79,
+    "image": "part-supply-line.svg",
+    "fits": {
+      "valveOutlet": "3/8 compression"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-SL-24-BRD",
+    "name": "24 inch Braided Stainless Supply Line, 3/8 inch Compression",
+    "partRole": "supply_line",
+    "price": 10.29,
+    "image": "part-supply-line.svg",
+    "fits": {
+      "valveOutlet": "3/8 compression"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-SL-20-IPS",
+    "name": "20 inch Braided Stainless Supply Line, 1/2 inch IPS",
+    "partRole": "supply_line",
+    "price": 10.49,
+    "image": "part-supply-line.svg",
+    "fits": {
+      "valveOutlet": "1/2 IPS"
+    },
+    "brand": "Brightwater",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DW-14-LHD",
+    "name": "1/4 inch Garbage Disposal Wrench, L-Handle",
+    "partRole": "disposal_hex_wrench",
+    "price": 3.99,
+    "image": "part-hex-wrench.svg",
+    "fits": {
+      "hexSize": "1/4"
+    },
+    "brand": "Pinegate",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-DW-14-THD",
+    "name": "1/4 inch Disposal Wrench with T-Handle and Cleaning Brush",
+    "partRole": "disposal_hex_wrench",
+    "price": 6.49,
+    "image": "part-hex-wrench.svg",
+    "fits": {
+      "hexSize": "1/4"
+    },
+    "brand": "Pinegate",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DW-SET",
+    "name": "Disposal Hex Key Set, 1/4, 5/16 and 3/8 inch",
+    "partRole": "disposal_hex_wrench",
+    "price": 7.99,
+    "image": "part-hex-wrench.svg",
+    "fits": {},
+    "brand": "Pinegate",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DW-38-LHD",
+    "name": "3/8 inch Garbage Disposal Wrench, L-Handle",
+    "partRole": "disposal_hex_wrench",
+    "price": 4.49,
+    "image": "part-hex-wrench.svg",
+    "fits": {
+      "hexSize": "3/8"
+    },
+    "brand": "Pinegate",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-TF-2-UNI",
+    "name": "Universal 2 inch Toilet Flapper",
+    "partRole": "toilet_flapper",
+    "price": 6.49,
+    "image": "part-flapper.svg",
+    "fits": {
+      "flapperSize": "2"
+    },
+    "brand": "Hollowell",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-TF-2-ADJ",
+    "name": "Adjustable 2 inch Toilet Flapper with Extended Chain",
+    "partRole": "toilet_flapper",
+    "price": 8.99,
+    "image": "part-flapper.svg",
+    "fits": {
+      "flapperSize": "2"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-TF-2-KIT",
+    "name": "2 inch Flapper and Chain Replacement Kit",
+    "partRole": "toilet_flapper",
+    "price": 9.99,
+    "image": "part-flapper.svg",
+    "fits": {
+      "flapperSize": "2"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-TF-2-HD",
+    "name": "Heavy-Duty 2 inch Toilet Flapper, Chlorine Resistant",
+    "partRole": "toilet_flapper",
+    "price": 10.49,
+    "image": "part-flapper.svg",
+    "fits": {
+      "flapperSize": "2"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-TF-3-UNI",
+    "name": "Universal 3 inch Toilet Flapper",
+    "partRole": "toilet_flapper",
+    "price": 7.49,
+    "image": "part-flapper.svg",
+    "fits": {
+      "flapperSize": "3"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-FV-ADJ-7",
+    "name": "Adjustable Anti-Siphon Toilet Fill Valve, 7 to 12 inch",
+    "partRole": "toilet_fill_valve",
+    "price": 11.49,
+    "image": "part-fill-valve.svg",
+    "fits": {},
+    "brand": "Hollowell",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-FV-TOP-QT",
+    "name": "Quiet Top-Fill Toilet Fill Valve",
+    "partRole": "toilet_fill_valve",
+    "price": 13.99,
+    "image": "part-fill-valve.svg",
+    "fits": {},
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-FV-COMBO",
+    "name": "Toilet Fill Valve and Flapper Combination Kit",
+    "partRole": "toilet_fill_valve",
+    "price": 18.49,
+    "image": "part-fill-valve.svg",
+    "fits": {},
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-FF-162501-M11-2",
+    "name": "16x25x1 MERV 11 Pleated Furnace Filter, 2-Pack",
+    "partRole": "furnace_filter",
+    "price": 21.99,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "16x25x1",
+      "merv": 11
+    },
+    "brand": "Cedarline",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-FF-162501-M11-1",
+    "name": "16x25x1 MERV 11 Pleated Furnace Filter, Single",
+    "partRole": "furnace_filter",
+    "price": 11.49,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "16x25x1",
+      "merv": 11
+    },
+    "brand": "Cedarline",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-FF-162501-M11-6",
+    "name": "16x25x1 MERV 11 Pleated Furnace Filter, 6-Pack",
+    "partRole": "furnace_filter",
+    "price": 56.99,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "16x25x1",
+      "merv": 11
+    },
+    "brand": "Cedarline",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-FF-162501-M11-12",
+    "name": "16x25x1 MERV 11 Pleated Furnace Filter, 12-Pack",
+    "partRole": "furnace_filter",
+    "price": 99.99,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "16x25x1",
+      "merv": 11
+    },
+    "brand": "Cedarline",
+    "shipDays": 3
+  },
+  {
+    "sku": "HR-FF-162501-M8-4",
+    "name": "16x25x1 MERV 8 Pleated Furnace Filter, 4-Pack",
+    "partRole": "furnace_filter",
+    "price": 29.99,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "16x25x1",
+      "merv": 8
+    },
+    "compatible": {
+      "filterSize": "16x25x1"
+    },
+    "brand": "Cedarline",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-FF-162501-M13-2",
+    "name": "16x25x1 MERV 13 Pleated Furnace Filter, 2-Pack",
+    "partRole": "furnace_filter",
+    "price": 27.99,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "16x25x1",
+      "merv": 13
+    },
+    "compatible": {
+      "filterSize": "16x25x1"
+    },
+    "brand": "Cedarline",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-FF-202501-M11-2",
+    "name": "20x25x1 MERV 11 Pleated Furnace Filter, 2-Pack",
+    "partRole": "furnace_filter",
+    "price": 22.99,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "20x25x1",
+      "merv": 11
+    },
+    "brand": "Cedarline",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-FF-202501-M8-4",
+    "name": "20x25x1 MERV 8 Pleated Furnace Filter, 4-Pack",
+    "partRole": "furnace_filter",
+    "price": 31.99,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "20x25x1",
+      "merv": 8
+    },
+    "brand": "Cedarline",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-FF-142501-M11-2",
+    "name": "14x25x1 MERV 11 Pleated Furnace Filter, 2-Pack",
+    "partRole": "furnace_filter",
+    "price": 20.99,
+    "image": "part-hvac-filter.svg",
+    "fits": {
+      "filterSize": "14x25x1",
+      "merv": 11
+    },
+    "brand": "Cedarline",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-RF-UKF8001-1",
+    "name": "UKF8001-Compatible Refrigerator Water Filter",
+    "partRole": "fridge_filter",
+    "price": 24.99,
+    "image": "part-fridge-filter.svg",
+    "fits": {
+      "filterModel": "UKF8001"
+    },
+    "brand": "Hollowell",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-RF-UKF8001-2",
+    "name": "UKF8001-Compatible Refrigerator Water Filter, 2-Pack",
+    "partRole": "fridge_filter",
+    "price": 44.99,
+    "image": "part-fridge-filter.svg",
+    "fits": {
+      "filterModel": "UKF8001"
+    },
+    "brand": "Hollowell",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-RF-UKF8001-3",
+    "name": "UKF8001-Compatible Refrigerator Water Filter, 3-Pack",
+    "partRole": "fridge_filter",
+    "price": 62.99,
+    "image": "part-fridge-filter.svg",
+    "fits": {
+      "filterModel": "UKF8001"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-RF-UKF8001-NSF",
+    "name": "UKF8001-Compatible Refrigerator Water Filter, NSF Certified",
+    "partRole": "fridge_filter",
+    "price": 29.99,
+    "image": "part-fridge-filter.svg",
+    "fits": {
+      "filterModel": "UKF8001"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-RF-LT700-1",
+    "name": "LT700P-Compatible Refrigerator Water Filter",
+    "partRole": "fridge_filter",
+    "price": 22.99,
+    "image": "part-fridge-filter.svg",
+    "fits": {
+      "filterModel": "LT700P"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-BT-9V-ALK4",
+    "name": "9V Alkaline Batteries, 4-Pack",
+    "partRole": "9v_battery",
+    "price": 9.99,
+    "image": "part-9v-battery.svg",
+    "fits": {
+      "batteryType": "9V"
+    },
+    "brand": "Norvale",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-BT-9V-LI2",
+    "name": "9V Lithium 10-Year Smoke Alarm Batteries, 2-Pack",
+    "partRole": "9v_battery",
+    "price": 17.49,
+    "image": "part-9v-battery.svg",
+    "fits": {
+      "batteryType": "9V"
+    },
+    "brand": "Norvale",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-BT-9V-ALK8",
+    "name": "9V Alkaline Batteries, 8-Pack",
+    "partRole": "9v_battery",
+    "price": 17.99,
+    "image": "part-9v-battery.svg",
+    "fits": {
+      "batteryType": "9V"
+    },
+    "brand": "Norvale",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-BT-9V-LI4",
+    "name": "9V Lithium Smoke Alarm Batteries, 4-Pack",
+    "partRole": "9v_battery",
+    "price": 31.99,
+    "image": "part-9v-battery.svg",
+    "fits": {
+      "batteryType": "9V"
+    },
+    "brand": "Norvale",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-BT-AA-ALK8",
+    "name": "AA Alkaline Batteries, 8-Pack",
+    "partRole": "thermostat_battery",
+    "price": 7.99,
+    "image": "part-thermostat-battery.svg",
+    "fits": {
+      "thermostatBattery": "AA"
+    },
+    "brand": "Norvale",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-BT-AA-LI4",
+    "name": "AA Lithium Batteries, 4-Pack",
+    "partRole": "thermostat_battery",
+    "price": 11.99,
+    "image": "part-thermostat-battery.svg",
+    "fits": {
+      "thermostatBattery": "AA"
+    },
+    "brand": "Norvale",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-BT-AA-ALK20",
+    "name": "AA Alkaline Batteries, 20-Pack",
+    "partRole": "thermostat_battery",
+    "price": 14.49,
+    "image": "part-thermostat-battery.svg",
+    "fits": {
+      "thermostatBattery": "AA"
+    },
+    "brand": "Norvale",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-BT-AAA-ALK8",
+    "name": "AAA Alkaline Batteries, 8-Pack",
+    "partRole": "thermostat_battery",
+    "price": 6.99,
+    "image": "part-thermostat-battery.svg",
+    "fits": {
+      "thermostatBattery": "AAA"
+    },
+    "brand": "Norvale",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-DF-CYL-FINE",
+    "name": "Cylindrical Twist-Lock Dishwasher Filter, Fine Mesh",
+    "partRole": "dishwasher_filter",
+    "price": 19.99,
+    "image": "part-dishwasher-filter.svg",
+    "fits": {
+      "filterStyle": "cylinder"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DF-CYL-SET",
+    "name": "Cylindrical Dishwasher Filter and Coarse Strainer Set",
+    "partRole": "dishwasher_filter",
+    "price": 27.99,
+    "image": "part-dishwasher-filter.svg",
+    "fits": {
+      "filterStyle": "cylinder"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DF-CYL-BRSH",
+    "name": "Cylindrical Dishwasher Filter with Cleaning Brush",
+    "partRole": "dishwasher_filter",
+    "price": 24.49,
+    "image": "part-dishwasher-filter.svg",
+    "fits": {
+      "filterStyle": "cylinder"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DF-FLAT-MESH",
+    "name": "Flat Mesh Dishwasher Filter Screen",
+    "partRole": "dishwasher_filter",
+    "price": 15.49,
+    "image": "part-dishwasher-filter.svg",
+    "fits": {
+      "filterStyle": "flat"
+    },
+    "brand": "Hollowell",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-PL-FLG-STD",
+    "name": "Flange Toilet Plunger",
+    "partRole": "plunger",
+    "price": 12.99,
+    "image": "part-plunger.svg",
+    "fits": {},
+    "brand": "Pinegate",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-PL-FLG-HLD",
+    "name": "Heavy-Duty Flange Toilet Plunger with Holder",
+    "partRole": "plunger",
+    "price": 16.99,
+    "image": "part-plunger.svg",
+    "fits": {},
+    "brand": "Pinegate",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-PL-FLG-BEE",
+    "name": "Beehive Flange Toilet Plunger",
+    "partRole": "plunger",
+    "price": 14.99,
+    "image": "part-plunger.svg",
+    "fits": {},
+    "brand": "Pinegate",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-PL-CUP-SNK",
+    "name": "Cup Sink Plunger",
+    "partRole": "plunger",
+    "price": 8.49,
+    "image": "part-plunger.svg",
+    "fits": {
+      "fixture": "sink"
+    },
+    "brand": "Pinegate",
+    "shipDays": 1
+  },
+  {
+    "sku": "HR-DG-3B-FLG",
+    "name": "Disposal Sink Flange Gasket, 3-Bolt Mount",
+    "partRole": "disposal_gasket",
+    "price": 7.49,
+    "image": "part-disposal-gasket.svg",
+    "fits": {
+      "mount": "3-bolt"
+    },
+    "brand": "Pinegate",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DG-3B-BFL",
+    "name": "Disposal Splash Baffle, 3-Bolt Mount",
+    "partRole": "disposal_gasket",
+    "price": 8.99,
+    "image": "part-disposal-gasket.svg",
+    "fits": {
+      "mount": "3-bolt"
+    },
+    "brand": "Pinegate",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DG-3B-KIT",
+    "name": "Disposal Mounting Gasket and Hardware Kit, 3-Bolt",
+    "partRole": "disposal_gasket",
+    "price": 12.99,
+    "image": "part-disposal-gasket.svg",
+    "fits": {
+      "mount": "3-bolt"
+    },
+    "brand": "Pinegate",
+    "shipDays": 2
+  },
+  {
+    "sku": "HR-DG-QL-FLG",
+    "name": "Disposal Sink Flange Gasket, Quick-Lock Mount",
+    "partRole": "disposal_gasket",
+    "price": 8.49,
+    "image": "part-disposal-gasket.svg",
+    "fits": {
+      "mount": "quick-lock"
+    },
+    "brand": "Pinegate",
+    "shipDays": 2
+  }
+]

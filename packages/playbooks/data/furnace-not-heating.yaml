@@ -1,0 +1,56 @@
+id: furnace-not-heating
+title: "Furnace not heating"
+symptoms:
+  - "furnace&dead"
+  - "nowarm"
+  - "furnace"
+  - "temperature"
+assetCategory: furnace
+trade: hvac
+questions:
+  - id: mode
+    text: "Is this about heating or cooling?"
+    options: ["heating", "cooling"]
+    routes:
+      "heat|furnace|cold|winter|warm up": furnace-not-heating
+      "cool|ac$|air conditioning|hot|summer|warm|humid": ac-not-cooling
+steps:
+  - instruction: "Set your thermostat to HEAT and turn it five degrees above the room temperature."
+    detail: "Wait two minutes. A healthy furnace starts its fan, then lights and warms the vents."
+  - instruction: "Replace the thermostat batteries if the display is blank or dim."
+    detail: "Most thermostats take two AA batteries behind the faceplate."
+    tools: ["2 AA batteries"]
+    partRole: thermostat_battery
+    partAssetCategory: furnace
+    canSkip: true
+  - instruction: "Pull the filter from your {asset.model|furnace} and hold it up to a light."
+    detail: "Your filter slot is on the return side. If you can't see light through the filter, swap in a new one, because a clogged filter makes the furnace shut itself off."
+    tools: ["new furnace filter"]
+    photoOf: furnace
+    addHint: "Say 'add my furnace' and I'll remember it."
+    partRole: furnace_filter
+    partAssetCategory: furnace
+  - instruction: "Find the power switch on or near the furnace and make sure it's ON."
+    detail: "It looks like an ordinary light switch on the side of the unit or on a nearby wall. Furnaces get switched off by accident more often than you'd think."
+    canSkip: true
+  - instruction: "Check the furnace breaker in your electrical panel and reset it once if it's tripped."
+    detail: "Yours is {shutoff.location|in the garage}. Reset it one time only."
+    caution: "If the breaker trips again, stop and call an electrician or an HVAC technician."
+    photoOf: panel
+    fallbackImage: generic-breaker.svg
+    addHint: "Say 'add my electrical panel' and I'll remember it."
+  - instruction: "Give it ten minutes, then check that warm air is coming from the vents."
+    detail: "If the blower runs but the air stays cold, or nothing runs at all, the furnace needs a technician."
+partRoles: [furnace_filter, thermostat_battery]
+hardStops:
+  - category: gas
+    keywords: ["gas&smell", "smell&gas", "rotten egg", "gas leak", "pilot", "carbon monoxide"]
+escalateIf:
+  - keywords: ["clicking", "ignit", "lockout", "error code", "flashing", "blinking", "short cycl", "rattl", "banging"]
+    reason: "A furnace that clicks, flashes an error code or cycles on and off has a fault in its ignition or safety circuit, and that needs a licensed HVAC technician."
+  - keywords: ["burning smell", "burnt smell"]
+    reason: "A burning smell from a furnace can mean overheating, and it needs a licensed HVAC technician. {asset.ageSentence|}"
+estimatedMinutes: 25
+tools: ["2 AA batteries", "new furnace filter"]
+followUpDays: 2
+followUpTitle: "Check the furnace is still heating"

@@ -1,0 +1,41 @@
+id: disposal-hum-jam
+title: "Disposal hums or won't spin"
+symptoms:
+  - "disposal&hum"
+  - "disposal&dead"
+assetCategory: disposal
+trade: plumber
+questions: []
+steps:
+  - instruction: "Switch off the disposal at the wall switch and leave it off."
+    detail: "Keep your hands out of the drain. Everything from here is done with tools, never fingers."
+    caution: "Never put your hand into the disposal, even when the switch is off."
+  - instruction: "Press the red reset button on the underside of your {asset.model|disposal}."
+    detail: "Reach under the unit and press the red button firmly. If it was hot, wait a minute for the motor to cool first."
+    photoOf: disposal
+    addHint: "Say 'add my disposal' and I'll remember it."
+  - instruction: "Fit the hex wrench into the socket at the center of the underside and work it back and forth."
+    detail: "Turn it through a full rotation each way until it moves freely. That frees whatever is wedging the blades."
+    tools: ["1/4 inch disposal hex wrench"]
+    photoOf: disposal
+    addHint: "Say 'add my disposal' and I'll remember it."
+    partRole: disposal_hex_wrench
+    partAssetCategory: disposal
+  - instruction: "Shine a flashlight into the drain and lift out anything stuck with tongs."
+    detail: "Bottle caps, bones and fruit pits are the usual causes. Use tongs or pliers only."
+    caution: "Never put your hand into the disposal, even when the switch is off."
+    tools: ["flashlight", "tongs or pliers"]
+    canSkip: true
+  - instruction: "Press reset once more, run cold water, and switch the disposal on for a few seconds."
+    detail: "It should spin freely and quietly. If it hums again or the reset button pops straight back out, stop and call a pro."
+partRoles: [disposal_hex_wrench]
+hardStops: []
+escalateIf:
+  - keywords: ["hurt", "injur", "bleed", "cut myself"]
+    reason: "Anyone hurt around the disposal needs medical care first, so call emergency services before anything else."
+  - keywords: ["burn&smell", "burnt", "smoke", "motor&smell"]
+    reason: "A burning smell from the motor means it has overheated or shorted, and that is past a safe DIY fix."
+  - keywords: ["still hum", "trips again", "wont reset", "after reset"]
+    reason: "A disposal that still hums after a reset and a clear usually has a failing motor or seized bearings."
+estimatedMinutes: 15
+tools: ["1/4 inch disposal hex wrench", "flashlight", "tongs or pliers"]

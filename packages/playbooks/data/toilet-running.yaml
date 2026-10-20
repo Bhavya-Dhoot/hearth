@@ -1,0 +1,62 @@
+id: toilet-running
+title: "Toilet keeps running"
+symptoms:
+  - "toilet&run"
+  - "toilet"
+  - "flapper"
+  - "fill valve"
+assetCategory: toilet
+trade: plumber
+questions:
+  - id: kind
+    text: "Is the toilet running on its own, or is it clogged and won't flush?"
+    options: ["running", "clogged"]
+    routes:
+      "clog|plug|block|backing|overflow|wont flush|rising|full": "question:scope"
+      "run|hiss|fill|phantom|keeps going|on its own": toilet-running
+  - id: scope
+    text: "Are any other drains in the house backing up too?"
+    options: ["yes", "no"]
+    routes:
+      "no$|nope|none|nothing|just|only|fine|normal": toilet-clog
+      "yes|yeah|yep|other|all|every|both|shower|tub|multiple|several|also|too": "hardstop:sewage"
+steps:
+  - instruction: "Take the lid off the tank and set it on a towel on the floor."
+    detail: "Look inside for the rubber flapper at the bottom, the chain, and the fill valve on the left."
+    photoOf: toilet
+    fallbackImage: generic-toilet-tank.svg
+    addHint: "Say 'add my toilet' and I'll remember it."
+  - instruction: "Jiggle the flush handle and check the chain has a little slack."
+    detail: "A chain that is too short holds the flapper open, and one that is too long gets caught underneath it. About half an inch of slack is right."
+    canSkip: true
+  - instruction: "Close the shut-off valve behind the toilet and flush to empty the tank."
+    detail: "Turn the valve clockwise until it stops. The tank will drain and the flapper will sit bare."
+    caution: "Turn the valve by hand only, and stop if it resists."
+    photoOf: toilet_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my toilet shut-off' and I'll remember it."
+  - instruction: "Replace the flapper if it's soft, warped or doesn't seal."
+    detail: "Unhook the two ears from the overflow tube, unclip the chain, and fit the new flapper the same way. Wipe the seat clean first."
+    tools: ["towel", "new flapper"]
+    partRole: toilet_flapper
+    partAssetCategory: toilet
+  - instruction: "Replace the fill valve if the tank keeps refilling after a good flapper."
+    detail: "A fill valve that hisses or won't shut off is worn out. Fit the new one at the same height as the old one."
+    tools: ["adjustable pliers", "towel", "new fill valve"]
+    partRole: toilet_fill_valve
+    partAssetCategory: toilet
+    canSkip: true
+  - instruction: "Open the shut-off, let the tank fill, and flush twice to check it stops."
+    detail: "Turn the valve counterclockwise slowly. The water should stop about an inch below the top of the overflow tube."
+    photoOf: toilet_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my toilet shut-off' and I'll remember it."
+partRoles: [toilet_flapper, toilet_fill_valve]
+hardStops: []
+escalateIf:
+  - keywords: ["leak&base", "wobbl", "crack&bowl", "crack&tank", "water around the base"]
+    reason: "Water at the base points to a failed wax ring or a cracked bowl, and that means lifting the toilet."
+estimatedMinutes: 20
+tools: ["towel", "adjustable pliers", "new flapper"]
+followUpDays: 3
+followUpTitle: "Check the toilet stops running on its own"

@@ -1,0 +1,56 @@
+[
+  {
+    "recallId": "SAMPLE-RC-DW-2026-001",
+    "brand": "Bosch",
+    "modelPattern": "^SHEM63W5[0-9]N$",
+    "title": "SAMPLE RECALL (demo data, not a real notice): Dishwasher heating element wiring may overheat",
+    "hazard": "The wiring connector at the heating element can loosen over time and overheat during the heated dry cycle, which poses a fire hazard.",
+    "remedy": [
+      "Stop using the heated dry option and run air-dry cycles only.",
+      "Check that the model number on the label inside the door matches the notice.",
+      "Contact the manufacturer for a free repair kit and a technician visit.",
+      "Keep the confirmation number until the repair is done."
+    ],
+    "isSample": true
+  },
+  {
+    "recallId": "SAMPLE-RC-KT-2026-002",
+    "brand": "Larkspur",
+    "modelPattern": "^LK-KT-4[05][0-9]{2}$",
+    "title": "SAMPLE RECALL (demo data, not a real notice): Electric kettles may leak from the base seal",
+    "hazard": "The base seal can crack with repeated heating, letting hot water reach the electrical contacts and creating a shock and burn hazard.",
+    "remedy": [
+      "Stop using the kettle and unplug it.",
+      "Find the model number on the underside of the base.",
+      "Register for a free replacement base through the manufacturer."
+    ],
+    "isSample": true
+  },
+  {
+    "recallId": "SAMPLE-RC-HT-2026-003",
+    "brand": "Marlowe Home",
+    "modelPattern": "^MH-SH-1[0-9]{2}$",
+    "title": "SAMPLE RECALL (demo data, not a real notice): Portable space heaters may fail to shut off when tipped",
+    "hazard": "The tip-over switch can stick, so the heater may keep running after it falls over, which poses a fire hazard.",
+    "remedy": [
+      "Unplug the heater and stop using it.",
+      "Check the model number printed on the back panel.",
+      "Request a free replacement unit from the manufacturer.",
+      "Keep the old unit until the replacement arrives."
+    ],
+    "isSample": true
+  },
+  {
+    "recallId": "SAMPLE-RC-SD-2026-004",
+    "brand": "Aldergate",
+    "modelPattern": "^AG-SA-9[0-9]$",
+    "title": "SAMPLE RECALL (demo data, not a real notice): Smoke alarms may not sound after a battery change",
+    "hazard": "A battery contact can spring out of position, so the alarm may chirp for a moment but fail to sound in a fire.",
+    "remedy": [
+      "Press the test button every month and confirm the alarm sounds.",
+      "If it does not sound, replace the alarm right away.",
+      "Contact the manufacturer for a free replacement."
+    ],
+    "isSample": true
+  }
+]

@@ -1,0 +1,68 @@
+id: leak-under-sink-ptrap
+title: "Leak under the sink: P-trap"
+symptoms:
+  - "leak&under&sink"
+  - "leak&sink"
+  - "ptrap&leak"
+  - "ptrap&sink"
+  - "ptrap"
+  - "pipe&leak&sink"
+assetCategory: ptrap
+trade: plumber
+questions:
+  - id: source
+    text: "Is it dripping from the pipes, or pooling from the dishwasher side?"
+    options: ["pipes", "dishwasher side"]
+    routes:
+      "dishwasher": leak-under-sink-supply-line
+      "disposal": disposal-leak-body
+      "pipe|trap|drain|nut|joint|dripping": leak-under-sink-ptrap
+steps:
+  - instruction: "Clear the cabinet under your sink and set a bowl under the trap."
+    detail: "Move the cleaning supplies out, put a bowl or small bucket right under the curved pipe, and lay a towel underneath to catch any miss."
+    photoOf: ptrap
+    fallbackImage: generic-ptrap.svg
+    addHint: "Say 'add my sink trap' and I'll remember it."
+  - instruction: "Close both shut-off valves under your sink."
+    detail: "Yours are {shutoff.location|under the sink}. Turn each handle clockwise, by hand, until it stops."
+    caution: "Turn gently. If a valve won't move or the water keeps coming, stop and close your main water shut-off instead."
+    photoOf: sink_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my shut-off valve' and I'll remember it."
+  - instruction: "Dry the trap and the pipes, then feel each slip nut for the drip."
+    detail: "Wipe everything with a paper towel. Pour a cup of water down the drain and run a dry fingertip along each nut and joint until one turns wet. That joint is your leak."
+    photoOf: ptrap
+    fallbackImage: generic-ptrap.svg
+    addHint: "Say 'add my sink trap' and I'll remember it."
+  - instruction: "Hand-tighten the leaking slip nut a quarter turn."
+    detail: "Turn it clockwise by hand only, then pour another cup of water through. If it still weeps, the slip-joint washer inside is worn, and that is the part to replace."
+    caution: "Don't use a wrench on a plastic nut, because it cracks easily."
+    photoOf: ptrap
+    fallbackImage: generic-ptrap.svg
+    addHint: "Say 'add my sink trap' and I'll remember it."
+    partRole: ptrap_washer
+    partAssetCategory: ptrap
+  - instruction: "Replace the slip-joint washer."
+    detail: "Unscrew the nut and slide it up the pipe, pull the trap free, then take out the old washer. Seat the new washer with the tapered edge facing the joint, thread the nut back on by hand and snug it a quarter turn more."
+    tools: ["bowl or bucket", "towel", "channel-lock pliers (optional)", "new slip-joint washer"]
+    photoOf: ptrap
+    fallbackImage: generic-ptrap.svg
+    addHint: "Say 'add my sink trap' and I'll remember it."
+    partRole: ptrap_washer
+    partAssetCategory: ptrap
+  - instruction: "Open both shut-offs and check that it stays dry."
+    detail: "Turn each valve slowly counterclockwise, run the tap for a minute, then press a dry paper towel to every joint. Check again in an hour."
+    photoOf: sink_shutoff
+    fallbackImage: generic-shutoff.svg
+    addHint: "Say 'add my shut-off valve' and I'll remember it."
+partRoles: [ptrap_washer]
+hardStops: []
+escalateIf:
+  - keywords: ["disposal&itself", "disposal&leak", "coming from the disposal"]
+    reason: "Water from the body of the disposal means a failed internal seal, which a P-trap repair will not fix."
+  - keywords: ["still leak", "still drip", "still weep", "still seep", "still wet", "leak persist", "came back", "after tightening", "after reseat", "reseat&still", "replaced&still", "new washer&still"]
+    reason: "A leak that survives a reseat and a new washer usually means a cracked fitting or a damaged trap arm, and that needs a plumber."
+estimatedMinutes: 25
+tools: ["bowl or bucket", "towel", "channel-lock pliers (optional)", "new slip-joint washer"]
+followUpDays: 7
+followUpTitle: "Check under the kitchen sink is still dry"

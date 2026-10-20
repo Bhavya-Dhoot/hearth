@@ -1,0 +1,29 @@
+id: disposal-leak-body
+title: "Disposal leaking from the body"
+symptoms:
+  - "leak&under&sink"
+  - "leak&sink"
+  - "disposal&leak"
+  - "disposal&itself"
+  - "coming from the disposal"
+assetCategory: disposal
+trade: plumber
+questions: []
+steps:
+  - instruction: "Switch off the disposal at the wall switch and leave it off."
+    detail: "A leaking disposal can short its motor, so keep it unpowered until a pro has looked at it."
+    caution: "Never put your hand into the disposal, even when the switch is off."
+  - instruction: "Set a bowl under your {asset.model|disposal} and lay a towel in the cabinet."
+    detail: "Skip the dishwasher and the sink drain until it's fixed, because both send water straight through the unit."
+    photoOf: disposal
+    addHint: "Say 'add my disposal' and I'll remember it."
+  - instruction: "Photograph the wet area and the model label for your pro."
+    detail: "A clear photo of the label and the leak lets a plumber quote the replacement before they arrive."
+    canSkip: true
+partRoles: []
+hardStops: []
+escalateIf:
+  - keywords: ["*"]
+    reason: "Internal seal failure: water coming from the body of your garbage disposal means the seal inside has failed, and it can't be resealed. {asset.ageSentence|} Replacing the unit is the practical fix."
+estimatedMinutes: 10
+tools: ["bowl or bucket", "towel"]

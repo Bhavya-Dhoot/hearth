@@ -1,0 +1,489 @@
+{
+  "home": {
+    "userId": "usr_okafor",
+    "homeId": "home_okafor",
+    "name": "The Okafor House",
+    "city": "Austin",
+    "state": "TX",
+    "yearBuilt": 2004,
+    "climateZone": "2A",
+    "timezone": "America/Chicago",
+    "baths": 2,
+    "heatingFuel": "gas"
+  },
+  "assets": [
+    {
+      "homeId": "home_okafor",
+      "photos": [
+        {
+          "url": "{{MCP_BASE}}/media/kitchen-ptrap.svg",
+          "alt": "Your kitchen sink P-trap, white PVC, with the slip-joint nut below the basket strainer",
+          "annotation": {
+            "x": 0.47,
+            "y": 0.55,
+            "r": 0.09
+          }
+        }
+      ],
+      "attributes": {
+        "trapSize": "1-1/2",
+        "joint": "slip",
+        "material": "PVC"
+      },
+      "consumables": [],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:00:00-05:00",
+      "updatedAt": "2026-10-14T09:00:00-05:00",
+      "assetId": "asset_ptrap_kitchen",
+      "type": "fixture",
+      "category": "ptrap",
+      "label": "kitchen sink P-trap",
+      "installDate": "2019-06-14",
+      "location": {
+        "room": "Kitchen",
+        "note": "Under the sink"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [
+        {
+          "url": "{{MCP_BASE}}/media/kitchen-sink-shutoffs.svg",
+          "alt": "Under your kitchen sink: two chrome angle-stop valves on the back wall, cold on the right",
+          "annotation": {
+            "x": 0.64,
+            "y": 0.62,
+            "r": 0.08
+          }
+        }
+      ],
+      "attributes": {
+        "valveType": "angle stop",
+        "valveOutlet": "3/8 compression",
+        "lineLength": 20
+      },
+      "consumables": [],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:01:00-05:00",
+      "updatedAt": "2026-10-14T09:01:00-05:00",
+      "assetId": "asset_sink_shutoffs",
+      "type": "shutoff",
+      "category": "sink_shutoff",
+      "label": "kitchen sink shut-off valves",
+      "installDate": "2019-06-14",
+      "location": {
+        "room": "Kitchen",
+        "note": "Under the sink"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [
+        {
+          "url": "{{MCP_BASE}}/media/disposal-reset.svg",
+          "alt": "Underside of your garbage disposal: red reset button and the hex socket in the centre",
+          "annotation": {
+            "x": 0.5,
+            "y": 0.74,
+            "r": 0.07
+          }
+        }
+      ],
+      "attributes": {
+        "hexSize": "1/4",
+        "mount": "3-bolt",
+        "horsepower": "1/2"
+      },
+      "consumables": [],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:02:00-05:00",
+      "updatedAt": "2026-10-14T09:02:00-05:00",
+      "assetId": "asset_disposal",
+      "type": "appliance",
+      "category": "disposal",
+      "label": "garbage disposal",
+      "brand": "InSinkErator",
+      "model": "Badger 5",
+      "installDate": "2017-03-18",
+      "location": {
+        "room": "Kitchen",
+        "note": "Under the sink"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [
+        {
+          "url": "{{MCP_BASE}}/media/dishwasher-filter.svg",
+          "alt": "Bottom of your dishwasher tub with the cylindrical filter twisted out",
+          "annotation": {
+            "x": 0.5,
+            "y": 0.7,
+            "r": 0.09
+          }
+        }
+      ],
+      "attributes": {
+        "filterStyle": "cylinder"
+      },
+      "consumables": [],
+      "recallIds": [
+        "SAMPLE-RC-DW-2026-001"
+      ],
+      "createdAt": "2026-10-14T09:03:00-05:00",
+      "updatedAt": "2026-10-14T09:03:00-05:00",
+      "assetId": "asset_dishwasher",
+      "type": "appliance",
+      "category": "dishwasher",
+      "label": "dishwasher",
+      "brand": "Bosch",
+      "model": "SHEM63W55N",
+      "installDate": "2021-03-14",
+      "location": {
+        "room": "Kitchen",
+        "note": "Left of the sink"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [],
+      "attributes": {
+        "filterModel": "UKF8001"
+      },
+      "consumables": [
+        {
+          "sku": "HR-RF-UKF8001-1",
+          "label": "Refrigerator water filter (UKF8001)",
+          "intervalDays": 180,
+          "lastReplaced": "2026-02-10"
+        }
+      ],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:04:00-05:00",
+      "updatedAt": "2026-10-14T09:04:00-05:00",
+      "assetId": "asset_fridge",
+      "type": "appliance",
+      "category": "fridge",
+      "label": "refrigerator",
+      "brand": "Whirlpool",
+      "model": "WRS325SDHZ",
+      "installDate": "2019-11-08",
+      "location": {
+        "room": "Kitchen"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [
+        {
+          "url": "{{MCP_BASE}}/media/furnace-filter-slot.svg",
+          "alt": "Your furnace filter slot on the return side, 16 by 25 by 1 filter with the airflow arrow",
+          "annotation": {
+            "x": 0.46,
+            "y": 0.55,
+            "r": 0.11
+          }
+        }
+      ],
+      "attributes": {
+        "filterSize": "16x25x1",
+        "merv": 11,
+        "fuel": "gas",
+        "thermostatBattery": "AA"
+      },
+      "consumables": [
+        {
+          "sku": "HR-FF-162501-M11-2",
+          "label": "Furnace filter 16x25x1 MERV 11",
+          "intervalDays": 90,
+          "lastReplaced": "2026-07-19"
+        }
+      ],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:05:00-05:00",
+      "updatedAt": "2026-10-14T09:05:00-05:00",
+      "assetId": "asset_furnace",
+      "type": "hvac",
+      "category": "furnace",
+      "label": "furnace",
+      "brand": "Carrier",
+      "model": "59SC2",
+      "installDate": "2014-05-22",
+      "location": {
+        "room": "Hallway closet"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [],
+      "attributes": {
+        "tonnage": 3,
+        "refrigerant": "R-410A"
+      },
+      "consumables": [],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:06:00-05:00",
+      "updatedAt": "2026-10-14T09:06:00-05:00",
+      "assetId": "asset_ac_condenser",
+      "type": "hvac",
+      "category": "ac_condenser",
+      "label": "AC condenser",
+      "brand": "Carrier",
+      "model": "24ACC636",
+      "installDate": "2014-05-22",
+      "location": {
+        "room": "Side yard",
+        "note": "Outdoor unit"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [
+        {
+          "url": "{{MCP_BASE}}/media/water-heater-label.svg",
+          "alt": "Rating label on your Rheem 50-gallon electric water heater with model and serial",
+          "annotation": {
+            "x": 0.5,
+            "y": 0.34,
+            "r": 0.1
+          }
+        }
+      ],
+      "attributes": {
+        "fuel": "electric",
+        "gallons": 50
+      },
+      "consumables": [],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:07:00-05:00",
+      "updatedAt": "2026-10-14T09:07:00-05:00",
+      "assetId": "asset_water_heater",
+      "type": "appliance",
+      "category": "water_heater",
+      "label": "water heater",
+      "brand": "Rheem",
+      "model": "XE50T10",
+      "installDate": "2018-08-03",
+      "location": {
+        "room": "Garage"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [
+        {
+          "url": "{{MCP_BASE}}/media/main-shutoff-garage.svg",
+          "alt": "Main water shut-off in your garage: red lever valve on the copper line, left of the electrical panel",
+          "annotation": {
+            "x": 0.27,
+            "y": 0.46,
+            "r": 0.08
+          }
+        }
+      ],
+      "attributes": {
+        "valveType": "lever ball valve",
+        "pipeSize": "3/4",
+        "pipeMaterial": "copper"
+      },
+      "consumables": [],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:08:00-05:00",
+      "updatedAt": "2026-10-14T09:08:00-05:00",
+      "assetId": "asset_main_shutoff",
+      "type": "shutoff",
+      "category": "main_shutoff",
+      "label": "main water shut-off",
+      "location": {
+        "room": "Garage",
+        "note": "Left of the panel"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [
+        {
+          "url": "{{MCP_BASE}}/media/electrical-panel.svg",
+          "alt": "Your electrical panel in the garage with labelled breakers; the kitchen circuit is third from the top on the right",
+          "annotation": {
+            "x": 0.62,
+            "y": 0.38,
+            "r": 0.07
+          }
+        }
+      ],
+      "attributes": {
+        "amps": 200,
+        "spaces": 30,
+        "labelled": true
+      },
+      "consumables": [],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:09:00-05:00",
+      "updatedAt": "2026-10-14T09:09:00-05:00",
+      "assetId": "asset_panel",
+      "type": "panel",
+      "category": "panel",
+      "label": "electrical panel",
+      "location": {
+        "room": "Garage",
+        "note": "Kitchen circuit is third from the top on the right"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [],
+      "attributes": {
+        "loadType": "front load"
+      },
+      "consumables": [],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:10:00-05:00",
+      "updatedAt": "2026-10-14T09:10:00-05:00",
+      "assetId": "asset_washer",
+      "type": "appliance",
+      "category": "washer",
+      "label": "washing machine",
+      "brand": "LG",
+      "model": "WM3600HWA",
+      "installDate": "2020-02-01",
+      "location": {
+        "room": "Laundry room"
+      }
+    },
+    {
+      "homeId": "home_okafor",
+      "photos": [],
+      "attributes": {
+        "batteryType": "9V",
+        "count": 5
+      },
+      "consumables": [
+        {
+          "sku": "HR-BT-9V-ALK4",
+          "label": "9V smoke detector batteries",
+          "intervalDays": 365,
+          "lastReplaced": "2025-11-02"
+        }
+      ],
+      "recallIds": [],
+      "createdAt": "2026-10-14T09:11:00-05:00",
+      "updatedAt": "2026-10-14T09:11:00-05:00",
+      "assetId": "asset_smoke_detectors",
+      "type": "appliance",
+      "category": "smoke_detector",
+      "label": "smoke detectors",
+      "location": {
+        "room": "Whole house",
+        "note": "Hallways and bedrooms"
+      }
+    }
+  ],
+  "events": [
+    {
+      "homeId": "home_okafor",
+      "eventId": "evt_dishwasher_install",
+      "ts": "2021-03-14T10:30:00-05:00",
+      "type": "added_asset",
+      "assetId": "asset_dishwasher",
+      "summary": "Dishwasher installed: Bosch SHEM63W55N",
+      "cost": 649,
+      "photos": []
+    },
+    {
+      "homeId": "home_okafor",
+      "eventId": "evt_disposal_reset_2025",
+      "ts": "2025-05-08T18:20:00-05:00",
+      "type": "repair",
+      "assetId": "asset_disposal",
+      "summary": "Reset the garbage disposal after it jammed on a fruit pit. No parts needed.",
+      "cost": 0,
+      "photos": [
+        "{{MCP_BASE}}/media/disposal-reset.svg"
+      ]
+    },
+    {
+      "homeId": "home_okafor",
+      "eventId": "evt_smoke_batteries_2025",
+      "ts": "2025-11-02T10:00:00-05:00",
+      "type": "maintenance",
+      "assetId": "asset_smoke_detectors",
+      "summary": "Replaced the 9V batteries in all five smoke detectors.",
+      "cost": 9.99,
+      "photos": []
+    },
+    {
+      "homeId": "home_okafor",
+      "eventId": "evt_fridge_filter_feb",
+      "ts": "2026-02-10T08:45:00-06:00",
+      "type": "maintenance",
+      "assetId": "asset_fridge",
+      "summary": "Replaced the refrigerator water filter (UKF8001).",
+      "cost": 24.99,
+      "photos": []
+    },
+    {
+      "homeId": "home_okafor",
+      "eventId": "evt_furnace_filter_apr",
+      "ts": "2026-04-20T09:10:00-05:00",
+      "type": "maintenance",
+      "assetId": "asset_furnace",
+      "summary": "Changed the furnace filter (16x25x1, MERV 11).",
+      "cost": 11.49,
+      "photos": []
+    },
+    {
+      "homeId": "home_okafor",
+      "eventId": "evt_furnace_filter_jul",
+      "ts": "2026-07-19T09:15:00-05:00",
+      "type": "maintenance",
+      "assetId": "asset_furnace",
+      "summary": "Changed the furnace filter (16x25x1, MERV 11).",
+      "cost": 11.49,
+      "photos": []
+    }
+  ],
+  "tasks": [
+    {
+      "homeId": "home_okafor",
+      "taskId": "task_furnace_filter",
+      "dueDate": "2026-10-17",
+      "assetId": "asset_furnace",
+      "kind": "consumable",
+      "title": "Replace the furnace filter",
+      "priority": 4,
+      "reorderSku": "HR-FF-162501-M11-2",
+      "done": false
+    },
+    {
+      "homeId": "home_okafor",
+      "taskId": "task_dishwasher_recall",
+      "dueDate": "2026-10-21",
+      "assetId": "asset_dishwasher",
+      "kind": "recall",
+      "title": "Review the sample recall notice for the dishwasher",
+      "priority": 5,
+      "done": false
+    },
+    {
+      "homeId": "home_okafor",
+      "taskId": "task_gutters",
+      "dueDate": "2026-10-24",
+      "kind": "seasonal",
+      "title": "Clear the gutters before the winter rains",
+      "priority": 3,
+      "done": false
+    },
+    {
+      "homeId": "home_okafor",
+      "taskId": "task_smoke_batteries",
+      "dueDate": "2026-11-02",
+      "assetId": "asset_smoke_detectors",
+      "kind": "consumable",
+      "title": "Replace the smoke detector batteries",
+      "priority": 3,
+      "reorderSku": "HR-BT-9V-ALK4",
+      "done": false
+    }
+  ]
+}

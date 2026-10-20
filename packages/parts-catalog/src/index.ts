@@ -1,11 +1,11 @@
 import type { PartsApi } from "@hearth/contracts";
+import { BY_SKU, CATALOG, RECALLS } from "./catalog";
+import { findExactParts } from "./matcher";
 
-/** Stub frozen at G0. Lane A1 replaces the bodies; the exported shape must not change. */
-const notBuilt = (): never => { throw new Error("not_built: @hearth/parts-catalog"); };
-
+/** The seeded parts catalogue (about 60 house-brand SKUs), the exact-fit matcher and the sample recall set. */
 export const parts: PartsApi = {
-  listCatalog: notBuilt,
-  getSku: notBuilt,
-  findExactParts: notBuilt,
-  listRecalls: notBuilt,
+  listCatalog: () => [...CATALOG],
+  getSku: (sku) => BY_SKU.get(sku),
+  findExactParts,
+  listRecalls: () => [...RECALLS],
 };

@@ -1,0 +1,60 @@
+id: ac-not-cooling
+title: "AC not cooling"
+symptoms:
+  - "ac&notcool"
+  - "ac&warm"
+  - "ac&dead"
+  - "ac"
+  - "notcool"
+  - "house&warm"
+  - "temperature"
+assetCategory: ac_condenser
+trade: hvac
+questions:
+  - id: mode
+    text: "Is this about heating or cooling?"
+    options: ["heating", "cooling"]
+    routes:
+      "heat|furnace|cold|winter|warm up": furnace-not-heating
+      "cool|ac$|air conditioning|hot|summer|warm|humid": ac-not-cooling
+steps:
+  - instruction: "Set your thermostat to COOL and drop it five degrees below the room temperature."
+    detail: "Listen for the click of the outdoor unit and the blower inside. If neither starts, note which one is silent."
+    canSkip: true
+  - instruction: "Check the thermostat display and replace its batteries if it's blank or dim."
+    detail: "Most thermostats take two AA batteries behind the faceplate. Fresh ones often bring a dead display straight back."
+    tools: ["2 AA batteries"]
+    partRole: thermostat_battery
+    partAssetCategory: furnace
+    canSkip: true
+  - instruction: "Pull out your air filter and hold it up to a light."
+    detail: "If you can't see light through it, swap in a new one. A clogged filter starves the system of air and freezes the coil."
+    tools: ["new air filter"]
+    photoOf: furnace
+    addHint: "Say 'add my furnace' and I'll remember it."
+    partRole: furnace_filter
+    partAssetCategory: furnace
+  - instruction: "Walk outside and check the outdoor unit is running and clear."
+    detail: "Pull away leaves, grass clippings and anything stacked against the unit, and keep two feet of space around it."
+    caution: "Don't open the unit or touch the fan. Look only."
+  - instruction: "Check the AC breaker in your electrical panel and reset it once if it's tripped."
+    detail: "Yours is {shutoff.location|in the garage}. Reset it one time only."
+    caution: "If the breaker trips again, stop and call an electrician or an HVAC technician."
+    photoOf: panel
+    fallbackImage: generic-breaker.svg
+    addHint: "Say 'add my electrical panel' and I'll remember it."
+  - instruction: "Give it fifteen minutes, then hold your hand to a vent."
+    detail: "The air should feel clearly cooler than the room. If it doesn't, the system needs a technician."
+partRoles: [furnace_filter, thermostat_battery]
+hardStops:
+  - category: electrical
+    keywords: ["burning smell", "spark", "buzz&outdoor", "smoke"]
+escalateIf:
+  - keywords: ["ice", "frozen", "freez", "refrigerant", "hissing", "oily"]
+    reason: "Ice on the lines or a hissing sound points to a refrigerant problem. {asset.ageSentence|} Refrigerant work needs a licensed HVAC technician."
+  - keywords: ["compressor", "wont start", "outdoor unit&not running", "fan&not spinning"]
+    reason: "An outdoor unit that won't start usually means a failed capacitor or compressor, and that needs a licensed HVAC technician."
+estimatedMinutes: 30
+tools: ["2 AA batteries", "new air filter"]
+followUpDays: 2
+followUpTitle: "Check the AC is cooling again"

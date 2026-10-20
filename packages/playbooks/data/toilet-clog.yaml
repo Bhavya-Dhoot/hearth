@@ -1,0 +1,50 @@
+id: toilet-clog
+title: "Clogged toilet"
+symptoms:
+  - "toilet&clog"
+  - "toilet"
+  - "plunger"
+assetCategory: toilet
+trade: plumber
+questions:
+  - id: scope
+    text: "Are any other drains in the house backing up too?"
+    options: ["yes", "no"]
+    routes:
+      "no$|nope|none|nothing|just|only|fine|normal": toilet-clog
+      "yes|yeah|yep|other|all|every|both|shower|tub|multiple|several|also|too": "hardstop:sewage"
+steps:
+  - instruction: "Stop flushing and lift the lid off the tank."
+    detail: "Push the rubber flapper down by hand so no more water refills the bowl."
+    photoOf: toilet
+    fallbackImage: generic-toilet-tank.svg
+    addHint: "Say 'add my toilet' and I'll remember it."
+  - instruction: "Put on rubber gloves and lay towels around the base."
+    detail: "Plunging splashes. A few old towels on the floor save you a second cleanup."
+    tools: ["rubber gloves", "old towels"]
+    canSkip: true
+  - instruction: "Seat the plunger over the drain opening and push and pull firmly for about 20 strokes."
+    detail: "Keep the plunger underwater so it pushes water, not air. Make the first push gentle to clear the air out of the cup."
+    caution: "If water or sewage also comes up in a shower, tub or other drain, stop. That points to your main sewer line."
+    tools: ["flange plunger", "rubber gloves"]
+    partRole: plunger
+    partAssetCategory: toilet
+  - instruction: "Pour a pot of hot tap water, not boiling, into the bowl and wait ten minutes."
+    detail: "Hot tap water softens what's stuck. Boiling water can crack the porcelain."
+    caution: "Never use boiling water or drain chemicals in a toilet."
+    canSkip: true
+  - instruction: "Plunge again, then flush once to test."
+    detail: "If the water drops quickly and the bowl refills, you're through."
+  - instruction: "Run a toilet auger if the plunger didn't clear it."
+    detail: "Feed the auger into the drain until it stops, crank clockwise to break up or hook the blockage, then pull it back out and flush."
+    tools: ["toilet auger", "rubber gloves"]
+    canSkip: true
+partRoles: [plunger]
+hardStops:
+  - category: sewage
+    keywords: ["sewage", "every drain", "all drains", "other drains", "multiple fixtures", "shower&toilet", "tub&toilet", "comes up&shower", "coming up&shower"]
+escalateIf:
+  - keywords: ["auger&still", "still&clog", "plunger&didnt", "wont clear", "toy", "phone", "object"]
+    reason: "A clog that survived plunging and an auger, or one caused by an object, needs a plumber with the right tools, because more force can wedge it deeper."
+estimatedMinutes: 20
+tools: ["flange plunger", "rubber gloves", "old towels", "toilet auger"]
