@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "userId": "usr_okafor",
+      "name": "Priya Okafor",
+      "email": "priya@okafor.example",
+      "salt": "33e4c2a006bb9ec8943c2fee3eec5440",
+      "passwordHash": "81a7289799a1d0d9840220d1b692c6c3c1a5c01450219d9b20a3dbcdc151efc92a735582c51d1e75671c436b240cb7b7e5cf6a4339d245d2d024be8aa58e1597"
+    }
+  ]
+}
