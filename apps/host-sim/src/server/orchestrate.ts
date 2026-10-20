@@ -154,6 +154,15 @@ export function guardrails(state: ConversationState, decision: OrchestratorDecis
     }
   }
 
+  // A placed order is always spoken with its payment mode; a model paraphrasing the summary may drop it.
+  if (decision.kind === "speak" && last?.role === "tool" && last.name === "complete_checkout" && !last.result.isError) {
+    const mode = last.result.structuredContent?.paymentMode;
+    const disclosure = mode === "simulated" ? "Simulated payment: no card was charged." : mode === "stripe_test" ? "Stripe test mode: no real charge." : null;
+    if (disclosure && !/simulated|test mode/i.test(decision.text)) {
+      return { ...decision, text: `${decision.text.trim()} ${disclosure}` };
+    }
+  }
+
   if (decision.kind === "tool_calls") {
     for (const call of decision.calls) {
       if (call.name !== "complete_checkout") continue;
