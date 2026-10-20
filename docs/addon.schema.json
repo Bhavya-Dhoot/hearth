@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hearth.example/schemas/addon.schema.json",
+  "title": "Hearth Alexa+ add-on manifest",
+  "description": "Documents every field used by docs/addon.json. Unknown fields are rejected so a typo cannot ship unnoticed.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifestVersion",
+    "name",
+    "tagline",
+    "description",
+    "category",
+    "examplePhrases",
+    "mcp",
+    "auth",
+    "checkout",
+    "privacyPolicyUrl",
+    "termsOfUseUrl",
+    "supportEmail",
+    "icons",
+    "locales",
+    "policy"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Relative or absolute reference to this schema, for editors."
+    },
+    "manifestVersion": {
+      "type": "string",
+      "const": "1.0",
+      "description": "Version of the manifest format."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 50,
+      "description": "Display name of the add-on."
+    },
+    "tagline": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
+      "description": "One-line promise shown under the name."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 500,
+      "description": "What the add-on does, in plain language."
+    },
+    "category": {
+      "type": "string",
+      "enum": ["home_improvement"],
+      "description": "Store category. Hearth lists under home_improvement."
+    },
+    "examplePhrases": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^Alexa, .+", "maxLength": 120 },
+      "description": "Utterances a customer can say, each starting with the wake word."
+    },
+    "mcp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["endpoint", "protocolVersion", "transport"],
+      "properties": {
+        "endpoint": { "type": "string", "format": "uri", "pattern": "^https://", "description": "Public MCP endpoint, HTTPS only." },
+        "protocolVersion": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$", "description": "MCP spec revision; Hearth targets 2025-11-25." },
+        "transport": { "type": "string", "const": "streamable-http", "description": "MCP transport." }
+      },
+      "description": "How the host reaches the MCP server."
+    },
+    "auth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "flow", "authorizationServer", "scopes"],
+      "properties": {
+        "type": { "type": "string", "const": "oauth2" },
+        "flow": { "type": "string", "const": "authorization_code_pkce", "description": "OAuth 2.1 Authorization Code with PKCE (S256), public client, no client secret." },
+        "authorizationServer": { "type": "string", "format": "uri", "pattern": "^https://", "description": "Issuer URL; metadata is served at /.well-known/oauth-authorization-server." },
+        "scopes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "enum": ["home:read", "home:write", "orders:write"] },
+          "description": "Scopes requested at account linking. Must match packages/contracts/src/auth.ts."
+        }
+      },
+      "description": "Account linking configuration."
+    },
+    "checkout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paymentMethods", "sessionsEndpoint"],
+      "properties": {
+        "paymentMethods": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "enum": ["stored_payment_method", "network_token"] },
+          "description": "Payment methods supported. Hearth uses stored_payment_method; network_token needs Amazon Pay onboarding."
+        },
+        "sessionsEndpoint": { "type": "string", "format": "uri", "pattern": "^https://", "description": "UCP-style REST checkout-sessions endpoint." }
+      },
+      "description": "Commerce configuration."
+    },
+    "privacyPolicyUrl": { "type": "string", "format": "uri", "pattern": "^https://", "description": "Public privacy policy (docs/PRIVACY.md)." },
+    "termsOfUseUrl": { "type": "string", "format": "uri", "pattern": "^https://", "description": "Public terms of use (docs/TERMS.md)." },
+    "supportEmail": { "type": "string", "format": "email", "description": "Support contact and data-deletion address." },
+    "icons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["108", "512", "1024", "small", "medium", "large"],
+      "properties": {
+        "108": { "$ref": "#/$defs/iconPath" },
+        "512": { "$ref": "#/$defs/iconPath" },
+        "1024": { "$ref": "#/$defs/iconPath" },
+        "small": { "$ref": "#/$defs/iconPath" },
+        "medium": { "$ref": "#/$defs/iconPath" },
+        "large": { "$ref": "#/$defs/iconPath" }
+      },
+      "description": "Six icon sizes, as PNG paths relative to this file."
+    },
+    "locales": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[a-z]{2}-[A-Z]{2}$" },
+      "description": "Supported locales."
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targetsChildren", "collectsHealthData", "financialInstitution"],
+      "properties": {
+        "targetsChildren": { "type": "boolean", "const": false, "description": "Alexa+ policy: add-ons must not target children." },
+        "collectsHealthData": { "type": "boolean", "const": false, "description": "Alexa+ policy: no health data." },
+        "financialInstitution": { "type": "boolean", "const": false, "description": "Hearth is not a financial institution and offers no financial-institution features." }
+      },
+      "description": "Policy attestations, constrained to false for Hearth. Changing one is a product decision, not an edit."
+    }
+  },
+  "$defs": {
+    "iconPath": { "type": "string", "pattern": "^icons/[A-Za-z0-9_-]+\\.png$" }
+  }
+}

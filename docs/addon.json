@@ -1,0 +1,23 @@
+{
+  "$schema": "./addon.schema.json",
+  "manifestVersion": "1.0",
+  "name": "Hearth",
+  "tagline": "Your house has a memory now.",
+  "description": "Hearth remembers your appliances, filter sizes, shut-off valves and repair history. When something breaks, it walks you through the fix hands-free, orders the exact-fit part, or hands a pro a complete job brief.",
+  "category": "home_improvement",
+  "examplePhrases": [
+    "Alexa, there's water under the kitchen sink.",
+    "Alexa, what should I do around the house this weekend?",
+    "Alexa, reorder my furnace filter.",
+    "Alexa, did we ever fix the disposal?"
+  ],
+  "mcp": { "endpoint": "https://mcp.hearth.example/mcp", "protocolVersion": "2025-11-25", "transport": "streamable-http" },
+  "auth": { "type": "oauth2", "flow": "authorization_code_pkce", "authorizationServer": "https://auth.hearth.example", "scopes": ["home:read", "home:write", "orders:write"] },
+  "checkout": { "paymentMethods": ["stored_payment_method"], "sessionsEndpoint": "https://mcp.hearth.example/checkout-sessions" },
+  "privacyPolicyUrl": "https://hearth.example/privacy",
+  "termsOfUseUrl": "https://hearth.example/terms",
+  "supportEmail": "support@hearth.example",
+  "icons": { "108": "icons/108.png", "512": "icons/512.png", "1024": "icons/1024.png", "small": "icons/small.png", "medium": "icons/medium.png", "large": "icons/large.png" },
+  "locales": ["en-US"],
+  "policy": { "targetsChildren": false, "collectsHealthData": false, "financialInstitution": false }
+}

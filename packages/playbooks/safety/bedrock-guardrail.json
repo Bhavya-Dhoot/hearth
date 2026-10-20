@@ -1,0 +1,105 @@
+{
+  "name": "hearth-safety",
+  "description": "Hearth hard stops: gas, electrical panel, structural and sewage jobs go to a licensed pro; no children's details; no payment or credential data.",
+  "blockedInputMessaging": "I can't help with that one here. If it's gas, an electrical panel, structural damage or sewage, it needs a licensed pro. I can put together a brief for them from what I know about your home.",
+  "blockedOutputsMessaging": "I can't give steps for that one. If it's gas, an electrical panel, structural damage or sewage, it needs a licensed pro. I can put together a brief for them from what I know about your home.",
+  "topicPolicyConfig": {
+    "topicsConfig": [
+      {
+        "name": "Gas line or gas appliance repair",
+        "type": "DENY",
+        "definition": "Instructions for installing, repairing, relighting or modifying gas lines, gas valves or gas appliances, or for tracking down a gas leak.",
+        "examples": [
+          "How do I fix a gas leak behind my stove?",
+          "Can I move my gas line myself?",
+          "Walk me through relighting the pilot on my gas water heater.",
+          "How do I replace the gas valve on my furnace?"
+        ],
+        "inputAction": "BLOCK",
+        "outputAction": "BLOCK",
+        "inputEnabled": true,
+        "outputEnabled": true
+      },
+      {
+        "name": "Electrical panel work",
+        "type": "DENY",
+        "definition": "Instructions for opening or working inside an electrical panel, replacing breakers, or rewiring circuits, beyond resetting a tripped breaker once.",
+        "examples": [
+          "How do I swap a breaker in my panel?",
+          "Walk me through rewiring this circuit.",
+          "My breaker keeps tripping, can I put in a bigger one?",
+          "How do I take the cover off my breaker box and check the wires?"
+        ],
+        "inputAction": "BLOCK",
+        "outputAction": "BLOCK",
+        "inputEnabled": true,
+        "outputEnabled": true
+      },
+      {
+        "name": "Structural repair",
+        "type": "DENY",
+        "definition": "Instructions for repairing or altering load-bearing walls, beams, joists, foundations or roof framing.",
+        "examples": [
+          "Can I cut out this load-bearing wall?",
+          "How do I fix a sagging floor joist?",
+          "How do I repair a cracked foundation wall myself?",
+          "Can I remove a support beam in my basement?"
+        ],
+        "inputAction": "BLOCK",
+        "outputAction": "BLOCK",
+        "inputEnabled": true,
+        "outputEnabled": true
+      },
+      {
+        "name": "Sewage handling",
+        "type": "DENY",
+        "definition": "Instructions for handling raw sewage, sewer line backups, septic systems or contaminated wastewater.",
+        "examples": [
+          "How do I clear a sewer main backup myself?",
+          "How do I clean up sewage in my basement?",
+          "Sewage is coming up in every drain, what do I do?",
+          "How do I fix my septic tank alarm?"
+        ],
+        "inputAction": "BLOCK",
+        "outputAction": "BLOCK",
+        "inputEnabled": true,
+        "outputEnabled": true
+      },
+      {
+        "name": "Content about children",
+        "type": "DENY",
+        "definition": "Requests to collect, store or discuss personal details about children (names, ages, schools, photos), or to have a child perform a repair.",
+        "examples": [
+          "Add my kid's name and school to my home profile.",
+          "Remember my daughter's age and bedroom.",
+          "My 9 year old can do this repair, which tool does she need?",
+          "Save a photo of my son next to the water heater."
+        ],
+        "inputAction": "BLOCK",
+        "outputAction": "BLOCK",
+        "inputEnabled": true,
+        "outputEnabled": true
+      }
+    ]
+  },
+  "contentPolicyConfig": {
+    "filtersConfig": [
+      { "type": "HATE", "inputStrength": "HIGH", "outputStrength": "HIGH" },
+      { "type": "INSULTS", "inputStrength": "MEDIUM", "outputStrength": "MEDIUM" },
+      { "type": "SEXUAL", "inputStrength": "HIGH", "outputStrength": "HIGH" },
+      { "type": "VIOLENCE", "inputStrength": "MEDIUM", "outputStrength": "MEDIUM" },
+      { "type": "MISCONDUCT", "inputStrength": "MEDIUM", "outputStrength": "MEDIUM" },
+      { "type": "PROMPT_ATTACK", "inputStrength": "HIGH", "outputStrength": "NONE" }
+    ]
+  },
+  "sensitiveInformationPolicyConfig": {
+    "piiEntitiesConfig": [
+      { "type": "CREDIT_DEBIT_CARD_NUMBER", "action": "BLOCK" },
+      { "type": "CREDIT_DEBIT_CARD_CVV", "action": "BLOCK" },
+      { "type": "CREDIT_DEBIT_CARD_EXPIRY", "action": "BLOCK" },
+      { "type": "US_BANK_ACCOUNT_NUMBER", "action": "BLOCK" },
+      { "type": "US_SOCIAL_SECURITY_NUMBER", "action": "BLOCK" },
+      { "type": "PASSWORD", "action": "BLOCK" }
+    ]
+  }
+}
