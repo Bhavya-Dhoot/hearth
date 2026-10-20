@@ -69,7 +69,7 @@ All three live in Secrets Manager and reach the containers through ECS `secrets`
 |---|---|---|
 | `hearth/STRIPE_SECRET_KEY` | `STRIPE_SECRET_KEY` | Placeholder is safe: the server ignores any key that is not `sk_test_`/`rk_test_` and falls back to simulated payments. |
 | `hearth/RESEND_API_KEY` | `RESEND_API_KEY` | Only injected with `-c useResend=true`. Put the real key first. |
-| `hearth/HEARTH_AUTH_PRIVATE_JWK` | `HEARTH_AUTH_PRIVATE_JWK` | Full RS256 private JWK as JSON (`scripts/gen-auth-jwk.mjs`). **The auth agent has not implemented reading this variable yet**: today `apps/auth-server` generates its own key into `.keys/` on boot, which on Fargate is lost at every restart and differs per task. Until it reads the variable, tokens issued before a restart fail verification. Once it does, populate the secret before the first service deploy, or the container will try to parse `REPLACE_ME` and the deployment circuit breaker will roll back. |
+| `hearth/HEARTH_AUTH_PRIVATE_JWK` | `HEARTH_AUTH_PRIVATE_JWK` | Full RS256 private JWK as JSON (`scripts/gen-auth-jwk.mjs`). `apps/auth-server` reads it at boot (`src/keys.ts`, `resolveSigningKeys`), so the signing key survives restarts and is shared by every task. Populate the secret before the first service deploy: the container refuses to start on the placeholder `REPLACE_ME`, and the deployment circuit breaker rolls back. |
 
 ## Why Fargate + ALB + CloudFront (not App Runner)
 
@@ -132,7 +132,7 @@ Heads up: the mcp-server today sends email only through Resend (`RESEND_API_KEY`
 | `STRIPE_SECRET_KEY`, `RESEND_API_KEY` | mcp | yes |
 | `HEARTH_EMAIL_FROM` | mcp | yes |
 | `PORT` | all | yes (mcp, auth) |
-| `HEARTH_AUTH_PRIVATE_JWK` | auth | **no, not yet** |
+| `HEARTH_AUTH_PRIVATE_JWK` | auth | yes |
 | `HEARTH_GUARDRAIL_ID`, `HEARTH_GUARDRAIL_VERSION`, `HEARTH_BEDROCK_MODEL_ID` | host | unknown, host-sim agent should read them |
 | `HEARTH_AGENTCORE_MEMORY_ID` | AgentCore runtime | no |
 

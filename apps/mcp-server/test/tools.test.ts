@@ -364,6 +364,19 @@ describe("prepare_pro_brief", () => {
     expect(h.repo.briefs.size).toBe(1);
   });
 
+  it("stores no description or attempts when the child rule stopped the request", async () => {
+    const r = await call("prepare_pro_brief", {
+      issueId: "disposal-leak-body",
+      symptom: "My 9 year old Maya will fix the disposal leak",
+      attempted: ["Maya tightened the flange"],
+      idempotencyKey: "brief-child-1",
+    });
+    const d = as(ProBriefOutput, r);
+    expect(JSON.stringify(d)).not.toContain("Maya");
+    expect(d.attempted).toEqual([]);
+    expect(d.symptom).toContain("Details withheld");
+  });
+
   it("routes a hard stop symptom to the right trade even with no asset", async () => {
     const r = await call("prepare_pro_brief", { symptom: "I can smell gas in the kitchen", idempotencyKey: "brief-gas-0001" });
     expect(as(ProBriefOutput, r)).toMatchObject({ trade: "gas_utility", asset: { brand: "Unknown" } });

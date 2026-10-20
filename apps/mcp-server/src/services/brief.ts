@@ -76,12 +76,16 @@ export async function prepareProBrief(core: Core, ctx: Ctx, input: ProBriefInput
 
     const hardStop = core.playbooks.checkHardStop(input.symptom);
     const trade: Trade = hardStop.hardStop && hardStop.category ? HARD_STOP_TRADE[hardStop.category] : (playbook?.trade ?? tradeFromAsset(asset));
+    // Child rule (hard stop without a category): never store the customer's words or attempts (docs/SAFETY.md).
+    const childRule = hardStop.hardStop && !hardStop.category;
+    const symptom = childRule ? "Details withheld: the request mentioned a child, so Hearth stored no description." : input.symptom.trim();
+    const attempted = childRule ? [] : (input.attempted ?? []);
 
     const shutoff = nearestShutoff(assets, asset);
     const history = asset ? await core.repo.listEvents(home.homeId, { assetId: asset.assetId, limit: 5 }) : [];
     const timeline = [
       ...[...history].reverse().map((e) => ({ ts: e.ts.slice(0, 10), text: plain(e.summary) })),
-      { ts: today, text: plain(`Reported: ${input.symptom}`) },
+      { ts: today, text: plain(`Reported: ${symptom}`) },
     ];
 
     const photos = [...new Set([...(asset?.photos ?? []), ...(shutoff?.photos ?? [])].map((p) => p.url).concat(history.flatMap((e) => e.photos)))].slice(0, 4);
@@ -93,12 +97,12 @@ export async function prepareProBrief(core: Core, ctx: Ctx, input: ProBriefInput
 
     const brief: ProBriefOutput = {
       briefId,
-      headline: plain(`${lead}: ${truncate(input.symptom.trim(), 80)}`),
+      headline: plain(`${lead}: ${truncate(symptom, 80)}`),
       trade,
       asset: { brand: asset?.brand ?? "Unknown", model: asset?.model ?? "Unknown", ageYears: ageInYears(asset?.installDate, today) },
-      symptom: plain(input.symptom.trim()),
+      symptom: plain(symptom),
       timeline,
-      attempted: (input.attempted ?? []).map(plain),
+      attempted: attempted.map(plain),
       accessNotes: accessNotes(asset, shutoff),
       photos,
       shareUrl,
@@ -122,7 +126,7 @@ export async function prepareProBrief(core: Core, ctx: Ctx, input: ProBriefInput
       homeId: home.homeId,
       issueRecordId: newId("iss"),
       ts: at,
-      symptomText: plain(input.symptom.trim()),
+      symptomText: plain(symptom),
       playbookId: input.issueId ?? null,
       ...(asset ? { assetId: asset.assetId } : {}),
       status: "escalated",
@@ -137,7 +141,7 @@ export async function prepareProBrief(core: Core, ctx: Ctx, input: ProBriefInput
       ts: at,
       type: "escalation",
       ...(asset ? { assetId: asset.assetId } : {}),
-      summary: plain(truncate(`Prepared a job brief for a ${trade.replace("_", " ")}: ${input.symptom.trim()}`, 160)),
+      summary: plain(truncate(`Prepared a job brief for a ${trade.replace("_", " ")}: ${symptom}`, 160)),
       photos: [],
     };
     await core.repo.putEvent(event);

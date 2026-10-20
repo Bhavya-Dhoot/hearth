@@ -41,7 +41,9 @@ const PLAYBOOKS = [PTRAP, DISPOSAL];
 const hardStop = (text: string): HardStopResult =>
   /gas|rotten egg/i.test(text)
     ? { hardStop: true, category: "gas", message: "Stop. If you smell gas, leave the house and call your gas company from outside. I won't give steps for this." }
-    : { hardStop: false };
+    : /\d+ year old/i.test(text)
+      ? { hardStop: true, message: "Hearth is for adults. Please have an adult handle this repair." }
+      : { hardStop: false };
 
 /** A scripted stand-in for @hearth/playbooks that honours the PlaybooksApi contract. */
 export const fakePlaybooks: PlaybooksApi = {

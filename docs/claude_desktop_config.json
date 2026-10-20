@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "hearth": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote@0.15.2",
+        "http://localhost:4200/mcp",
+        "--header",
+        "Authorization:Bearer <paste token from mint-dev-token>"
+      ]
+    }
+  }
+}
