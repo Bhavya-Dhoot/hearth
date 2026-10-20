@@ -63,7 +63,7 @@ Total voice-over is about 340 words, which fits 2:50 with room for the title seq
 
 - If a take runs long, cut scene 6 first (12 s), then shorten scene 5 to the weekend list without the reorder.
 - If a replay fails on camera, the failure is real information: reset the data file as in the pre-flight, then re-run `pnpm replay all`; do not splice in a different take for the failing step.
-- Browser J1 and J3 are the replays verified in the browser host. J2 passes headless; if it misbehaves in the browser, record scene 4 from a headless-driven session with the inspector, or cut it to a still of the Pro Brief Card and say so in the caption.
+- All five replays (J1 to J5) are verified in the browser host by `apps/host-sim/scripts/e2e.ts`.
 - The title sequence is a browser-rendered motion page. Render it with the project's fast-render tool (`~/.claude/tools/fastrender/fastrender.py`) and confirm its renderer line reports an NVIDIA GPU rather than SwiftShader. Screen captures of the product are recorded with a normal screen recorder, not rendered.
 
 ## Checklist before upload

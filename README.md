@@ -232,7 +232,7 @@ pnpm replay all        # or: pnpm replay J1
 
 It exits 0 only if every journey called exactly the expected tool sequence. In the browser, open `http://localhost:3000/?replay=J1` (any of J1 to J5); after the account is linked, the journey plays at human pace with the inspector showing the JSON-RPC.
 
-Verified results: J1 to J5 pass headless against live servers; J1 and J3 also pass in the browser host. J2, J4 and J5 were not run in the browser.
+Verified results: J1 to J5 pass headless against live servers, from a fresh clone, and in the browser host (`apps/host-sim/scripts/e2e.ts`: Playwright through the real account-link flow, every journey's tool sequence checked, plus the 401 probe, device switching and the legal pages).
 
 ## Orchestrator modes
 
@@ -242,7 +242,7 @@ The orchestrator is the part of the simulated host that decides which tool to ca
 |---|---|---|
 | Bedrock Converse (`us.anthropic.claude-sonnet-4-5-20250929-v1:0` by default) | AWS credentials present | Coded. Not run: no AWS credentials on the build machine. |
 | Local GPU through Ollama (`qwen3:4b-instruct-2507-q4_K_M`) | No AWS credentials, Ollama reachable and the model pulled | Verified on an RTX A2000 Laptop (4 GB). About 1.9 s per orchestrator step warm (8.4 s cold), 12 tool schemas in the prompt. Completed a real weekend plan, reorder, explicit yes, order flow. |
-| Deterministic rules | Neither of the above; also the default for `?replay=` so replays reproduce | Verified: this is what the headless replays and the browser J1 and J3 runs use, and it is unit tested in `packages/host-sim-core`. |
+| Deterministic rules | Neither of the above; also the default for `?replay=` so replays reproduce | Verified: this is what the headless replays and the browser E2E use, and it is unit tested in `packages/host-sim-core`. |
 
 Opt a replay into a model with `?replay=J1&orchestrator=ollama`. Force a mode with `HEARTH_ORCHESTRATOR`.
 
@@ -360,7 +360,7 @@ scripts/           seed, conformance, latency-bench, demo-replay
 docs/              contracts, safety, architecture, submission documents, addon.json, icons
 ```
 
-Test counts at the time of writing (each package's `pnpm test`): playbooks 522, parts-catalog 49, home-graph 78, mcp-server 84, auth-server 55, host-sim-core 58, widgets 29, design-tokens 3, host-sim 9, infra 18 (905 in total).
+Test counts at the time of writing (each package's `pnpm test`): playbooks 522, parts-catalog 49, home-graph 78, mcp-server 85, auth-server 55, host-sim-core 58, widgets 29, design-tokens 3, host-sim 19, infra 18 (916 in total).
 
 ## License
 
