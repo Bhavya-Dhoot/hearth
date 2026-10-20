@@ -48,12 +48,16 @@ export function createRemoteOrchestrator(onReport: (r: ModeReport) => void, getP
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ state, tools, prefer: getPrefer() }),
       });
-      const json = (await res.json().catch(() => null)) as (ModeReport & { decision?: OrchestratorDecision; error?: string }) | null;
+      const json = (await res.json().catch(() => null)) as
+        | (ModeReport & { decision?: OrchestratorDecision; memory?: ConversationState["memory"]; error?: string })
+        | null;
       if (!res.ok || !json?.decision) {
         throw new Error(json?.error ?? `The orchestrator route answered ${res.status}.`);
       }
       mode = json.mode;
-      const { decision: _decision, ...report } = json;
+      // Rules runs server-side and updates its memory there; carry it into this turn's working state.
+      if (json.memory) state.memory = json.memory;
+      const { decision: _decision, memory: _memory, ...report } = json;
       onReport(report);
       return json.decision;
     },

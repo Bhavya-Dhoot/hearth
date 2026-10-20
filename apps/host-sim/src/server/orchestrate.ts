@@ -39,11 +39,13 @@ export type StepReport = {
   /** why the requested/default provider was not the one that answered */
   fallbackReason?: string;
   note?: string;
+  /** rules orchestrator working memory after this step (the browser carries it forward) */
+  memory?: ConversationState["memory"];
 };
 
 const BEDROCK_MODEL = () => process.env.HEARTH_BEDROCK_MODEL ?? "us.anthropic.claude-sonnet-4-5-20250929-v1:0";
 const OLLAMA_URL = () => (process.env.HEARTH_OLLAMA_URL ?? "http://127.0.0.1:11434").replace(/\/+$/, "");
-const OLLAMA_MODEL = () => process.env.HEARTH_OLLAMA_MODEL ?? "qwen3:4b";
+const OLLAMA_MODEL = () => process.env.HEARTH_OLLAMA_MODEL ?? "qwen3:4b-instruct-2507-q4_K_M";
 const OLLAMA_TIMEOUT_MS = 20_000;
 const PROBE_TTL_MS = 30_000;
 
@@ -275,7 +277,9 @@ ${deviceLine(state)}` }, ...history];
       tools: toOllamaTools(tools),
       stream: false,
       think: false,
-      options: { temperature: 0.2 },
+      keep_alive: "30m",
+      // ponytail: 8k context fits the 12 tool schemas + 20 turns on a 4 GB GPU; the default 128k KV cache does not.
+      options: { temperature: 0.2, num_ctx: 8192, num_predict: 400 },
     }),
   });
   if (!res.ok) throw new Error(`Ollama answered ${res.status}.`);
@@ -339,8 +343,10 @@ export async function orchestrateStep(state: ConversationState, tools: ToolDef[]
     }
   }
 
+  // The rules orchestrator keeps its working memory in state.memory; it is returned so the browser,
+  // which owns the conversation, carries it into the next step.
   const decision = await createRulesOrchestrator().step(state, tools);
-  return { mode: "rules", decision, fallbackReason, note: fallbackReason };
+  return { mode: "rules", decision, memory: state.memory, fallbackReason, note: fallbackReason };
 }
 
 export async function describeProvider(prefer?: string) {
