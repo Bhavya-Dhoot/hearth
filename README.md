@@ -107,7 +107,7 @@ pnpm replay all      # plays journeys J1 to J5 headless against the live servers
 pnpm test            # every package's unit tests
 ```
 
-`pnpm conformance` and `pnpm bench` write test orders and timeline entries into the home they run against. To get a clean demo house, stop the MCP server, delete `apps/mcp-server/.data/home-graph.json` (gitignored) and start it again: the server seeds the Okafor house on boot when the file is missing. (`pnpm seed` run from the repository root targets `.data/home-graph.json` relative to the working directory unless `HEARTH_DATA_FILE` is set, so point it at the same file the server uses.)
+`pnpm conformance` and `pnpm bench` write test orders and timeline entries into the home they run against. To get a clean demo house, stop the MCP server, delete `apps/mcp-server/.data/home-graph.json` (gitignored) and start it again: the server seeds the Okafor house on boot when the file is missing. `pnpm seed` writes the same file (`apps/mcp-server/.data/home-graph.json`, or `HEARTH_DATA_FILE`) and is safe to run twice.
 
 Note on the committed reports: they were generated against a stack on ports 4410 (auth) and 4420 (MCP) so they would not collide with a developer's default stack. The defaults are 4100, 4200 and 3000.
 
