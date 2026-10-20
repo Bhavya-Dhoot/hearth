@@ -18,6 +18,7 @@ import { clearTokens, currentAccessToken, describeToken, ensureFreshToken, loadT
 import { CLIENT_NAME, MCP_URL } from "./config";
 import { parseVoiceIntent } from "./intents";
 import { createRemoteOrchestrator, fetchMode, type ModeReport } from "./orchestrator-client";
+import { settledLabel, type Settled } from "./settled";
 import { Speaker, listen, sttSupported, type Listener, type VoiceEngine } from "./speech";
 
 /* ------------------------------------------------------------------------------------------------
@@ -102,6 +103,7 @@ export function useHostSession(initialDevice: DeviceClass) {
   const [alexa, setAlexa] = useState("");
   const [heard, setHeard] = useState<Heard | null>(null);
   const [widget, setWidget] = useState<WidgetState | null>(null);
+  const [settled, setSettled] = useState<Settled | null>(null);
   const [error, setError] = useState<ScreenError | null>(null);
   const [replay, setReplay] = useState<ReplayStatus | null>(null);
   const [muted, setMuted] = useState(false);
@@ -190,6 +192,7 @@ export function useHostSession(initialDevice: DeviceClass) {
     setTools([]);
     toolsRef.current = [];
     setWidget(null);
+    setSettled(null);
     await c?.close().catch(() => undefined);
   }, []);
 
@@ -306,7 +309,16 @@ export function useHostSession(initialDevice: DeviceClass) {
         });
         stateRef.current = result.state;
         for (const c of result.toolCalls) seenTools.current.push(c.name);
-        if (result.ui) await showWidget(client, result.ui);
+        // A flow that ends on a voice-only result (log_completion, a hard stop) leaves the last widget stale:
+        // clear it and let Alexa's line be the screen.
+        const endLabel = settledLabel(result.state.turns);
+        if (endLabel) {
+          setWidget(null);
+          setSettled({ label: endLabel, text: result.say });
+        } else {
+          setSettled(null);
+          if (result.ui) await showWidget(client, result.ui);
+        }
         setAlexa(result.say);
         if (result.say) addLine("alexa", result.say);
         lastFailed.current = null;
@@ -422,6 +434,7 @@ export function useHostSession(initialDevice: DeviceClass) {
       setAlexa("");
       setHeard(null);
       setWidget(null);
+      setSettled(null);
       setError(null);
       setSession({});
       setTools([]);
@@ -521,6 +534,7 @@ export function useHostSession(initialDevice: DeviceClass) {
     alexa,
     heard,
     widget,
+    settled,
     error,
     dismissError: () => setError(null),
     retry,

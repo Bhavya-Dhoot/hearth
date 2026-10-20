@@ -118,7 +118,7 @@ describe("the five demo journeys", () => {
     await s.say("Next.");
     const t10 = await s.say("It's fixed.");
     expect(lastArgs(fake, "log_completion")).toMatchObject({ kind: "repair", issueId: "leak-under-sink-ptrap", partSku: "HR-PT-150-WSH", assetId: "asset_ptrap_kitchen" });
-    expect(t10.say).toContain("Next up is Check that the P-trap is still dry, due Friday, October 30.");
+    expect(t10.say).toContain("I'll remind you on Friday, October 30: check that the P-trap is still dry.");
     expect(fake.completed).toHaveLength(1);
   });
 

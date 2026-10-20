@@ -109,6 +109,7 @@ export function isOfferYes(text: string): boolean {
 /* ------------------------------------------------------------------ small text helpers shared by the orchestrators */
 
 export const capFirst = (s: string): string => (s.length === 0 ? s : s.charAt(0).toUpperCase() + s.slice(1));
+export const lowerFirst = (s: string): string => (s.length === 0 ? s : s.charAt(0).toLowerCase() + s.slice(1));
 
 /** Adds a full stop unless the text already ends a sentence. */
 export function ensureEnd(s: string): string {

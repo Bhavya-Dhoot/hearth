@@ -306,3 +306,65 @@
 .screen[data-device="phone"] .main > iframe {
   inline-size: 100%;
 }
+
+/* ---------------------------------------------------------------- Settled: a flow has ended, Alexa's line is the screen */
+
+.screen[data-device][data-settled="true"] {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.screen[data-device][data-settled="true"] .voice {
+  grid-column: 1;
+  grid-row: 1;
+  flex: none;
+}
+
+.screen[data-device][data-settled="true"] .main {
+  grid-column: 1;
+  grid-row: 2;
+  justify-content: center;
+  padding-inline: var(--pad);
+}
+
+.screen[data-settled="true"] .lines {
+  display: none;
+}
+
+.settled {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  max-inline-size: 28ch;
+  animation: settle 360ms ease-out both;
+}
+
+.settled svg {
+  color: var(--color-brass);
+}
+
+.settledText {
+  font-family: var(--font-display), serif;
+  font-weight: 500;
+  font-size: var(--fs-display);
+  line-height: 1.12;
+  letter-spacing: -0.012em;
+  text-wrap: pretty;
+}
+
+.screen[data-device="phone"] .settledText {
+  font-size: 24px;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .settled {
+    animation: none;
+  }
+}

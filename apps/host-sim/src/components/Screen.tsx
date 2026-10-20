@@ -5,6 +5,7 @@ import type { DeviceClass } from "@hearth/contracts";
 import { DEVICES } from "@/lib/devices";
 import type { HostSession, WidgetApi } from "@/lib/session";
 import { LightBar } from "./LightBar";
+import { CheckCircle, ShieldCheck } from "@phosphor-icons/react";
 import { LinkPanel, OfflinePanel, Suggestions } from "./panels";
 import { WidgetView } from "./WidgetView";
 import styles from "./Screen.module.css";
@@ -37,6 +38,7 @@ export function Screen({ session, device }: { session: HostSession; device: Scre
   const needsLink = session.link === "unlinked" || session.link === "unauthorized";
   const offline = linked && !session.widget && session.conn.status === "error";
   const showWidget = linked && !!session.widget;
+  const settled = !showWidget && !needsLink && !offline ? session.settled : null;
   const widgetApi = session.widgetApi;
   const register = useCallback(
     (api: WidgetApi | null) => {
@@ -62,6 +64,15 @@ export function Screen({ session, device }: { session: HostSession; device: Scre
         register={register}
       />
     );
+  } else if (linked && settled) {
+    const Icon = settled.label === "SAFETY STOP" ? ShieldCheck : CheckCircle;
+    main = (
+      <div className={styles.settled} role="status">
+        <Icon size={40} weight="regular" aria-hidden />
+        <span className="label">{settled.label}</span>
+        <p className={styles.settledText}>{settled.text}</p>
+      </div>
+    );
   } else if (linked && conversationIdle(session)) main = <Suggestions session={session} compact={device === "phone"} />;
   else main = null;
 
@@ -71,6 +82,7 @@ export function Screen({ session, device }: { session: HostSession; device: Scre
       data-device={device}
       data-theme={spec.theme}
       data-widget={showWidget && !needsLink ? "true" : "false"}
+      data-settled={linked && settled ? "true" : "false"}
       style={{ inlineSize: spec.screen.w, blockSize: spec.screen.h }}
       onPointerDown={() => session.cancelSpeech()}
     >

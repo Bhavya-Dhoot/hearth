@@ -21,6 +21,7 @@ import type { Orchestrator, OrchestratorDecision } from "./orchestrator";
 import type { ConversationState, PendingAsset, PartMemo, RulesMemory, TradeName, Turn } from "./state";
 import {
   capFirst,
+  lowerFirst,
   ensureEnd,
   isExplicitYes,
   isNo,
@@ -831,8 +832,8 @@ class Brain {
     mem.orderedPartSku = null;
     mem.attempted = [];
     mem.symptomText = null;
-    const parts = [`I've added that to your home timeline: ${ensureEnd(l.summary)}`];
-    if (l.nextDue) parts.push(`Next up is ${l.nextDue.title}, due ${longDate(l.nextDue.dueDate)}.`);
+    const parts = ["Done. It's in your home timeline."];
+    if (l.nextDue) parts.push(`I'll remind you on ${longDate(l.nextDue.dueDate)}: ${ensureEnd(lowerFirst(l.nextDue.title))}`);
     return this.speak(parts.join(" "), false);
   }
 

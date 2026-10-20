@@ -4,6 +4,7 @@ import {
   BedrockRuntimeClient,
   ConverseCommand,
   type ContentBlock,
+  type ConverseCommandInput,
   type Message,
   type ToolConfiguration,
 } from "@aws-sdk/client-bedrock-runtime";
@@ -43,7 +44,9 @@ export type StepReport = {
   memory?: ConversationState["memory"];
 };
 
-const BEDROCK_MODEL = () => process.env.HEARTH_BEDROCK_MODEL ?? "us.anthropic.claude-sonnet-4-5-20250929-v1:0";
+/** HEARTH_BEDROCK_MODEL_ID is an alias (infra sets it); HEARTH_BEDROCK_MODEL wins when both are set. */
+const BEDROCK_MODEL = () =>
+  process.env.HEARTH_BEDROCK_MODEL?.trim() || process.env.HEARTH_BEDROCK_MODEL_ID?.trim() || "us.anthropic.claude-sonnet-4-5-20250929-v1:0";
 const OLLAMA_URL = () => (process.env.HEARTH_OLLAMA_URL ?? "http://127.0.0.1:11434").replace(/\/+$/, "");
 const OLLAMA_MODEL = () => process.env.HEARTH_OLLAMA_MODEL ?? "qwen3:4b-instruct-2507-q4_K_M";
 const OLLAMA_TIMEOUT_MS = 20_000;
@@ -240,31 +243,53 @@ export function stateToConverseMessages(state: ConversationState): Message[] {
   return out;
 }
 
-async function stepBedrock(state: ConversationState, tools: ToolDef[]): Promise<OrchestratorDecision> {
-  bedrock ??= new BedrockRuntimeClient({ region: awsRegion() });
+/**
+ * Bedrock Guardrail attached to the Converse call, only when HEARTH_GUARDRAIL_ID is set
+ * (version from HEARTH_GUARDRAIL_VERSION, default "DRAFT"). Unset means no guardrail is attached.
+ */
+export function guardrailConfigFromEnv(): { guardrailIdentifier: string; guardrailVersion: string; trace: "enabled" } | undefined {
+  const guardrailIdentifier = process.env.HEARTH_GUARDRAIL_ID?.trim();
+  if (!guardrailIdentifier) return undefined;
+  return { guardrailIdentifier, guardrailVersion: process.env.HEARTH_GUARDRAIL_VERSION?.trim() || "DRAFT", trace: "enabled" };
+}
+
+export function buildConverseInput(system: string, state: ConversationState, tools: ToolDef[]): ConverseCommandInput {
   const toolConfig: ToolConfiguration = {
     tools: tools.map((t) => {
       const { $schema: _drop, ...schema } = t.inputSchema as Record<string, unknown>;
       return { toolSpec: { name: t.name, description: t.description ?? t.title ?? t.name, inputSchema: { json: schema as never } } };
     }),
   };
-  const res = await bedrock.send(
-    new ConverseCommand({
-      modelId: BEDROCK_MODEL(),
-      system: [{ text: await systemPrompt() }, { text: deviceLine(state) }],
-      messages: stateToConverseMessages(state),
-      toolConfig,
-      inferenceConfig: { maxTokens: 700, temperature: 0.3 },
-    }),
-  );
+  const guardrailConfig = guardrailConfigFromEnv();
+  return {
+    modelId: BEDROCK_MODEL(),
+    system: [{ text: system }, { text: deviceLine(state) }],
+    messages: stateToConverseMessages(state),
+    toolConfig,
+    inferenceConfig: { maxTokens: 700, temperature: 0.3 },
+    ...(guardrailConfig ? { guardrailConfig } : {}),
+  };
+}
+
+export async function stepBedrock(
+  state: ConversationState,
+  tools: ToolDef[],
+  client: Pick<BedrockRuntimeClient, "send"> = (bedrock ??= new BedrockRuntimeClient({ region: awsRegion() })),
+): Promise<{ decision: OrchestratorDecision; note?: string }> {
+  const res = await client.send(new ConverseCommand(buildConverseInput(await systemPrompt(), state, tools)));
   const blocks = res.output?.message?.content ?? [];
   const text = blocks.map((b) => b.text).filter((s): s is string => !!s).join(" ").trim();
   const calls = blocks
     .filter((b) => b.toolUse)
     .map((b) => ({ id: b.toolUse!.toolUseId ?? crypto.randomUUID(), name: b.toolUse!.name ?? "", args: (b.toolUse!.input ?? {}) as Record<string, unknown> }));
-  if (calls.length) return { kind: "tool_calls", calls, say: text || undefined };
+  if (res.stopReason === "guardrail_intervened") {
+    // The guardrail replaced the output with its blocked message: speak that, never a tool call.
+    if (!text) throw new Error("The Bedrock guardrail intervened but returned no message.");
+    return { decision: { kind: "speak", text, expectReply: false }, note: "The Bedrock guardrail intervened; its blocked message is spoken." };
+  }
+  if (calls.length) return { decision: { kind: "tool_calls", calls, say: text || undefined } };
   if (!text) throw new Error("Bedrock returned neither text nor a tool call.");
-  return { kind: "speak", text, expectReply: /\?\s*$/.test(text) };
+  return { decision: { kind: "speak", text, expectReply: /\?\s*$/.test(text) } };
 }
 
 /* ------------------------------------------------------------------ Ollama */
@@ -339,13 +364,16 @@ export async function orchestrateStep(state: ConversationState, tools: ToolDef[]
 
   if (choice.provider !== "rules") {
     try {
-      const decision = choice.provider === "bedrock" ? await stepBedrock(state, tools) : await stepOllama(state, tools);
+      let guardNote: string | undefined;
+      let decision: OrchestratorDecision;
+      if (choice.provider === "bedrock") ({ decision, note: guardNote } = await stepBedrock(state, tools));
+      else decision = await stepOllama(state, tools);
       const model = choice.provider === "bedrock" ? BEDROCK_MODEL() : OLLAMA_MODEL();
       const base = { mode: choice.provider, model } as const;
       const local = choice.provider === "ollama" ? isLoopback(OLLAMA_URL()) : undefined;
       const gpu = choice.provider === "ollama" ? ollamaGpu : undefined;
       const override = guardrails(state, decision);
-      return { ...base, local, gpu, decision: override ?? decision, note: override ? "A deterministic guardrail replaced the model's decision." : undefined };
+      return { ...base, local, gpu, decision: override ?? decision, note: override ? "A deterministic guardrail replaced the model's decision." : guardNote };
     } catch (e) {
       fallbackReason = `${choice.provider} failed: ${e instanceof Error ? e.message : String(e)}`;
       if (choice.provider === "ollama") probe = null; // re-probe next time
