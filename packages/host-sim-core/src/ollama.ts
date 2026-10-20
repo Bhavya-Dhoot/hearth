@@ -22,14 +22,23 @@ export function toOllamaTools(tools: ToolDef[]): OllamaTool[] {
   }));
 }
 
-/** The text a model sees for a tool result: the content text (PRD 11.1), falling back to the structured payload. */
+/** Keys that only matter to the screen; dropping them keeps a small model inside its 8k context. */
+const SCREEN_ONLY = new Set(["image", "photos", "photoUrl", "annotation", "qrPayload", "shareUrl", "receiptUrl", "locationChip"]);
+const DATA_CAP = 1500;
+
+/**
+ * The text a model sees for a tool result: the voice text (PRD 11.1) plus compact structured data. The voice
+ * text never carries SKUs or ids, so without the data a model cannot order "the first one" (found in live E2E).
+ */
 export function resultText(result: ToolCallResult): string {
   const text = result.content
     .map((c) => c.text)
     .filter((t): t is string => typeof t === "string" && t !== "")
     .join("\n");
-  if (text !== "") return text;
-  return result.structuredContent ? JSON.stringify(result.structuredContent) : "";
+  if (!result.structuredContent) return text;
+  const json = JSON.stringify(result.structuredContent, (k, v: unknown) => (SCREEN_ONLY.has(k) ? undefined : v));
+  const data = json.length > DATA_CAP ? `${json.slice(0, DATA_CAP)}...` : json;
+  return text !== "" ? `${text}\nDATA: ${data}` : data;
 }
 
 /** Conversation as chat messages: ALEXA_SYSTEM_PROMPT first, then each turn; a tool turn is a call plus its result. */

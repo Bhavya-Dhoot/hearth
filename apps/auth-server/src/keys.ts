@@ -61,3 +61,22 @@ export function loadOrCreateKeys(dir: string): SigningKeys {
   writeFileSync(file, JSON.stringify({ kid, privateJwk: parsed }, null, 2), { mode: 0o600 });
   return build(kid, parsed);
 }
+
+/**
+ * Signing keys for the running service. When `HEARTH_AUTH_PRIVATE_JWK` is set (a private RSA JWK as JSON,
+ * see infra/cdk/scripts/gen-auth-jwk.mjs) it is used as is, so keys survive container restarts and are
+ * shared across tasks. Otherwise falls back to the file-backed key in `dir`.
+ */
+export function resolveSigningKeys(dir: string, env: Record<string, string | undefined> = process.env): SigningKeys {
+  const raw = env.HEARTH_AUTH_PRIVATE_JWK?.trim();
+  if (raw === undefined || raw === "") return loadOrCreateKeys(dir);
+  let json: unknown;
+  try {
+    json = JSON.parse(raw);
+  } catch {
+    throw new Error("HEARTH_AUTH_PRIVATE_JWK is not valid JSON (expected a private RSA JWK).");
+  }
+  const privateJwk = StoredKey.shape.privateJwk.parse(json);
+  const kid = (json as { kid?: unknown }).kid;
+  return build(typeof kid === "string" && kid !== "" ? kid : thumbprint(privateJwk.n, privateJwk.e), privateJwk);
+}

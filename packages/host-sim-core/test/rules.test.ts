@@ -470,7 +470,7 @@ describe("LLM orchestrator helpers", () => {
     expect(toOllamaTools([def])).toEqual([{ type: "function", function: { name: "check_recalls", description: "Match assets.", parameters: { type: "object", properties: {} } } }]);
   });
 
-  it("turns conversation state into chat messages with the content text as the tool result", async () => {
+  it("turns conversation state into chat messages with voice text plus compact data as the tool result", async () => {
     const fake = new FakeHearth();
     const s = new Session(fake);
     await s.say("is anything in my house recalled");
@@ -479,7 +479,10 @@ describe("LLM orchestrator helpers", () => {
     expect(messages[0]?.content).toContain("You are Alexa+");
     expect(messages[1]).toEqual({ role: "user", content: "is anything in my house recalled" });
     expect(messages[2]).toEqual({ role: "assistant", content: "", tool_calls: [{ function: { name: "check_recalls", arguments: {} } }] });
-    expect(messages[3]).toEqual({ role: "tool", tool_name: "check_recalls", content: "Recalls." });
+    expect(messages[3]).toMatchObject({ role: "tool", tool_name: "check_recalls" });
+    // voice text first, then compact data so a model can act on ids and SKUs the voice text omits
+    expect(messages[3]?.content.startsWith("Recalls.\nDATA: {")).toBe(true);
+    expect(messages[3]?.content).not.toContain("photoUrl");
     expect(messages[4]?.role).toBe("assistant");
   });
 });

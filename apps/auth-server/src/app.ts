@@ -15,7 +15,7 @@ import express, {
 import { validateAuthorizeParams, type AuthorizeContext, type AuthorizeRequest } from "./authorize";
 import { findClient } from "./clients";
 import { s256Challenge, safeEqual } from "./crypto";
-import { loadOrCreateKeys, type SigningKeys } from "./keys";
+import { resolveSigningKeys, type SigningKeys } from "./keys";
 import { renderConsentPage, renderErrorPage } from "./pages";
 import { DEFAULT_DATA_DIR, DEFAULT_KEYS_DIR, DEFAULT_USERS_FILE } from "./paths";
 import { ACCESS_TTL_S, CodeStore, RefreshStore, type Clock, type RefreshGrant } from "./stores";
@@ -91,7 +91,7 @@ export function createApp(options: AuthAppOptions = {}): Express {
   const hostOrigin = new URL(options.hostBase ?? urls.hostBase).origin;
   const now: Clock = options.now ?? Date.now;
   const dataDir = options.dataDir ?? DEFAULT_DATA_DIR;
-  const keys = options.keys ?? loadOrCreateKeys(DEFAULT_KEYS_DIR);
+  const keys = options.keys ?? resolveSigningKeys(DEFAULT_KEYS_DIR);
   const users = options.users ?? loadUsers(DEFAULT_USERS_FILE);
 
   const codes = new CodeStore(now);
