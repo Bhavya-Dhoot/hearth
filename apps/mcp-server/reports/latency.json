@@ -1,0 +1,143 @@
+{
+  "generatedAt": "2026-10-20T21:01:20.042Z",
+  "mcpBase": "http://localhost:4255",
+  "runsPerTool": 50,
+  "warmupRuns": 3,
+  "p95BudgetMs": 500,
+  "p50TargetMs": 120,
+  "readOnly": false,
+  "results": [
+    {
+      "tool": "get_home_profile",
+      "runs": 50,
+      "errors": 0,
+      "p50": 5.2,
+      "p95": 7.2,
+      "max": 9.1,
+      "serverP50": 0.6,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "add_asset",
+      "runs": 50,
+      "errors": 0,
+      "p50": 11.6,
+      "p95": 16.7,
+      "max": 19.9,
+      "serverP50": 7.5,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "triage_issue",
+      "runs": 50,
+      "errors": 0,
+      "p50": 4.2,
+      "p95": 6.2,
+      "max": 6.5,
+      "serverP50": 0.8,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "get_repair_steps",
+      "runs": 50,
+      "errors": 0,
+      "p50": 3.8,
+      "p95": 5.2,
+      "max": 7.9,
+      "serverP50": 0.4,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "find_exact_part",
+      "runs": 50,
+      "errors": 0,
+      "p50": 4.1,
+      "p95": 5.2,
+      "max": 5.3,
+      "serverP50": 0.6,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "create_checkout_session",
+      "runs": 50,
+      "errors": 0,
+      "p50": 17.2,
+      "p95": 44.1,
+      "max": 136.9,
+      "serverP50": 12.6,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "complete_checkout",
+      "runs": 50,
+      "errors": 0,
+      "p50": 49.9,
+      "p95": 143.7,
+      "max": 214.5,
+      "serverP50": 45,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "prepare_pro_brief",
+      "runs": 50,
+      "errors": 0,
+      "p50": 45.8,
+      "p95": 113.6,
+      "max": 170.5,
+      "serverP50": 40.3,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "get_weekend_plan",
+      "runs": 50,
+      "errors": 0,
+      "p50": 4.2,
+      "p95": 6,
+      "max": 6.6,
+      "serverP50": 0.8,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "log_completion",
+      "runs": 50,
+      "errors": 0,
+      "p50": 21.9,
+      "p95": 35.6,
+      "max": 43.4,
+      "serverP50": 17.9,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "get_history",
+      "runs": 50,
+      "errors": 0,
+      "p50": 4.4,
+      "p95": 6.3,
+      "max": 7.6,
+      "serverP50": 1.2,
+      "skipped": false,
+      "result": "pass"
+    },
+    {
+      "tool": "check_recalls",
+      "runs": 50,
+      "errors": 0,
+      "p50": 3,
+      "p95": 4.3,
+      "max": 5.2,
+      "serverP50": 0.3,
+      "skipped": false,
+      "result": "pass"
+    }
+  ]
+}

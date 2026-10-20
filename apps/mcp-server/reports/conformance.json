@@ -1,0 +1,241 @@
+{
+  "generatedAt": "2026-10-20T21:01:02.882Z",
+  "mcpBase": "http://localhost:4255",
+  "authIssuer": "http://localhost:4155",
+  "protocolVersion": "2025-11-25",
+  "passed": 33,
+  "failed": 0,
+  "checks": [
+    {
+      "group": "discovery",
+      "name": "protected resource metadata (RFC 9728) has the documented shape",
+      "status": "pass",
+      "detail": "resource http://localhost:4255/mcp",
+      "ms": 175
+    },
+    {
+      "group": "discovery",
+      "name": "authorization server metadata (RFC 8414) validates",
+      "status": "pass",
+      "detail": "issuer http://localhost:4155",
+      "ms": 15
+    },
+    {
+      "group": "auth",
+      "name": "unauthenticated POST /mcp returns 401 JSON with no WWW-Authenticate",
+      "status": "pass",
+      "detail": "body matches Appendix B",
+      "ms": 13
+    },
+    {
+      "group": "auth",
+      "name": "a garbage bearer token gets the same 401",
+      "status": "pass",
+      "detail": "",
+      "ms": 14
+    },
+    {
+      "group": "auth",
+      "name": "account linking (PKCE) issues a token for the MCP resource",
+      "status": "pass",
+      "detail": "sub usr_okafor, expires in 3600s",
+      "ms": 169
+    },
+    {
+      "group": "protocol",
+      "name": "initialize returns protocolVersion 2025-11-25, serverInfo, capabilities and Mcp-Session-Id",
+      "status": "pass",
+      "detail": "hearth 0.1.0, session 117a416f",
+      "ms": 244
+    },
+    {
+      "group": "protocol",
+      "name": "DELETE /mcp ends the session",
+      "status": "pass",
+      "detail": "session gone after DELETE",
+      "ms": 16
+    },
+    {
+      "group": "protocol",
+      "name": "the SDK client connects over Streamable HTTP",
+      "status": "pass",
+      "detail": "server hearth",
+      "ms": 45
+    },
+    {
+      "group": "protocol",
+      "name": "tools/list returns the 12 tools with title, description, schemas and annotations",
+      "status": "pass",
+      "detail": "get_home_profile, add_asset, triage_issue, get_repair_steps, find_exact_part, create_checkout_session, complete_checkout, prepare_pro_brief, get_weekend_plan, log_completion, get_history, check_recalls",
+      "ms": 174
+    },
+    {
+      "group": "resources",
+      "name": "resources/list exposes at least 8 ui://hearth/ widgets with the MCP Apps mime type",
+      "status": "pass",
+      "detail": "8 widgets",
+      "ms": 11
+    },
+    {
+      "group": "resources",
+      "name": "resources/read returns HTML for every widget",
+      "status": "pass",
+      "detail": "8 read",
+      "ms": 132
+    },
+    {
+      "group": "tools",
+      "name": "get_home_profile",
+      "status": "pass",
+      "detail": "I remember 12 things in your home. Your main water shut-off is in the garage, left of the panel.",
+      "ms": 68
+    },
+    {
+      "group": "tools",
+      "name": "add_asset creates then updates a probe asset idempotently",
+      "status": "pass",
+      "detail": "asset_conformance_probe_garage (first call created: true)",
+      "ms": 47
+    },
+    {
+      "group": "tools",
+      "name": "triage_issue asks at most two questions, then resolves a playbook",
+      "status": "pass",
+      "detail": "leak-under-sink-ptrap at confidence 0.86",
+      "ms": 33
+    },
+    {
+      "group": "tools",
+      "name": "triage_issue hard-stops on a gas smell and gives a verbatim message",
+      "status": "pass",
+      "detail": "gas",
+      "ms": 7
+    },
+    {
+      "group": "tools",
+      "name": "get_repair_steps walks every step of the resolved playbook",
+      "status": "pass",
+      "detail": "6 steps, part role ptrap_washer",
+      "ms": 62
+    },
+    {
+      "group": "tools",
+      "name": "get_repair_steps past the end is a voice-safe isError",
+      "status": "pass",
+      "detail": "",
+      "ms": 7
+    },
+    {
+      "group": "tools",
+      "name": "find_exact_part returns 3 to 5 ranked, fit-reasoned items",
+      "status": "pass",
+      "detail": "5 items, first EXACT FIT",
+      "ms": 18
+    },
+    {
+      "group": "tools",
+      "name": "find_exact_part with an unknown role is a voice-safe isError (not_found)",
+      "status": "pass",
+      "detail": "",
+      "ms": 6
+    },
+    {
+      "group": "checkout",
+      "name": "create_checkout_session never charges and returns the commitment text",
+      "status": "pass",
+      "detail": "You're ordering 1× 1-1/2 inch Slip-Joint Washer, Tapered, 2-Pack for $4.64, arriving Wednesday. Paid with Visa •••• 4242.",
+      "ms": 31
+    },
+    {
+      "group": "checkout",
+      "name": "complete_checkout without a confirmation is isError not_confirmed",
+      "status": "pass",
+      "detail": "",
+      "ms": 6
+    },
+    {
+      "group": "checkout",
+      "name": "complete_checkout returns a rich confirmation, and a replay returns the same order",
+      "status": "pass",
+      "detail": "HRT-939065, simulated, email written_to_outbox",
+      "ms": 37
+    },
+    {
+      "group": "checkout",
+      "name": "the receipt page renders",
+      "status": "pass",
+      "detail": "http://localhost:4255/receipts/ord_bebfb1af3c29",
+      "ms": 5
+    },
+    {
+      "group": "checkout",
+      "name": "the confirmation email is delivered or written to the outbox",
+      "status": "pass",
+      "detail": "written to /outbox",
+      "ms": 7
+    },
+    {
+      "group": "tools",
+      "name": "prepare_pro_brief builds a brief with a public share page",
+      "status": "pass",
+      "detail": "I've put together a job brief for your kitchen sink P-trap. Want me to find a plumber?",
+      "ms": 32
+    },
+    {
+      "group": "tools",
+      "name": "get_weekend_plan returns at most 6 ranked tasks",
+      "status": "pass",
+      "detail": "Oct 24-25, 5 tasks",
+      "ms": 15
+    },
+    {
+      "group": "tools",
+      "name": "log_completion records the job and is idempotent",
+      "status": "pass",
+      "detail": "Logged. Conformance run: replaced the P-trap washer. I've set a reminder for October 27: check under the kitch",
+      "ms": 33
+    },
+    {
+      "group": "tools",
+      "name": "get_history filters by keyword",
+      "status": "pass",
+      "detail": "2 events match \"disposal\"",
+      "ms": 13
+    },
+    {
+      "group": "tools",
+      "name": "check_recalls discloses that the dataset is a sample",
+      "status": "pass",
+      "detail": "1 flagged",
+      "ms": 10
+    },
+    {
+      "group": "auth",
+      "name": "a token without orders:write cannot start a checkout (forbidden_scope)",
+      "status": "pass",
+      "detail": "",
+      "ms": 174
+    },
+    {
+      "group": "rest",
+      "name": "POST /checkout-sessions creates a UCP-shaped session",
+      "status": "pass",
+      "detail": "You're ordering 1× 1-1/2 inch Slip-Joint Washer, Tapered, 2-Pack for $4.64, arriving Wednesday. Paid with Visa •••• 4242.",
+      "ms": 22
+    },
+    {
+      "group": "rest",
+      "name": "GET /checkout-sessions/:id returns the session",
+      "status": "pass",
+      "detail": "",
+      "ms": 4
+    },
+    {
+      "group": "rest",
+      "name": "POST /checkout-sessions/:id/complete requires confirmation, then completes",
+      "status": "pass",
+      "detail": "HRT-465072",
+      "ms": 34
+    }
+  ]
+}
