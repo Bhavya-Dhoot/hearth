@@ -1,8 +1,9 @@
 import type { RecallsOutput } from "@hearth/contracts";
-import { mountWidget } from "../runtime/bridge";
+import { mountWidget, type RenderContext } from "../runtime/bridge";
 import { h, icon } from "../runtime/dom";
 import { plural } from "../runtime/format";
 import * as icons from "../runtime/icons";
+import { moreOnPhone } from "../runtime/more";
 import { stamp } from "../runtime/stamp";
 import "../styles/recall-card.css";
 
@@ -38,7 +39,7 @@ function flagCard(flag: Flag): HTMLElement {
   );
 }
 
-function render(props: RecallsOutput): HTMLElement {
+function render(props: RecallsOutput, ctx: RenderContext): HTMLElement {
   const count = props.flagged.length;
   const head = h(
     "header",
@@ -61,7 +62,10 @@ function render(props: RecallsOutput): HTMLElement {
     );
   }
 
-  return h("section", { class: "recalls", "aria-label": "Recall check" }, head, ...props.flagged.map(flagCard));
+  // In a fixed frame the bridge raises ctx.level until it fits: further matches go to the phone, the first always stays.
+  const shown = props.flagged.slice(0, props.flagged.length - ctx.level);
+  const hidden = props.flagged.length - shown.length;
+  return h("section", { class: "recalls", "aria-label": "Recall check" }, head, ...shown.map(flagCard), hidden > 0 ? moreOnPhone(hidden, hidden === 1 ? "match" : "matches") : null);
 }
 
-mountWidget({ name: "recall-card", skeleton: "split", render });
+mountWidget({ name: "recall-card", skeleton: "split", render, levels: (props) => Math.max(0, props.flagged.length - 1) });

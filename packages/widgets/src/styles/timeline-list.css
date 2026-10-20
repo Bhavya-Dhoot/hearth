@@ -140,3 +140,38 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
   column-gap: calc(var(--gap) * 2);
 }
+
+/* Tight frame (Show 8, 680 px): head is one band, rows give up padding, the bridge trims the oldest rows to fit. */
+[data-density="tight"] .timeline {
+  gap: var(--space-1);
+}
+
+[data-density="tight"] .timeline__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: var(--space-1) var(--space-6);
+  padding-bottom: var(--space-2);
+}
+
+[data-density="tight"] .timeline__head > .mono-label,
+[data-density="tight"] .timeline__head > .timeline__title {
+  grid-column: 1;
+}
+
+[data-density="tight"] .timeline__head > .dim {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+[data-density="tight"] .event {
+  padding: var(--space-2) 0;
+}
+
+[data-density="tight"] .event__body {
+  gap: 0;
+}
+
+[data-density="tight"] .timeline .more {
+  padding-top: var(--space-1);
+}

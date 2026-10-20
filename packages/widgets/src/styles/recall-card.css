@@ -172,3 +172,51 @@
 [data-device="phone"] .flag__stamp .stamp {
   font-size: calc(var(--fs-mono) * 1.7);
 }
+
+/* Tight frame (Show 8, 680 px): a smaller stamp, and the hazard and the steps at full body size so the one card holds in one screen. */
+[data-density="tight"] .recalls {
+  gap: var(--space-2);
+}
+
+[data-density="tight"] .recalls__head {
+  padding-bottom: var(--space-2);
+}
+
+[data-density="tight"] .recalls__title {
+  margin-top: 0;
+}
+
+[data-density="tight"] .flag {
+  gap: var(--space-3) var(--space-6);
+  padding: var(--space-5);
+}
+
+[data-density="tight"] .flag__head {
+  gap: var(--space-2);
+}
+
+[data-density="tight"] .flag__stamp {
+  padding: var(--space-2) var(--space-1) 0;
+}
+
+[data-density="tight"] .flag__stamp .stamp {
+  font-size: calc(var(--fs-mono) * 1.4);
+}
+
+[data-density="tight"] .flag__hazard {
+  font-size: var(--fs-body);
+  line-height: 1.3;
+}
+
+[data-density="tight"] .remedy__steps {
+  gap: var(--space-2);
+}
+
+[data-density="tight"] .remedy__step {
+  font-size: var(--fs-body);
+  line-height: 1.25;
+}
+
+[data-density="tight"] .recalls .more {
+  padding-top: 0;
+}

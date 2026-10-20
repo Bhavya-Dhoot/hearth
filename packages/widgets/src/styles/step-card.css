@@ -206,3 +206,33 @@
 [data-device="phone"] .step__actions .btn {
   width: 100%;
 }
+
+/* Tight frame (Show 8, 680 px): a calmer rhythm for the right column; the bridge drops the hint, the tools, then the detail if still too tall. */
+[data-density="tight"] .step {
+  gap: var(--gap);
+}
+
+[data-density="tight"] .step__body {
+  gap: var(--space-2);
+}
+
+[data-density="tight"] .step__instruction {
+  margin-top: 0;
+}
+
+[data-density="tight"] .step__detail {
+  line-height: 1.3;
+}
+
+[data-density="tight"] .strip {
+  padding: var(--space-2) var(--space-4);
+}
+
+[data-density="tight"] .step__actions {
+  padding-top: var(--space-2);
+}
+
+[data-density="tight"] .sheet {
+  padding: var(--space-3);
+  gap: var(--space-3);
+}

@@ -18,9 +18,48 @@ const TRADE_LABEL: Record<ProBriefOutput["trade"], string> = {
 
 const field = (label: string, value: string): HTMLElement => h("div", { class: "spec" }, h("dt", { class: "mono-label" }, label), h("dd", { class: "spec__value mono" }, value));
 
-const section = (label: string, ...body: (Node | string)[]): HTMLElement => h("section", { class: "block" }, h("h2", { class: "block__label mono-label" }, label), ...body);
+/** The mono line a trimmed block ends with: "and 1 earlier on your phone". */
+const andMore = (count: number, what: string): HTMLElement => h("p", { class: "mono-label more" }, `and ${count} ${what} on your phone`);
+
+const section = (label: string, ...body: (Node | string | null)[]): HTMLElement => h("section", { class: "block" }, h("h2", { class: "block__label mono-label" }, label), ...body);
+
+/** What a fixed frame keeps of the brief at each level; the rest is on the phone and at the share link. */
+interface Keep {
+  photos: boolean;
+  timeline: number;
+  tried: number;
+  /** A smaller QR code. */
+  qrSmall: boolean;
+  /** The access notes and the timeline swap columns, when the right column is the one that overflows. */
+  accessLeft: boolean;
+}
+
+/** One cumulative trim per level, least important first: photos, older timeline entries, attempts, then the QR size, the columns swap, and last the timeline. */
+function trims(props: ProBriefOutput): Array<(keep: Keep) => void> {
+  const steps: Array<(keep: Keep) => void> = [];
+  if (props.photos.length > 0) steps.push((k) => void (k.photos = false));
+  for (let n = props.timeline.length; n > 2; n--) steps.push((k) => void (k.timeline = Math.min(k.timeline, n - 1)));
+  for (let n = props.attempted.length; n > 2; n--) steps.push((k) => void (k.tried = Math.min(k.tried, n - 1)));
+  if (props.timeline.length > 1) steps.push((k) => void (k.timeline = 1));
+  for (let n = Math.min(props.attempted.length, 2); n > 0; n--) steps.push((k) => void (k.tried = n - 1));
+  steps.push((k) => void (k.qrSmall = true), (k) => void (k.accessLeft = true));
+  if (props.timeline.length > 0) steps.push((k) => void (k.timeline = 0));
+  return steps;
+}
+
+function keepAt(props: ProBriefOutput, level: number): Keep {
+  const keep: Keep = { photos: true, timeline: props.timeline.length, tried: props.attempted.length, qrSmall: false, accessLeft: false };
+  trims(props).slice(0, level).forEach((trim) => trim(keep));
+  return keep;
+}
 
 function render(props: ProBriefOutput, ctx: RenderContext): HTMLElement {
+  const keep = keepAt(props, ctx.level);
+  // The timeline reads oldest first, so the entries that survive a trim are the latest ones.
+  const timeline = props.timeline.slice(props.timeline.length - keep.timeline);
+  const earlier = props.timeline.length - timeline.length;
+  const tried = props.attempted.slice(0, keep.tried);
+  const triedHidden = props.attempted.length - tried.length;
   const findPro = h(
     "button",
     {
@@ -34,7 +73,7 @@ function render(props: ProBriefOutput, ctx: RenderContext): HTMLElement {
   );
 
   const photos =
-    props.photos.length > 0
+    props.photos.length > 0 && keep.photos
       ? h(
           "ul",
           { class: "photos", "aria-label": `${props.photos.length} ${plural(props.photos.length, "photo")}` },
@@ -42,9 +81,19 @@ function render(props: ProBriefOutput, ctx: RenderContext): HTMLElement {
         )
       : null;
 
+  const access = section("Access", h("p", { class: "small" }, props.accessNotes));
+  const timelineBlock =
+    props.timeline.length > 0
+      ? section(
+          "Timeline",
+          timeline.length > 0 ? h("ol", { class: "timeline" }, ...timeline.map((entry) => h("li", { class: "timeline__item" }, h("span", { class: "timeline__ts mono" }, entry.ts), h("span", null, entry.text)))) : null,
+          earlier > 0 ? andMore(earlier, timeline.length > 0 ? "earlier" : props.timeline.length === 1 ? "entry" : "entries") : null,
+        )
+      : null;
+
   return h(
     "article",
-    { class: "brief", "aria-label": "Job brief" },
+    { class: `brief${keep.qrSmall ? " brief--qr-small" : ""}`, "aria-label": "Job brief" },
     h(
       "header",
       { class: "brief__top" },
@@ -67,12 +116,14 @@ function render(props: ProBriefOutput, ctx: RenderContext): HTMLElement {
         { class: "brief__col" },
         h("dl", { class: "specs" }, field("Brand", props.asset.brand), field("Model", props.asset.model), field("Age", `${props.asset.ageYears} ${plural(props.asset.ageYears, "YR")}`)),
         section("Symptom", h("p", { class: "brief__symptom" }, props.symptom)),
-        section(
-          "Timeline",
-          h("ol", { class: "timeline" }, ...props.timeline.map((entry) => h("li", { class: "timeline__item" }, h("span", { class: "timeline__ts mono" }, entry.ts), h("span", null, entry.text)))),
-        ),
-        props.attempted.length > 0
-          ? section("Already tried", h("ul", { class: "tried" }, ...props.attempted.map((text) => h("li", { class: "tried__item" }, icon(icons.check), h("span", null, text)))))
+        keep.accessLeft ? access : null,
+        keep.accessLeft ? null : timelineBlock,
+        tried.length > 0
+          ? section(
+              "Already tried",
+              h("ul", { class: "tried" }, ...tried.map((text) => h("li", { class: "tried__item" }, icon(icons.check), h("span", null, text)))),
+              triedHidden > 0 ? andMore(triedHidden, "more") : null,
+            )
           : null,
       ),
       h(
@@ -86,11 +137,11 @@ function render(props: ProBriefOutput, ctx: RenderContext): HTMLElement {
           h("p", { class: "share__url mono" }, ...breakableUrl(props.shareUrl)),
         ),
         photos,
-        section("Access", h("p", { class: "small" }, props.accessNotes)),
+        keep.accessLeft ? timelineBlock : access,
         findPro,
       ),
     ),
   );
 }
 
-mountWidget({ name: "pro-brief-card", skeleton: "split", render });
+mountWidget({ name: "pro-brief-card", skeleton: "split", render, levels: (props) => trims(props).length });

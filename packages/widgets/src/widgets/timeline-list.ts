@@ -3,6 +3,7 @@ import { mountWidget, type RenderContext } from "../runtime/bridge";
 import { h, icon } from "../runtime/dom";
 import { money, ordinalPhrase, plural, shortDate } from "../runtime/format";
 import * as icons from "../runtime/icons";
+import { moreOnPhone } from "../runtime/more";
 import "../styles/timeline-list.css";
 
 type Event = HistoryOutput["events"][number];
@@ -61,7 +62,16 @@ function render(props: HistoryOutput, ctx: RenderContext): HTMLElement {
     );
   }
 
-  return h("section", { class: "timeline", "aria-label": props.title }, head, h("ol", { class: "events" }, ...props.events.map((event, i) => h("li", { class: "events__item" }, eventRow(event, i, ctx)))));
+  // In a fixed frame the bridge raises ctx.level until the rows fit; the older events are one phone away.
+  const shown = props.events.slice(0, props.events.length - ctx.level);
+  const hidden = props.events.length - shown.length;
+  return h(
+    "section",
+    { class: "timeline", "aria-label": props.title },
+    head,
+    h("ol", { class: "events" }, ...shown.map((event, i) => h("li", { class: "events__item" }, eventRow(event, i, ctx)))),
+    hidden > 0 ? moreOnPhone(hidden, hidden === 1 ? "event" : "events") : null,
+  );
 }
 
-mountWidget({ name: "timeline-list", skeleton: "rows", render });
+mountWidget({ name: "timeline-list", skeleton: "rows", render, levels: (props) => Math.max(0, props.events.length - 1) });

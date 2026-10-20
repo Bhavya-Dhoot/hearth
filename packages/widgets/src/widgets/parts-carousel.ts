@@ -8,6 +8,9 @@ import "../styles/parts-carousel.css";
 type Item = FindPartOutput["items"][number];
 
 function partCard(item: Item, index: number, selected: boolean, ctx: RenderContext): HTMLElement {
+  // In a fixed frame the bridge raises ctx.level until the cards fit: first the part art goes, then the fit sentence is held to two lines, then dropped.
+  const art = ctx.level < 1;
+  const fit = ctx.level < 3;
   const card = h(
     "button",
     {
@@ -23,7 +26,7 @@ function partCard(item: Item, index: number, selected: boolean, ctx: RenderConte
       "span",
       { class: "part__top" },
       h("span", { class: "part__numeral numeral", "aria-hidden": "true" }, String(index + 1)),
-      h("span", { class: "part__art" }, h("img", { src: item.image, alt: "", decoding: "async", draggable: "false" })),
+      art ? h("span", { class: "part__art" }, h("img", { src: item.image, alt: "", decoding: "async", draggable: "false" })) : null,
     ),
     h(
       "span",
@@ -33,7 +36,7 @@ function partCard(item: Item, index: number, selected: boolean, ctx: RenderConte
     ),
     h("span", { class: "part__name" }, item.name),
     h("span", { class: "part__price display" }, money(item.price)),
-    h("span", { class: "part__fit small" }, item.fitReason),
+    fit ? h("span", { class: `part__fit small${ctx.level === 2 ? " part__fit--clamp" : ""}` }, item.fitReason) : null,
     h(
       "span",
       { class: "part__meta" },
@@ -72,4 +75,4 @@ function render(props: FindPartOutput, ctx: RenderContext): HTMLElement {
   );
 }
 
-mountWidget({ name: "parts-carousel", skeleton: "cards", render });
+mountWidget({ name: "parts-carousel", skeleton: "cards", render, levels: () => 3 });

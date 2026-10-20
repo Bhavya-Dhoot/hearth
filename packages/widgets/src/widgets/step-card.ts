@@ -98,11 +98,12 @@ function render(props: RepairStepsOutput, ctx: RenderContext): HTMLElement {
     h("div", { class: "step__counter" }, h("span", { class: "step__count mono" }, `STEP ${stepIndex + 1} / ${props.stepCount}`), stepTicks(stepIndex, props.stepCount)),
     h("h1", { class: "display step__instruction" }, props.instruction),
   );
-  if (props.detail) body.append(h("p", { class: "step__detail small" }, props.detail));
+  // In a fixed frame the bridge raises ctx.level until the step fits: first the add-an-asset hint goes, then the tools, then the detail.
+  if (props.detail && ctx.level < 3) body.append(h("p", { class: "step__detail small" }, props.detail));
   if (props.caution) {
     body.append(h("div", { class: "strip", role: "note" }, icon(icons.warning), h("div", null, h("span", { class: "strip__label mono-label" }, "Caution"), props.caution)));
   }
-  if (props.tools && props.tools.length > 0) {
+  if (props.tools && props.tools.length > 0 && ctx.level < 2) {
     body.append(
       h(
         "div",
@@ -112,7 +113,7 @@ function render(props: RepairStepsOutput, ctx: RenderContext): HTMLElement {
       ),
     );
   }
-  if (props.addHint) body.append(h("p", { class: "step__hint small" }, icon(icons.microphone), h("span", null, props.addHint)));
+  if (props.addHint && ctx.level < 1) body.append(h("p", { class: "step__hint small" }, icon(icons.microphone), h("span", null, props.addHint)));
 
   const actions = h("div", { class: "step__actions" });
   if (props.primaryAction === "next") {
@@ -149,4 +150,4 @@ function render(props: RepairStepsOutput, ctx: RenderContext): HTMLElement {
   return h("section", { class: `step${image ? "" : " step--plain"}`, "aria-label": `Step ${stepIndex + 1} of ${props.stepCount}` }, media, body);
 }
 
-mountWidget({ name: "step-card", skeleton: "split", render });
+mountWidget({ name: "step-card", skeleton: "split", render, levels: () => 3 });

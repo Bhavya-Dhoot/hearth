@@ -25,6 +25,7 @@ body {
 }
 
 #app {
+  container: app / inline-size;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -35,6 +36,13 @@ body {
 
 #app > * {
   flex: 1 1 auto;
+}
+
+/* A fixed frame (Show 8 gives 680 px) has no room for the roomy margins: the bridge sets data-density from maxHeight. */
+html[data-density="tight"] {
+  --pad: var(--space-6);
+  --pad-y: 0.75;
+  --gap: var(--space-4);
 }
 
 h1,
@@ -244,6 +252,12 @@ button {
   cursor: pointer;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+}
+
+.more {
+  padding-top: var(--space-2);
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
 }
 
 /* ---------- strips ---------- */

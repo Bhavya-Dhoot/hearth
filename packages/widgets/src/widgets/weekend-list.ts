@@ -3,6 +3,7 @@ import { mountWidget, type RenderContext } from "../runtime/bridge";
 import { h, icon } from "../runtime/dom";
 import { ordinalPhrase, plural } from "../runtime/format";
 import * as icons from "../runtime/icons";
+import { moreOnPhone } from "../runtime/more";
 import "../styles/weekend-list.css";
 
 type Task = WeekendPlanOutput["tasks"][number];
@@ -74,7 +75,10 @@ function render(props: WeekendPlanOutput, ctx: RenderContext): HTMLElement {
     );
   }
 
-  return h("section", { class: "weekend", "aria-label": "Weekend plan" }, head, h("ol", { class: "tasks" }, ...props.tasks.map((task, i) => taskRow(task, i, ctx))));
+  // In a fixed frame the bridge raises ctx.level until the rows fit; the rest are one phone away.
+  const shown = props.tasks.slice(0, props.tasks.length - ctx.level);
+  const hidden = props.tasks.length - shown.length;
+  return h("section", { class: "weekend", "aria-label": "Weekend plan" }, head, h("ol", { class: "tasks" }, ...shown.map((task, i) => taskRow(task, i, ctx))), hidden > 0 ? moreOnPhone(hidden, hidden === 1 ? "job" : "jobs") : null);
 }
 
-mountWidget({ name: "weekend-list", skeleton: "rows", render });
+mountWidget({ name: "weekend-list", skeleton: "rows", render, levels: (props) => Math.max(0, props.tasks.length - 1) });

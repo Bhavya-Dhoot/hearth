@@ -19,10 +19,21 @@ export interface WidgetDefinition<W extends WidgetName> {
   name: W;
   skeleton: SkeletonShape;
   render(props: WidgetPropsOf<W>, ctx: RenderContext): HTMLElement;
+  /**
+   * How many times render can be asked to give up one more piece of secondary content (see RenderContext.level)
+   * for these props. Omit when the layout never needs it.
+   */
+  levels?(props: WidgetPropsOf<W>): number;
 }
 
 export interface RenderContext {
   host: HostContext;
+  /**
+   * 0 renders everything. In a fixed frame (Show 8 fullscreen, Show 15 tile) the bridge measures the render and, while it is
+   * taller than hostContext.maxHeight, renders again one level higher. Each step gives up the least important content first,
+   * so a widget always fits the frame at full scale instead of being scaled down by the host.
+   */
+  level: number;
   /** Post a tap to the host. `source` is locked until the next render so a double tap cannot double-fire. */
   act(action: WidgetAction, source?: HTMLElement): void;
 }
@@ -39,12 +50,18 @@ const DEFAULT_HOST: HostContext = {
   theme: "dark",
 };
 
+/** At or below this frame height (Show 8 gives 680, the reference context 800) layouts use their tight, one-screen form. */
+const TIGHT_MAX_HEIGHT = 840;
+
 const PENDING_RELEASE_MS = 2500;
 const PULSE_MS = 1100;
 
 function post(message: WidgetToHost): void {
   window.parent.postMessage(message, "*");
 }
+
+/** A frame with a fixed height the host will not scroll: fullscreen or a tile on a screen device. Phones scroll at natural height. */
+const isFixedFrame = (ctx: HostContext): boolean => !ctx.isMobile && ctx.maxHeight > 0 && ctx.displayMode !== "inline";
 
 /** Sets theme, device scale and frame limits on <html>; tokens.css does the rest. */
 function applyHostContext(ctx: HostContext): void {
@@ -53,6 +70,10 @@ function applyHostContext(ctx: HostContext): void {
   // Voice-only never draws a frame; if a host renders anyway, use the Show 8 scale.
   root.dataset.device = ctx.deviceClass === "voice-only" ? "echo-show-8" : ctx.deviceClass;
   root.dataset.display = ctx.displayMode;
+  const fixed = isFixedFrame(ctx);
+  root.dataset.frame = fixed ? "fixed" : "flow";
+  // Density follows the room the host actually gives, not the device class.
+  root.dataset.density = fixed && ctx.maxHeight <= TIGHT_MAX_HEIGHT ? "tight" : "roomy";
   // Only a fullscreen frame is stretched to the screen; a tile or inline card is as tall as its content.
   const fills = ctx.displayMode === "fullscreen" && !ctx.isMobile;
   root.style.setProperty("--max-w", ctx.maxWidth > 0 ? `${ctx.maxWidth}px` : "none");
@@ -90,6 +111,8 @@ export function mountWidget<W extends WidgetName>(def: WidgetDefinition<W>): voi
   let host: HostContext = DEFAULT_HOST;
   let lastProps: unknown;
   let lastHeight = -1;
+  let level = 0;
+  let maxLevel = 0;
 
   applyHostContext(host);
   document.body.append(inkDefs(), h("div", { class: "listening-mark", "aria-live": "polite" }, icon(icons.microphone), "LISTENING"));
@@ -106,6 +129,9 @@ export function mountWidget<W extends WidgetName>(def: WidgetDefinition<W>): voi
     get host() {
       return host;
     },
+    get level() {
+      return level;
+    },
     act(action, source) {
       if (source) {
         source.dataset.pending = "true";
@@ -119,6 +145,20 @@ export function mountWidget<W extends WidgetName>(def: WidgetDefinition<W>): voi
     },
   };
 
+  const overflows = (): boolean => app.getBoundingClientRect().height > host.maxHeight + 0.5;
+
+  /** Late layout changes (fonts, images) can push a fitted render over the frame; step up a level, never back down. */
+  const refit = (): void => {
+    if (lastProps === undefined || level >= maxLevel || !overflows()) return;
+    const parsed = schema.safeParse(lastProps);
+    if (!parsed.success) return;
+    const props = parsed.data as WidgetPropsOf<W>;
+    do {
+      level++;
+      app.replaceChildren(def.render(props, ctx));
+    } while (level < maxLevel && overflows());
+  };
+
   const render = (): void => {
     if (lastProps === undefined) return;
     const parsed = schema.safeParse(lastProps);
@@ -129,7 +169,15 @@ export function mountWidget<W extends WidgetName>(def: WidgetDefinition<W>): voi
       post({ type: "ui/error", message: `${def.name}: ${detail}` });
     } else {
       try {
-        app.replaceChildren(def.render(parsed.data as WidgetPropsOf<W>, ctx));
+        const props = parsed.data as WidgetPropsOf<W>;
+        maxLevel = isFixedFrame(host) ? (def.levels?.(props) ?? 0) : 0;
+        level = 0;
+        app.replaceChildren(def.render(props, ctx));
+        // Give up secondary content one level at a time until the frame holds it. Layout is read synchronously, so no flash.
+        while (level < maxLevel && overflows()) {
+          level++;
+          app.replaceChildren(def.render(props, ctx));
+        }
       } catch (error) {
         const detail = error instanceof Error ? error.message : "render failed";
         app.replaceChildren(errorStrip(def.name, detail));
@@ -163,6 +211,15 @@ export function mountWidget<W extends WidgetName>(def: WidgetDefinition<W>): voi
     }
   });
 
-  new ResizeObserver(() => postResize(false)).observe(app);
+  new ResizeObserver(() => {
+    postResize(false);
+    // Out of the observer callback: changing the DOM inside it is what raises "loop completed with undelivered notifications".
+    window.requestAnimationFrame(() => {
+      refit();
+      postResize(false);
+    });
+  }).observe(app);
+  // The first render can happen on fallback fonts; measure again once the real ones are in.
+  void document.fonts?.ready.then(() => render());
   post({ type: "ui/ready" });
 }

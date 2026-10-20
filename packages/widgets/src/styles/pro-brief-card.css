@@ -261,3 +261,144 @@
 [data-device="echo-show-15"] .brief__body {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
+
+/* Tight frame (Show 8, 680 px): the sheet is one screen at full scale. A header band, specs on one line, a smaller QR, and
+   the bridge trims photos, older timeline entries and attempts (see trims() in the widget) until it fits. */
+[data-density="tight"] .brief {
+  gap: var(--space-2);
+  padding: var(--space-5);
+}
+
+[data-density="tight"] .brief__top {
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-1) var(--space-5);
+}
+
+[data-density="tight"] .brief__id {
+  grid-column: 1;
+  grid-row: 1;
+  flex-flow: row wrap;
+  align-items: baseline;
+  gap: 0 var(--space-5);
+}
+
+[data-density="tight"] .brief__headline {
+  grid-column: 1;
+  grid-row: 2;
+  font-size: var(--fs-lead);
+}
+
+[data-density="tight"] .brief__stamp {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  padding: 0 var(--space-2) 0 0;
+}
+
+[data-density="tight"] .perforation {
+  margin: var(--space-2) calc(var(--space-5) * -1) var(--space-1);
+}
+
+[data-density="tight"] .brief__body {
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  padding-top: 0;
+}
+
+[data-density="tight"] .brief__col,
+[data-density="tight"] .brief__side {
+  gap: var(--space-2);
+}
+
+[data-density="tight"] .specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--space-5);
+}
+
+[data-density="tight"] .spec {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+[data-density="tight"] .spec__value {
+  margin-top: 0;
+}
+
+/* A block's "and N earlier on your phone" line shares its label row instead of taking a line of its own. */
+[data-density="tight"] .block {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: var(--space-4);
+  align-items: baseline;
+}
+
+[data-density="tight"] .block > * {
+  grid-column: 1 / -1;
+}
+
+[data-density="tight"] .block > .block__label {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+[data-density="tight"] .block > .more {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  line-height: 1.25;
+}
+
+[data-density="tight"] .timeline {
+  gap: var(--space-1);
+}
+
+[data-density="tight"] .tried {
+  flex-flow: row wrap;
+  gap: 0 var(--space-5);
+}
+
+[data-density="tight"] .brief .more {
+  padding-top: 0;
+}
+
+[data-density="tight"] .share {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-areas:
+    "qr label"
+    "qr url";
+  align-content: center;
+  align-items: center;
+  gap: var(--space-1) var(--space-4);
+}
+
+[data-density="tight"] .share__qr {
+  grid-area: qr;
+  padding: var(--space-2);
+}
+
+[data-density="tight"] .share__label {
+  grid-area: label;
+  align-self: end;
+}
+
+[data-density="tight"] .share__url {
+  grid-area: url;
+  align-self: start;
+}
+
+[data-density="tight"] .qr {
+  width: calc(var(--fs-display) * 2.2);
+  height: calc(var(--fs-display) * 2.2);
+}
+
+[data-density="tight"] .photos__item {
+  aspect-ratio: 16 / 10;
+}
+
+[data-density="tight"] .brief--qr-small .qr {
+  width: calc(var(--fs-display) * 1.5);
+  height: calc(var(--fs-display) * 1.5);
+}
