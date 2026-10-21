@@ -212,6 +212,8 @@ Source: [apps/mcp-server/reports/latency.md](apps/mcp-server/reports/latency.md)
 
 Caveat: these are localhost numbers on a developer laptop, with a JSON-file home graph. They show the tools are not the bottleneck. They are not a measurement of a deployed service, because nothing is deployed. The bench has not run against AWS.
 
+**DynamoDB backend, verified locally.** The same suite was run with `HEARTH_DDB_TABLE=hearth-home-graph` against DynamoDB Local (`amazon/dynamodb-local:2.6.1`) holding the CDK table shape (PK/SK plus GSI1): replays J1 to J5 pass, conformance 33 of 33, and every tool's p95 stays under the budget (worst 198.6 ms, `complete_checkout`). Reports: [latency-dynamodb-local.md](apps/mcp-server/reports/latency-dynamodb-local.md), [conformance-dynamodb-local.md](apps/mcp-server/reports/conformance-dynamodb-local.md). To reproduce: `docker run -d -p 8000:8000 amazon/dynamodb-local:2.6.1 -jar DynamoDBLocal.jar -inMemory`, create the table, then start the MCP server with `AWS_ENDPOINT_URL_DYNAMODB=http://localhost:8000` and dummy AWS credentials.
+
 ## Replay the demo journeys
 
 Five journeys are scripted. Each turn drives real tool calls; nothing is canned output.
@@ -264,7 +266,7 @@ Bedrock Guardrails is a separate, probabilistic layer; see the "not built" table
 | Alexa+ host (device, wake word, native orchestrator, Home Services flow) | Simulated | A web page acting as an MCP client, per the hackathon FAQ. Labelled "Simulated Alexa+ host". The hand-off to a plumber is a spoken line; no booking happens. |
 | Alexa+ account linking | Simulated | Real OAuth 2.1 + PKCE against our own authorization server. Alexa's real client id and redirect URIs are not public; the host uses client id `alexa-plus-host-sim`. |
 | Auth server | Real, local | RS256 JWTs, PKCE verification, refresh rotation, negative tests. Demo user only. |
-| Home graph | Real, local | JSON-file `MemoryRepo` by default. `DynamoRepo` is implemented behind the same interface and unit-tested against a fake document client; it has never run against AWS. |
+| Home graph | Real, local | JSON-file `MemoryRepo` by default. `DynamoRepo` is behind the same interface: unit-tested against a fake client and verified end to end against DynamoDB Local with the CDK table shape (J1 to J5, conformance 33/33, bench). It has not run against AWS-hosted DynamoDB. |
 | Playbooks, triage, safety rules | Real | 12 authored YAML playbooks, deterministic rule engine, 24-prompt red-team list enforced by tests. |
 | Parts catalog | Seeded sample | 59 SKUs written for the demo. Prices and SKUs are not from a retailer. Exact-fit matching logic is real. |
 | Recall data | Labelled sample | 4 entries. Not a live CPSC feed. The tool says so every time (`isSample`). |
