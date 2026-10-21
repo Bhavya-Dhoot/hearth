@@ -50,4 +50,4 @@ Because every Alexa+ developer tool is gated, we wrote down what we could not ob
 
 ## Links
 
-Repository: see the Devpost form. Read first: [README](../README.md), [ARCHITECTURE](ARCHITECTURE.md), [friction log](FRICTION_LOG.md), [product feedback](PRODUCT_FEEDBACK.md), [add-on manifest](addon.json).
+Repository: https://github.com/Bhavya-Dhoot/hearth (public, Apache-2.0). Read first: [README](../README.md), [ARCHITECTURE](ARCHITECTURE.md), [friction log](FRICTION_LOG.md), [product feedback](PRODUCT_FEEDBACK.md), [add-on manifest](addon.json).

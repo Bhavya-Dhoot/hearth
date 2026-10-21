@@ -2,7 +2,7 @@
 
 **Hearth is an Alexa+ add-on (a self-hosted MCP server) that remembers your house: every appliance, filter size, shut-off valve and past repair. When something breaks it walks you through the first 15 minutes hands-free on an Echo Show, orders the exact-fit part, or hands a pro a complete job brief.**
 
-Submission to "Build, Ship, Shape: Amazon Developer Hackathon". Track: Alexa+. Mini-challenges: Open Source, AWS Builder. License: Apache-2.0.
+Submission to "Build, Ship, Shape: Amazon Developer Hackathon". Track: Alexa+. Mini-challenges: Open Source, AWS Builder. License: Apache-2.0. Repository: https://github.com/Bhavya-Dhoot/hearth
 
 ## Status at a glance (read this first)
 
