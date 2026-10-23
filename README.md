@@ -362,7 +362,7 @@ scripts/           seed, conformance, latency-bench, demo-replay
 docs/              contracts, safety, architecture, submission documents, addon.json, icons
 ```
 
-Test counts at the time of writing (each package's `pnpm test`): playbooks 522, parts-catalog 49, home-graph 78, mcp-server 85, auth-server 55, host-sim-core 58, widgets 29, design-tokens 3, host-sim 19, infra 18 (916 in total).
+Test counts at the time of writing (each package's `pnpm test`): playbooks 522, parts-catalog 49, home-graph 78, mcp-server 85, auth-server 55, host-sim-core 58, widgets 30, design-tokens 3, host-sim 19, infra 18 (917 in total).
 
 ## License
 

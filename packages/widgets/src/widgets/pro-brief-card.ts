@@ -63,7 +63,7 @@ function render(props: ProBriefOutput, ctx: RenderContext): HTMLElement {
   const findPro = h(
     "button",
     {
-      class: "btn btn--ink btn--block brief__cta",
+      class: "btn btn--primary btn--block brief__cta",
       type: "button",
       "data-find-pro": props.briefId,
       on: { click: () => ctx.act({ name: "find_pro", args: { briefId: props.briefId } }, findPro) },
@@ -105,7 +105,7 @@ function render(props: ProBriefOutput, ctx: RenderContext): HTMLElement {
         h("p", { class: "mono brief__trade" }, `For: ${TRADE_LABEL[props.trade]}`),
       ),
       h("h1", { class: "brief__headline display" }, props.headline),
-      h("div", { class: "brief__stamp" }, stamp("Job brief", "copper")),
+      h("div", { class: "brief__stamp" }, stamp("Job brief", "signal")),
     ),
     h("div", { class: "perforation", "aria-hidden": "true" }),
     h(

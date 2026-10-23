@@ -9,8 +9,8 @@
 }
 
 .page h1 {
-  font-family: var(--font-display), serif;
-  font-weight: 560;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 650;
   font-size: clamp(2.2rem, 6vw, 3.6rem);
   line-height: 1.05;
   letter-spacing: -0.015em;
@@ -22,8 +22,8 @@
 }
 
 .problem {
-  color: var(--color-copper) !important;
-  border-inline-start: 3px solid var(--color-copper);
+  color: var(--color-hazard) !important;
+  border-inline-start: 3px solid var(--color-hazard);
   padding-inline-start: var(--space-4);
 }
 
@@ -32,8 +32,8 @@
   align-items: center;
   min-block-size: 48px;
   padding-inline: var(--space-5);
-  background: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  color: var(--color-ink);
   border-radius: var(--radius-button);
   font-weight: 600;
   text-decoration: none;
@@ -45,7 +45,7 @@
   inline-size: min(100%, 360px);
   block-size: 4px;
   overflow: hidden;
-  background: color-mix(in srgb, var(--color-brass) 20%, transparent);
+  background: color-mix(in srgb, var(--color-signal) 20%, transparent);
 }
 
 .bar::after {
@@ -54,7 +54,7 @@
   inset-block: 0;
   inset-inline-start: 35%;
   inline-size: 30%;
-  background: var(--color-brass);
+  background: var(--color-signal);
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -25,8 +25,8 @@
   inline-size: 300px;
   block-size: 300px;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--color-ash) 82%, var(--color-parchment));
-  outline: 1px solid color-mix(in srgb, var(--color-parchment) 14%, transparent);
+  background: color-mix(in srgb, var(--color-deep) 82%, var(--color-bone));
+  outline: 1px solid color-mix(in srgb, var(--color-bone) 14%, transparent);
   outline-offset: -1px;
   display: grid;
   place-items: center;
@@ -43,7 +43,7 @@
   inline-size: 12px;
   block-size: 12px;
   border-radius: 50%;
-  background: var(--color-soot);
+  background: var(--color-ink);
 }
 
 .transcript {
@@ -82,10 +82,11 @@
 }
 
 .log li[data-role="alexa"] p {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: calc(var(--fs-display) * 0.62);
   line-height: 1.15;
-  font-weight: 500;
+  font-weight: 650;
+  letter-spacing: -0.01em;
   color: var(--text);
 }
 

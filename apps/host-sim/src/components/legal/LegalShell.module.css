@@ -24,13 +24,13 @@
 }
 
 .back:hover {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .wordmark {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: -0.01em;
   color: var(--text);
 }
@@ -66,7 +66,7 @@
 }
 
 .links a:hover {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 /* 404 */
@@ -76,8 +76,8 @@
 }
 
 .lost h1 {
-  font-family: var(--font-display), serif;
-  font-weight: 560;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 650;
   font-size: clamp(2.4rem, 5vw, 3.6rem);
   line-height: 1.05;
   letter-spacing: -0.015em;
@@ -96,8 +96,8 @@
   align-items: center;
   min-block-size: 48px;
   padding-inline: var(--space-5);
-  background: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  color: var(--color-ink);
   border-radius: var(--radius-button);
   font-weight: 600;
   text-decoration: none;

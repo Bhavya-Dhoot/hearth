@@ -42,7 +42,7 @@ pnpm bench            # every tool's p95 must stay under 500 ms
 
 ## Design rules (UI changes)
 
-Widgets and the host take every colour, font size, radius and motion value from `packages/design-tokens/tokens.json`. A test ([`packages/widgets/test/tokens-only.test.ts`](packages/widgets/test/tokens-only.test.ts)) fails on hex or rgb colour literals, font-family names, gradients, shadows, em or en dashes, emoji, a "Buy" label and placeholder copy in widget source. Do not work around it. In short: no gradients or glass, no emoji as icons, at most two accent colours per screen, copper only for caution, overdue and escalation, verdigris only for done and ordered.
+Widgets and the host take every colour, font size, radius and motion value from `packages/design-tokens/tokens.json`. A test ([`packages/widgets/test/tokens-only.test.ts`](packages/widgets/test/tokens-only.test.ts)) fails on hex or rgb colour literals, font-family names, gradients (the one exception is the pro brief blueprint grid, a token-built `repeating-linear-gradient`), shadows, em or en dashes, emoji, a "Buy" label and placeholder copy in widget source. Do not work around it. In short: no gradients or glass, no emoji as icons, signal amber is the only accent, hazard only for the safety stop and recalls, moss only for done and ordered. Radius rule: card 16px, button 12px, chips fully round. Display type is Bricolage Grotesque at weight 650 to 700 with -0.01em tracking, body is Geist at 400 or 500, and display type is never italic.
 
 ## Common changes
 

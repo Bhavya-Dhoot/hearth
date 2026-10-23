@@ -2,32 +2,32 @@
 <title>Main water shut-off in the garage: red lever ball valve on the copper line, left of the electrical panel</title>
 <defs>
 <style>
-.l{fill:none;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
-.t{fill:none;stroke:#F3EAD8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.m{fill:none;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.d{fill:none;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.s{fill:#1F1C18}
-.o{fill:#1F1C18;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
-.om{fill:#1F1C18;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.od{fill:#1F1C18;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.l{fill:none;stroke:#EEF1EA;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.t{fill:none;stroke:#EEF1EA;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m{fill:none;stroke:#D5DCD3;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.d{fill:none;stroke:#5D6A63;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:#16231F}
+.o{fill:#16231F;stroke:#EEF1EA;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.om{fill:#16231F;stroke:#D5DCD3;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.od{fill:#16231F;stroke:#5D6A63;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .h1{fill:url(#h1);stroke:none}
 .h2{fill:url(#h2);stroke:none}
 .h3{fill:url(#h3);stroke:none}
 .dots{fill:url(#dots);stroke:none}
-.red{fill:#BF4A30;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
-.redl{fill:none;stroke:#E6DCC6;stroke-width:2;stroke-linecap:round}
-.paper{fill:#E6DCC6;stroke:#F3EAD8;stroke-width:2.2;stroke-linejoin:round}
-.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#E6DCC6;letter-spacing:.04em}
-.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#1F1C18;letter-spacing:.04em}
-.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#6B655C;letter-spacing:.06em}
+.red{fill:#E2563F;stroke:#EEF1EA;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.redl{fill:none;stroke:#D5DCD3;stroke-width:2;stroke-linecap:round}
+.paper{fill:#D5DCD3;stroke:#EEF1EA;stroke-width:2.2;stroke-linejoin:round}
+.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#D5DCD3;letter-spacing:.04em}
+.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#16231F;letter-spacing:.04em}
+.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#5D6A63;letter-spacing:.06em}
 </style>
-<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#3F5872" stroke-width="1.5"/></pattern>
-<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#6B655C" stroke-width="1.6"/></pattern>
-<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.8"/></pattern>
-<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.6"/></pattern>
-<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#6B655C"/><circle cx="9" cy="9" r="1.3" fill="#6B655C"/></pattern>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#6F8DA6" stroke-width="1.5"/></pattern>
+<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#5D6A63" stroke-width="1.6"/></pattern>
+<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#5D6A63" stroke-width="1.8"/></pattern>
+<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#5D6A63" stroke-width="1.6"/></pattern>
+<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#5D6A63"/><circle cx="9" cy="9" r="1.3" fill="#5D6A63"/></pattern>
 </defs>
-<rect width="1200" height="900" fill="#1F1C18"/>
+<rect width="1200" height="900" fill="#16231F"/>
 <rect width="1200" height="900" fill="url(#grid)" opacity=".08"/>
 <rect x="40" y="40" width="1120" height="780" class="od"/><rect x="40" y="40" width="1120" height="780" class="dots"/><path d="M150 40V800M470 40V800" class="d" stroke-dasharray="16 10"/><path d="M40 800H1160V860H40Z" class="o"/><path d="M40 800H1160V860H40Z" class="h1"/><path d="M40 800L1160 800" class="l"/><rect x="720" y="110" width="460" height="690" rx="6" class="o"/><rect x="744" y="134" width="420" height="642" rx="4" class="om"/><path d="M744 134H1164V776H744Z" class="h1"/><rect x="765" y="155" width="380" height="600" rx="4" class="o"/><rect x="785" y="175" width="340" height="560" rx="2" class="od"/><circle cx="782" cy="190" r="6" class="m"/><circle cx="782" cy="720" r="6" class="m"/><rect x="850" y="300" width="230" height="124" rx="3" class="paper"/><text x="872" y="342" font-size="22" class="ink" font-weight="700">ELECTRICAL</text><text x="872" y="372" font-size="22" class="ink" font-weight="700">PANEL</text><text x="872" y="406" font-size="16" class="ink" >200 A MAIN</text><rect x="930" y="560" width="60" height="28" rx="4" class="om"/><path d="M960 560L960 588" class="m"/><rect x="1082" y="40" width="36" height="70" class="o"/><rect x="1107.92" y="40" width="10.080000000000002" height="70" class="h2"/><path d="M1088 44L1088 106" class="m"/><rect x="0" y="386" width="236" height="56" class="o"/><rect x="0" y="426" width="236" height="16" class="h3"/><path d="M0 394L236 394" class="m"/><rect x="412" y="386" width="236" height="56" class="o"/><rect x="412" y="426" width="236" height="16" class="h3"/><path d="M412 394L648 394" class="m"/><rect x="592" y="40" width="56" height="402" class="o"/><rect x="620" y="40" width="28" height="374" class="h3"/><path d="M600 40L600 442" class="m"/><rect x="586" y="384" width="68" height="18" rx="3" class="om"/><rect x="226" y="378" width="14" height="72" rx="3" class="om"/><rect x="408" y="378" width="14" height="72" rx="3" class="om"/><rect x="80" y="374" width="26" height="80" rx="4" class="om"/><circle cx="93" cy="414" r="4" class="m"/><rect x="560" y="190" width="120" height="20" rx="4" class="om"/><circle cx="578" cy="200" r="4" class="m"/><circle cx="662" cy="200" r="4" class="m"/><g transform="translate(313 414) scale(1.2) translate(-313 -414)"><rect x="238" y="376" width="44" height="76" rx="3" class="o"/><path d="M249 378L249 450" class="m"/><path d="M271 378L271 450" class="m"/><rect x="344" y="376" width="44" height="76" rx="3" class="o"/><path d="M355 378L355 450" class="m"/><path d="M377 378L377 450" class="m"/><path d="M282 370Q313 358 344 370V458Q313 470 282 458Z" class="o"/><path d="M330 370V458Q338 464 344 458V370Z" class="h2"/><rect x="302" y="334" width="22" height="40" class="o"/><rect x="293" y="316" width="40" height="16" rx="3" class="o"/><path d="M303 318L303 330" class="m"/><path d="M323 318L323 330" class="m"/><path d="M292 296H430Q470 296 470 309Q470 322 430 322H292Q280 322 280 309Q280 296 292 296Z" class="red"/><path d="M395 300V318M408 300V318M421 300V318M434 300V318M447 300V318" class="redl"/><circle cx="302" cy="309" r="4" class="m"/><path d="M316 322Q350 374 336 474" class="d"/><path d="M310 476H368V544H310Z" class="paper"/><circle cx="339" cy="488" r="4" class="ink"/><text x="321" y="522" font-size="15" class="ink" font-weight="700">MAIN</text><text x="319" y="538" font-size="12" class="ink" >WATER</text></g><rect x="40" y="710" width="110" height="20" class="o"/><rect x="40" y="724.4" width="110" height="5.6000000000000005" class="h2"/><path d="M44 716L146 716" class="m"/><rect x="24" y="704" width="24" height="32" rx="3" class="om"/>
 </svg>

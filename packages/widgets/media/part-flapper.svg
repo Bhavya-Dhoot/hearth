@@ -2,32 +2,32 @@
 <title>Rubber toilet flapper with hinge ears, dome, and pull chain</title>
 <defs>
 <style>
-.l{fill:none;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
-.t{fill:none;stroke:#F3EAD8;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.m{fill:none;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.d{fill:none;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.s{fill:#1F1C18}
-.o{fill:#1F1C18;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
-.om{fill:#1F1C18;stroke:#E6DCC6;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.od{fill:#1F1C18;stroke:#6B655C;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.l{fill:none;stroke:#EEF1EA;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.t{fill:none;stroke:#EEF1EA;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.m{fill:none;stroke:#D5DCD3;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.d{fill:none;stroke:#5D6A63;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.s{fill:#16231F}
+.o{fill:#16231F;stroke:#EEF1EA;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.om{fill:#16231F;stroke:#D5DCD3;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.od{fill:#16231F;stroke:#5D6A63;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .h1{fill:url(#h1);stroke:none}
 .h2{fill:url(#h2);stroke:none}
 .h3{fill:url(#h3);stroke:none}
 .dots{fill:url(#dots);stroke:none}
-.red{fill:#BF4A30;stroke:#F3EAD8;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
-.redl{fill:none;stroke:#E6DCC6;stroke-width:2;stroke-linecap:round}
-.paper{fill:#E6DCC6;stroke:#F3EAD8;stroke-width:2.2;stroke-linejoin:round}
-.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#E6DCC6;letter-spacing:.04em}
-.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#1F1C18;letter-spacing:.04em}
-.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#6B655C;letter-spacing:.06em}
+.red{fill:#E2563F;stroke:#EEF1EA;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.redl{fill:none;stroke:#D5DCD3;stroke-width:2;stroke-linecap:round}
+.paper{fill:#D5DCD3;stroke:#EEF1EA;stroke-width:2.2;stroke-linejoin:round}
+.tx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#D5DCD3;letter-spacing:.04em}
+.ink{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#16231F;letter-spacing:.04em}
+.gx{font-family:'JetBrains Mono','Cascadia Mono',Consolas,'DejaVu Sans Mono',monospace;fill:#5D6A63;letter-spacing:.06em}
 </style>
-<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#3F5872" stroke-width="1.5"/></pattern>
-<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#6B655C" stroke-width="1.6"/></pattern>
-<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.8"/></pattern>
-<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#6B655C" stroke-width="1.6"/></pattern>
-<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#6B655C"/><circle cx="9" cy="9" r="1.3" fill="#6B655C"/></pattern>
+<pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse"><path d="M30 0H0V30" fill="none" stroke="#6F8DA6" stroke-width="1.5"/></pattern>
+<pattern id="h1" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V9" stroke="#5D6A63" stroke-width="1.6"/></pattern>
+<pattern id="h2" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V6" stroke="#5D6A63" stroke-width="1.8"/></pattern>
+<pattern id="h3" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><path d="M0 0V6" stroke="#5D6A63" stroke-width="1.6"/></pattern>
+<pattern id="dots" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="1.3" fill="#5D6A63"/><circle cx="9" cy="9" r="1.3" fill="#5D6A63"/></pattern>
 </defs>
-<rect width="600" height="600" fill="#1F1C18"/>
+<rect width="600" height="600" fill="#16231F"/>
 <rect width="600" height="600" fill="url(#grid)" opacity=".08"/>
-<ellipse cx="300" cy="420" rx="176" ry="86" class="o"/><ellipse cx="300" cy="414" rx="146" ry="66" class="om"/><path d="M124 420A176 86 0 0 0 476 420A176 86 0 0 1 124 420Z" class="h2"/><path d="M160 402Q160 340 232 300H368Q440 340 440 402A140 56 0 0 1 160 402Z" class="o"/><ellipse cx="300" cy="300" rx="68" ry="18" class="om"/><ellipse cx="300" cy="300" rx="28" ry="8" class="od"/><path d="M392 318Q432 350 440 402A140 56 0 0 1 400 452Q420 400 392 318Z" class="h2"/><path d="M214 330Q196 380 200 440M300 320V456M386 330Q404 380 400 440" class="m" opacity=".0"/><path d="M236 352Q300 380 364 352" class="m"/><path d="M200 392Q300 430 400 392" class="m"/><path d="M158 380L116 366M158 440L116 440" class="l"/><rect x="54" y="352" width="66" height="22" rx="9" class="o"/><circle cx="72" cy="363" r="5" class="od"/><rect x="54" y="430" width="66" height="22" rx="9" class="o"/><circle cx="72" cy="441" r="5" class="od"/><rect x="290" y="268" width="20" height="34" rx="4" class="o"/><circle cx="300" cy="258" r="7" class="om"/><path d="M300 252Q336 190 284 150Q250 112 300 78" fill="none" stroke="#E6DCC6" stroke-width="5" stroke-dasharray="7 5" stroke-linecap="round"/><rect x="286" y="52" width="28" height="24" rx="5" class="o"/><circle cx="300" cy="64" r="4" class="od"/>
+<ellipse cx="300" cy="420" rx="176" ry="86" class="o"/><ellipse cx="300" cy="414" rx="146" ry="66" class="om"/><path d="M124 420A176 86 0 0 0 476 420A176 86 0 0 1 124 420Z" class="h2"/><path d="M160 402Q160 340 232 300H368Q440 340 440 402A140 56 0 0 1 160 402Z" class="o"/><ellipse cx="300" cy="300" rx="68" ry="18" class="om"/><ellipse cx="300" cy="300" rx="28" ry="8" class="od"/><path d="M392 318Q432 350 440 402A140 56 0 0 1 400 452Q420 400 392 318Z" class="h2"/><path d="M214 330Q196 380 200 440M300 320V456M386 330Q404 380 400 440" class="m" opacity=".0"/><path d="M236 352Q300 380 364 352" class="m"/><path d="M200 392Q300 430 400 392" class="m"/><path d="M158 380L116 366M158 440L116 440" class="l"/><rect x="54" y="352" width="66" height="22" rx="9" class="o"/><circle cx="72" cy="363" r="5" class="od"/><rect x="54" y="430" width="66" height="22" rx="9" class="o"/><circle cx="72" cy="441" r="5" class="od"/><rect x="290" y="268" width="20" height="34" rx="4" class="o"/><circle cx="300" cy="258" r="7" class="om"/><path d="M300 252Q336 190 284 150Q250 112 300 78" fill="none" stroke="#D5DCD3" stroke-width="5" stroke-dasharray="7 5" stroke-linecap="round"/><rect x="286" y="52" width="28" height="24" rx="5" class="o"/><circle cx="300" cy="64" r="4" class="od"/>
 </svg>

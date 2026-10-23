@@ -1,11 +1,12 @@
 import tokens from "../../../../packages/design-tokens/tokens.json";
 
-/** Workshop Editorial (PRD 10). Every colour, font and radius on a rendered page comes from tokens.json. */
+/** Pilot Light (PRD 10). Every colour, font and radius on a rendered page comes from tokens.json. */
 export const color = tokens.color;
 export const font = tokens.font;
+export const radius = tokens.radius;
 
 const FONTS_HREF =
-  "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..700&family=Instrument+Sans:wght@400..700&family=JetBrains+Mono:wght@400..600&display=swap";
+  "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500..800&family=Geist:wght@400..600&family=JetBrains+Mono:wght@400..600&display=swap";
 
 export function esc(value: string | number): string {
   return String(value)
@@ -21,7 +22,9 @@ type Theme = "light" | "dark";
 function themeVars(theme: Theme): string {
   const t = tokens.themes[theme];
   const pick = (name: string): string => color[name as keyof typeof color];
-  return `--bg:${pick(t.bg)};--surface:${pick(t.surface)};--text:${pick(t.text)};--muted:${pick(t.textMuted)};--line:${pick(t.line)};`;
+  // Same ink steps as the generated tokens.css: raw accent on dark, darkened toward ink on light so text clears 4.5:1 on bone.
+  const ink = theme === "dark" ? "--signal-ink:var(--signal);--hazard-ink:var(--hazard);--moss-ink:var(--moss);" : "--signal-ink:color-mix(in srgb,var(--signal) 54%,var(--ink));--hazard-ink:color-mix(in srgb,var(--hazard) 78%,var(--ink));--moss-ink:color-mix(in srgb,var(--moss) 58%,var(--ink));";
+  return `--bg:${pick(t.bg)};--surface:${pick(t.surface)};--text:${pick(t.text)};--muted:${pick(t.textMuted)};--line:${pick(t.line)};${ink}`;
 }
 
 const baseCss = (theme: Theme): string => `
@@ -32,13 +35,13 @@ const baseCss = (theme: Theme): string => `
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:${tokens.size.phone.body};line-height:1.5}
 main{max-width:720px;margin:0 auto;padding:${tokens.space["6"]} ${tokens.space["4"]} ${tokens.space["8"]}}
-h1,h2{font-family:var(--font-display);font-weight:600;line-height:1.1;margin:0}
+h1,h2{font-family:var(--font-display);font-weight:650;letter-spacing:-.01em;line-height:1.1;margin:0}
 h1{font-size:${tokens.size.phone.display}}
 h2{font-size:22px;margin-bottom:${tokens.space["3"]}}
 a{color:inherit;text-underline-offset:3px}
 .mono{font-family:var(--font-mono);font-size:${tokens.size.phone.mono};letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .mark{display:flex;align-items:center;gap:${tokens.space["2"]};margin-bottom:${tokens.space["5"]}}
-.mark i{display:block;width:28px;height:4px;background:var(--brass)}
+.mark i{display:block;width:28px;height:4px;background:var(--signal)}
 .row{display:flex;justify-content:space-between;gap:${tokens.space["4"]};padding:${tokens.space["3"]} 0;border-bottom:1px solid var(--line)}
 .row:last-child{border-bottom:0}
 .sr{position:absolute;left:-9999px}
@@ -53,7 +56,7 @@ export interface DocumentOptions {
   theme?: Theme;
   /** Capability pages (receipts, briefs) must never be indexed. */
   noindex?: boolean;
-  /** Overrides the page background, e.g. kraft paper. */
+  /** Overrides the page background, e.g. blueprint paper. */
   background?: string;
 }
 

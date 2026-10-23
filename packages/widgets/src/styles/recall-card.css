@@ -80,7 +80,7 @@
 }
 
 .flag__title {
-  font-size: calc(var(--fs-title) * 1.05);
+  font-size: calc(var(--fs-title) * 0.95);
 }
 
 .flag__ref {
@@ -106,7 +106,7 @@
 .flag__label {
   display: block;
   margin-bottom: var(--space-1);
-  color: var(--copper-ink);
+  color: var(--hazard-ink);
 }
 
 .remedy {

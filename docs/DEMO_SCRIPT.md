@@ -9,6 +9,7 @@ What changed from the PRD plan, and why:
 - The email confirmation is shown as the `.eml` page at `/outbox`, not as a phone buzz. Payment is shown as simulated.
 - The Claude Desktop scene is shown as it was verified: through `mcp-remote` at the protocol level. If the Claude Desktop GUI is recorded and works at capture time, use it and relabel; if not, show the terminal. Do not imply the GUI was driven if it was not.
 - The video is produced after the lane that wrote this document. Nothing here is a recording yet.
+- Note (2026-10-23): the app was restyled to "Pilot Light" after this script was written, so the video shows the earlier visual style (brass on parchment, kraft pro brief).
 
 ## Recording rules
 

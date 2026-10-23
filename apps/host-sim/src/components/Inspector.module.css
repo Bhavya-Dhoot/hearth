@@ -25,7 +25,7 @@
 }
 
 .handle:hover {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .count {
@@ -88,9 +88,9 @@
 }
 
 .titleRow h2 {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.25rem;
-  font-weight: 560;
+  font-weight: 650;
   letter-spacing: -0.01em;
   color: var(--text);
 }
@@ -108,7 +108,7 @@
 }
 
 .close:hover {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .replay {
@@ -131,7 +131,7 @@
   letter-spacing: 0.04em;
   color: var(--text);
   background: none;
-  border: 1px solid var(--color-graphite);
+  border: 1px solid var(--color-stone);
   border-radius: 8px;
   min-block-size: 32px;
   padding: 0 var(--space-3);
@@ -145,8 +145,8 @@
 .stop:hover,
 .tools button:hover,
 .clear:hover {
-  border-color: var(--color-brass);
-  color: var(--color-brass);
+  border-color: var(--color-signal);
+  color: var(--color-signal);
 }
 
 .replayBtn:active:not(:disabled),
@@ -160,9 +160,9 @@
 }
 
 .replayBtn[data-active="true"] {
-  background: var(--color-brass);
-  border-color: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  border-color: var(--color-signal);
+  color: var(--color-ink);
 }
 
 .replayLine {
@@ -174,11 +174,11 @@
 }
 
 .replayLine[data-state="failed"] {
-  color: var(--color-copper);
+  color: var(--color-hazard);
 }
 
 .replayLine[data-state="done"] {
-  color: var(--color-verdigris);
+  color: var(--color-moss);
 }
 
 /* ---------------- facts ---------------- */
@@ -205,13 +205,13 @@
 }
 
 .fact dd[data-tone="good"] {
-  color: var(--color-verdigris);
+  color: var(--color-moss);
 }
 .fact dd[data-tone="bad"] {
-  color: var(--color-copper);
+  color: var(--color-hazard);
 }
 .fact dd[data-tone="warn"] {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .fact code {
@@ -221,7 +221,7 @@
 .note {
   margin: 0;
   padding: var(--space-3) var(--space-5);
-  color: var(--color-brass);
+  color: var(--color-signal);
   border-block-end: 1px solid var(--hair);
   text-wrap: pretty;
 }
@@ -259,7 +259,7 @@
 }
 
 .row + .row {
-  border-block-start: 1px solid color-mix(in srgb, var(--color-graphite) 22%, transparent);
+  border-block-start: 1px solid color-mix(in srgb, var(--color-stone) 22%, transparent);
 }
 
 .rowHead {
@@ -277,7 +277,7 @@
 }
 
 .rowHead:hover {
-  background: color-mix(in srgb, var(--color-parchment) 5%, transparent);
+  background: color-mix(in srgb, var(--color-bone) 5%, transparent);
 }
 
 .time {
@@ -293,7 +293,7 @@
 }
 
 .row[data-dir="out"] .arrow {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .method {
@@ -322,12 +322,12 @@
 }
 
 .status {
-  color: var(--color-copper);
+  color: var(--color-hazard);
   font-weight: 600;
 }
 
 .row[data-failed] .method b {
-  color: var(--color-copper);
+  color: var(--color-hazard);
 }
 
 .ms {
@@ -346,13 +346,13 @@
 }
 
 .badge[data-tone="fast"] {
-  color: var(--color-verdigris);
+  color: var(--color-moss);
 }
 .badge[data-tone="ok"] {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 .badge[data-tone="slow"] {
-  color: var(--color-copper);
+  color: var(--color-hazard);
 }
 
 .json {
@@ -395,7 +395,7 @@
 
 .empty li::before {
   content: "0" counter(step);
-  color: var(--color-brass);
+  color: var(--color-signal);
   font-variant-numeric: tabular-nums;
 }
 

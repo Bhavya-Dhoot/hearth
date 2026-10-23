@@ -54,7 +54,7 @@
 }
 
 .task--overdue .task__numeral {
-  color: var(--copper-ink);
+  color: var(--signal-ink);
 }
 
 .task__main {
@@ -92,9 +92,9 @@
 }
 
 .task__due--overdue {
-  border-color: var(--copper-ink);
-  background: var(--copper-ink);
-  color: var(--color-parchment);
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+  color: var(--color-ink);
 }
 
 .task__due--due {
@@ -107,9 +107,9 @@
 }
 
 .task__due--seasonal {
-  border-color: var(--color-slate);
-  background: var(--color-slate);
-  color: var(--color-parchment);
+  border-color: var(--color-steel);
+  background: var(--color-steel);
+  color: var(--color-ink);
 }
 
 .task__title {

@@ -82,7 +82,7 @@ function confirmationView(props: CompleteCheckoutOutput): HTMLElement {
     h(
       "div",
       { class: "done__main" },
-      h("div", { class: "done__stamp" }, stamp("Ordered", "verdigris", "stamp--animate")),
+      h("div", { class: "done__stamp" }, stamp("Ordered", "moss", "stamp--animate")),
       h("p", { class: "mono-label" }, "Order number"),
       h("p", { class: "done__number mono" }, props.orderNumber),
       h("h1", { class: "display done__summary" }, props.summary),

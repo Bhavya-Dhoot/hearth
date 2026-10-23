@@ -91,14 +91,14 @@ ol {
 }
 
 .tab--on {
-  border-color: var(--color-brass);
-  background: var(--color-brass);
-  color: var(--color-soot);
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+  color: var(--color-ink);
 }
 
 .tab:focus-visible,
 .voice:focus-visible {
-  outline: 3px solid var(--brass-ink);
+  outline: 3px solid var(--signal-ink);
   outline-offset: 2px;
 }
 
@@ -170,7 +170,7 @@ ol {
 }
 
 .frame__row--error {
-  color: var(--copper-ink);
+  color: var(--hazard-ink);
 }
 
 .frame__dir {

@@ -16,7 +16,7 @@ function flagCard(flag: Flag): HTMLElement {
     h(
       "div",
       { class: "flag__head" },
-      h("div", { class: "flag__stamp" }, stamp("Recall", "copper", "stamp--animate")),
+      h("div", { class: "flag__stamp" }, stamp("Recall", "hazard", "stamp--animate")),
       h(
         "div",
         { class: "flag__id" },

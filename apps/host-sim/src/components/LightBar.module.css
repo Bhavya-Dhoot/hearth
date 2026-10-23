@@ -13,7 +13,7 @@
 .sweep {
   position: absolute;
   inset-block: 0;
-  background: var(--color-brass);
+  background: var(--color-signal);
 }
 
 .base {
@@ -108,14 +108,14 @@
 }
 
 .ring .base {
-  border-block-start-color: var(--color-brass);
-  border-inline-start-color: var(--color-brass);
+  border-block-start-color: var(--color-signal);
+  border-inline-start-color: var(--color-signal);
   transform: rotate(45deg);
   opacity: 0.35;
 }
 
 .ring .sweep {
-  border-block-start-color: var(--color-brass);
+  border-block-start-color: var(--color-signal);
   opacity: 0;
 }
 

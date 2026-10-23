@@ -20,8 +20,9 @@ const rules: Array<{ name: string; pattern: RegExp }> = [
   { name: "rgb()/rgba() literal", pattern: /\brgba?\s*\(/i },
   { name: "hsl()/hsla() literal", pattern: /\bhsla?\s*\(/i },
   { name: "font-family literal", pattern: /font-family\s*:(?!\s*var\()/i },
-  { name: "font family name", pattern: /Fraunces|Instrument Sans|JetBrains Mono|Inter\b|Roboto|Arial|Helvetica/ },
-  { name: "gradient", pattern: /gradient\s*\(/i },
+  { name: "font family name", pattern: /Bricolage|Geist|JetBrains Mono|Inter\b|Roboto|Arial|Helvetica/ },
+  // The one allowed gradient is the pro brief blueprint grid; the test below pins it to that file and to token colours.
+  { name: "gradient", pattern: /(?<!repeating-linear-)gradient\s*\(/i },
   { name: "drop shadow", pattern: /box-shadow|drop-shadow|text-shadow|backdrop-filter/i },
   { name: "em or en dash", pattern: /[–—]/ },
   { name: "emoji", pattern: /\p{Extended_Pictographic}/u },
@@ -40,6 +41,18 @@ describe("tokens only", () => {
       expect(hits).toEqual([]);
     });
   }
+
+  it("allows repeating-linear-gradient only for the pro brief blueprint grid, drawn from token variables", () => {
+    const uses = files.filter((file) => /repeating-linear-gradient\s*\(/i.test(readFileSync(file, "utf8"))).map((f) => relative(root, f).replaceAll("\\", "/"));
+    expect(uses).toEqual(["src/styles/pro-brief-card.css"]);
+    const css = readFileSync(join(root, uses[0]!), "utf8");
+    const grids = [...css.matchAll(/repeating-linear-gradient\(([^;]*?)\)\s*(?=,\s*repeating|;)/g)].map((m) => m[1]!);
+    expect(grids.length).toBe(2);
+    for (const grid of grids) {
+      expect(grid).toContain("color-mix(in srgb, var(--color-bone) 8%, transparent) 0 1px");
+      expect(grid).toContain("transparent 1px 24px");
+    }
+  });
 
   it("never sets colours or fonts inline from TypeScript", () => {
     const ts = files.filter((f) => f.endsWith(".ts"));

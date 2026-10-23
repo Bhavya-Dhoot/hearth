@@ -142,7 +142,7 @@ async function runReplay(p: Page, id: ReplayId) {
 
     const bad = await failedRows(p);
     if (bad > 0) {
-      fail(`${id}: ${bad} copper error row(s) in the inspector`);
+      fail(`${id}: ${bad} hazard error row(s) in the inspector`);
       await shoot(p, `${id}-error-rows`);
       break;
     }
@@ -173,7 +173,7 @@ async function runReplay(p: Page, id: ReplayId) {
   check(finished.state === "done", `${id}: replay ended ${finished.state}: ${finished.text}`);
   check(count === expected, `${id}: tools called ${count}, expected ${expected}`);
   check(/sequence matches/.test(finished.text), `${id}: inspector did not report a matching sequence: ${finished.text}`);
-  check((await failedRows(p)) === 0, `${id}: copper error rows present at end`);
+  check((await failedRows(p)) === 0, `${id}: hazard error rows present at end`);
   check(widgetShots > 0 || id === "J5" || id === "J2", `${id}: no widget ever rendered`);
   const ok = failures.every((f) => !f.startsWith(`${id}:`));
   results.push(`${id}: ${ok ? "PASS" : "FAIL"} tools=${count}/${expected} widgetShots=${widgetShots} ${finished.text}`);

@@ -49,7 +49,7 @@ async function renderSvg(browser: Browser, svg: string, width: number, height: n
   const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: scale });
   const page = await ctx.newPage();
   await page.setContent(
-    `<!doctype html><html><body style="margin:0;background:#141210"><div style="width:${width}px;height:${height}px">${svg.replace(
+    `<!doctype html><html><body style="margin:0;background:#0E1714"><div style="width:${width}px;height:${height}px">${svg.replace(
       /<svg /,
       `<svg style="display:block" `,
     ).replace(/width="\d+" height="\d+"/, `width="${width}" height="${height}"`)}</div></body></html>`,

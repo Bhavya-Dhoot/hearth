@@ -11,7 +11,7 @@ const DEFAULT_RATIO = 4 / 3;
 const STROKE_PX = 3;
 const VIEWBOX_W = 1000;
 
-/** Blueprint sheet: 1px slate grid sits behind the photo only, never behind text. */
+/** Blueprint sheet: 1px steel grid sits behind the photo only, never behind text. */
 function blueprintGrid(): SVGSVGElement {
   return s(
     "svg",

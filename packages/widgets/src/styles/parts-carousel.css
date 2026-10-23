@@ -84,12 +84,12 @@
 }
 
 .part:focus-visible {
-  outline: 3px solid var(--brass-ink);
+  outline: 3px solid var(--signal-ink);
   outline-offset: 3px;
 }
 
 .part--selected {
-  border-color: var(--color-brass);
+  border-color: var(--color-signal);
   border-width: 4px;
   padding: calc(var(--space-4) - 2px);
 }
@@ -107,7 +107,7 @@
 }
 
 .part--selected .part__numeral {
-  color: var(--brass-ink);
+  color: var(--signal-ink);
 }
 
 .part__flags {
@@ -122,8 +122,8 @@
 }
 
 .part__badge--exact {
-  border-color: var(--brass-ink);
-  color: var(--brass-ink);
+  border-color: var(--signal-ink);
+  color: var(--signal-ink);
 }
 
 .part__art {
@@ -178,8 +178,8 @@
   gap: var(--space-2);
   padding: var(--space-1) var(--space-3);
   border-radius: var(--radius-chip);
-  background: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  color: var(--color-ink);
   font-weight: 800;
   letter-spacing: 0.1em;
 }

@@ -121,7 +121,7 @@
   gap: var(--space-5);
   min-width: 0;
   padding: var(--space-6);
-  border: 2px solid var(--color-brass);
+  border: 2px solid var(--color-signal);
   border-radius: var(--radius-card);
   background: var(--surface);
 }
@@ -130,14 +130,14 @@
   align-self: flex-start;
   padding: var(--space-1) var(--space-4);
   border-radius: var(--radius-chip);
-  background: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  color: var(--color-ink);
   font-weight: 800;
   letter-spacing: 0.2em;
 }
 
 .ask__text {
-  font-size: var(--fs-lead);
+  font-size: calc(var(--fs-lead) * 0.9);
   line-height: 1.15;
   text-wrap: pretty;
 }
@@ -178,7 +178,7 @@
 
 .done__summary {
   margin-top: var(--space-4);
-  font-size: var(--fs-lead);
+  font-size: calc(var(--fs-lead) * 0.88);
 }
 
 .done__next {

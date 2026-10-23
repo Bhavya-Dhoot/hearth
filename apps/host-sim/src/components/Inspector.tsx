@@ -22,7 +22,7 @@ import styles from "./Inspector.module.css";
 
 const REPLAY_IDS = Object.keys(REPLAYS) as ReplayId[];
 
-/** latency tone: verdigris under 200 ms, brass under 500, copper from 500 (PRD 10.6) */
+/** latency tone: moss under 200 ms, signal under 500, hazard from 500 (PRD 10.6) */
 export const latencyTone = (ms: number) => (ms < 200 ? "fast" : ms < 500 ? "ok" : "slow");
 
 const clock = (ts: number) => {

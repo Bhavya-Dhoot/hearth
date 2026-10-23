@@ -1,6 +1,6 @@
 import { h, s } from "./dom";
 
-export type StampTone = "copper" | "verdigris";
+export type StampTone = "hazard" | "moss" | "signal";
 
 /** Hidden SVG holding the ink-texture filter. Added once per document; stamps reference it from CSS. */
 export function inkDefs(): SVGSVGElement {
@@ -24,7 +24,7 @@ export function inkDefs(): SVGSVGElement {
   return svg;
 }
 
-/** A rotated rounded-rect rubber stamp. Colour is chosen by tone; copper = recall/escalation, verdigris = ordered/done. */
+/** A rotated rounded-rect rubber stamp. Colour is chosen by tone; hazard = recall, moss = ordered/done, signal = neutral "look here" (the job brief). */
 export function stamp(label: string, tone: StampTone, extraClass = ""): HTMLSpanElement {
   return h("span", { class: `stamp stamp--${tone} ${extraClass}`.trim() }, h("span", { class: "stamp__text" }, label));
 }

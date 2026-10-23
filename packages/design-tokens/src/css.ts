@@ -43,13 +43,13 @@ function themeBlock(name: "dark" | "light", t: Tokens): string {
     decl("shadow", `var(--shadow-${name})`),
   ];
   if (name === "dark") {
-    lines.push(decl("brass-ink", "var(--color-brass)"), decl("copper-ink", "var(--color-copper)"), decl("verdigris-ink", "var(--color-verdigris)"));
+    lines.push(decl("signal-ink", "var(--color-signal)"), decl("hazard-ink", "var(--color-hazard)"), decl("moss-ink", "var(--color-moss)"));
   } else {
-    // Brass, copper and verdigris fail text contrast on parchment; darken toward soot for ink uses only.
+    // Signal, hazard and moss fail text contrast on bone; darken toward ink for ink uses only.
     lines.push(
-      decl("brass-ink", "color-mix(in srgb, var(--color-brass) 62%, var(--color-soot))"),
-      decl("copper-ink", "color-mix(in srgb, var(--color-copper) 82%, var(--color-soot))"),
-      decl("verdigris-ink", "color-mix(in srgb, var(--color-verdigris) 78%, var(--color-soot))"),
+      decl("signal-ink", "color-mix(in srgb, var(--color-signal) 54%, var(--color-ink))"),
+      decl("hazard-ink", "color-mix(in srgb, var(--color-hazard) 78%, var(--color-ink))"),
+      decl("moss-ink", "color-mix(in srgb, var(--color-moss) 58%, var(--color-ink))"),
     );
   }
   return block(`[data-theme="${name}"]`, lines);

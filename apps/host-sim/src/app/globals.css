@@ -1,24 +1,24 @@
-/* Workshop Editorial for the host chrome. Colour, radius, space and motion come from
+/* Pilot Light for the host chrome. Colour, radius, space and motion come from
    @hearth/design-tokens/tokens.css (generated from packages/design-tokens/tokens.json). */
 
 :root {
   color-scheme: dark;
   /* next/font faces under the token names from @hearth/design-tokens */
-  --font-display: var(--nf-display), "Fraunces Variable", "Fraunces", serif;
-  --font-body: var(--nf-body), "Instrument Sans Variable", "Instrument Sans", sans-serif;
+  --font-display: var(--nf-display), "Bricolage Grotesque Variable", "Bricolage Grotesque", sans-serif;
+  --font-body: var(--nf-body), "Geist Variable", "Geist", sans-serif;
   --font-mono: var(--nf-mono), "JetBrains Mono Variable", "JetBrains Mono", monospace;
-  /* graphite, lifted just enough for small mono labels to clear 4.5:1 on soot */
-  --label: color-mix(in srgb, var(--color-graphite) 38%, var(--color-linen));
-  --hair: color-mix(in srgb, var(--color-graphite) 50%, transparent);
-  --focus: var(--color-brass);
+  /* stone, lifted just enough for small mono labels to clear 4.5:1 on ink */
+  --label: color-mix(in srgb, var(--color-stone) 38%, var(--color-mist));
+  --hair: color-mix(in srgb, var(--color-stone) 50%, transparent);
+  --focus: var(--color-signal);
   --tracking: 0.12em;
   --header-h: 60px;
 }
 
 [data-theme="light"] {
   color-scheme: light;
-  --label: var(--color-graphite);
-  --hair: color-mix(in srgb, var(--color-graphite) 35%, transparent);
+  --label: var(--color-stone);
+  --hair: color-mix(in srgb, var(--color-stone) 35%, transparent);
 }
 
 *,
@@ -37,7 +37,7 @@ body {
   min-block-size: 100dvh;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body), "Instrument Sans", sans-serif;
+  font-family: var(--font-body), "Geist", sans-serif;
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -74,8 +74,8 @@ a {
 }
 
 ::selection {
-  background: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  color: var(--color-ink);
 }
 
 /* The mono label: the "engineering credibility" device (PRD 10.4 #3). */
@@ -104,7 +104,7 @@ a {
 /* thin, quiet scrollbars where the rails scroll */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-graphite) transparent;
+  scrollbar-color: var(--color-stone) transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {

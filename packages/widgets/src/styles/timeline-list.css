@@ -49,7 +49,7 @@
 }
 
 .event:focus-visible {
-  outline: 3px solid var(--brass-ink);
+  outline: 3px solid var(--signal-ink);
   outline-offset: 2px;
 }
 
@@ -95,9 +95,9 @@
 }
 
 .event__type--escalation {
-  border-color: var(--copper-ink);
-  background: var(--copper-ink);
-  color: var(--color-parchment);
+  border-color: var(--color-signal);
+  background: var(--color-signal);
+  color: var(--color-ink);
 }
 
 .event__summary {

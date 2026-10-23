@@ -28,9 +28,9 @@
   align-items: center;
   gap: var(--space-4);
   padding: var(--space-3) var(--space-5);
-  border: 2px solid var(--color-brass);
+  border: 2px solid var(--color-signal);
   border-radius: var(--radius-button);
-  background: color-mix(in srgb, var(--color-brass) 12%, var(--surface));
+  background: color-mix(in srgb, var(--color-signal) 12%, var(--surface));
 }
 
 .banner__icon {
@@ -38,8 +38,8 @@
   height: 1.6em;
   padding: 0.25em;
   border-radius: var(--radius-chip);
-  background: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  color: var(--color-ink);
 }
 
 .banner__text {
@@ -50,7 +50,7 @@
 }
 
 .banner__kicker {
-  color: var(--brass-ink);
+  color: var(--signal-ink);
   font-weight: 800;
   letter-spacing: 0.14em;
 }
@@ -149,7 +149,7 @@
 }
 
 .place--new {
-  border: 3px solid var(--color-brass);
+  border: 3px solid var(--color-signal);
   padding: calc(var(--space-3) - 1.5px);
 }
 
@@ -201,8 +201,8 @@
   right: var(--space-3);
   padding: 0 var(--space-3);
   border-radius: var(--radius-chip);
-  background: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  color: var(--color-ink);
   font-size: calc(var(--fs-mono) * 0.8);
   font-weight: 800;
   letter-spacing: 0.14em;

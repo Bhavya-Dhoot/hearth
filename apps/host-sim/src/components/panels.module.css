@@ -41,7 +41,7 @@
 }
 
 .suggest button:not(:disabled):hover .utterance {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .suggest button:not(:disabled):active {
@@ -49,12 +49,13 @@
 }
 
 .numeral {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: var(--fs-display);
   line-height: 1;
-  font-weight: 500;
+  font-weight: 650;
+  letter-spacing: -0.01em;
   font-variant-numeric: lining-nums;
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .utterance {
@@ -79,9 +80,9 @@
 }
 
 .link h2 {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: var(--fs-display);
-  font-weight: 560;
+  font-weight: 650;
   line-height: 1.04;
   letter-spacing: -0.015em;
   text-wrap: balance;
@@ -136,8 +137,8 @@
   gap: var(--space-2);
   min-block-size: var(--tap);
   padding-inline: var(--space-5);
-  background: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  color: var(--color-ink);
   border: 0;
   border-radius: var(--radius-button);
   font-weight: 600;
@@ -147,7 +148,7 @@
 }
 
 .primary:hover {
-  background: color-mix(in srgb, var(--color-brass) 88%, var(--color-parchment));
+  background: color-mix(in srgb, var(--color-signal) 88%, var(--color-bone));
 }
 
 .primary:active {
@@ -156,8 +157,8 @@
 
 .problem {
   font-size: max(12px, calc(var(--fs-small) * 0.8));
-  color: var(--color-copper);
-  border-inline-start: 3px solid var(--color-copper);
+  color: var(--color-hazard);
+  border-inline-start: 3px solid var(--color-hazard);
   padding-inline-start: var(--space-3);
   display: grid;
   gap: var(--space-1);

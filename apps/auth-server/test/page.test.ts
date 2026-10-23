@@ -32,8 +32,8 @@ describe("sign-in and consent page", () => {
     expect(html).toContain("Link account");
     expect(html).toContain("Cancel");
     expect(html).toContain("Hearth never stores health data or details about children.");
-    expect(html).toContain("fonts.googleapis.com/css2?family=Fraunces");
-    expect(html).toContain("Instrument+Sans");
+    expect(html).toContain("fonts.googleapis.com/css2?family=Bricolage+Grotesque");
+    expect(html).toContain("family=Geist");
     expect(html).toContain("JetBrains+Mono");
   });
 
@@ -91,13 +91,13 @@ describe("sign-in and consent page", () => {
 describe("palette contrast (WCAG AA)", () => {
   const c = tokens.color;
   it.each([
-    ["parchment text on soot", c.parchment, c.soot, 4.5],
-    ["linen text on soot", c.linen, c.soot, 4.5],
-    ["soot text on brass button", c.soot, c.brass, 4.5],
-    ["soot text on kraft button hover", c.soot, c.kraft, 4.5],
-    ["brass numerals and focus ring on soot", c.brass, c.soot, 3],
-    ["copper error marker on soot", c.copper, c.soot, 3],
-    ["graphite field border on soot", c.graphite, c.soot, 3],
+    ["bone text on ink", c.bone, c.ink, 4.5],
+    ["mist text on ink", c.mist, c.ink, 4.5],
+    ["ink text on signal button", c.ink, c.signal, 4.5],
+    ["ink text on bone button hover", c.ink, c.bone, 4.5],
+    ["signal numerals and focus ring on ink", c.signal, c.ink, 3],
+    ["hazard error marker on ink", c.hazard, c.ink, 3],
+    ["stone field border on ink", c.stone, c.ink, 3],
   ])("%s", (_name, foreground, background, minimum) => {
     expect(contrast(foreground, background)).toBeGreaterThanOrEqual(minimum);
   });

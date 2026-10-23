@@ -28,11 +28,11 @@
 .status span[data-phase="listening"],
 .status span[data-phase="thinking"],
 .status span[data-phase="speaking"] {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .status span[data-replay="failed"] {
-  color: var(--color-copper);
+  color: var(--color-hazard);
 }
 
 .lines {
@@ -56,11 +56,11 @@
 }
 
 .alexa {
-  font-family: var(--font-display), serif;
-  font-weight: 500;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 650;
   font-size: var(--fs-display);
   line-height: 1.1;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.01em;
   text-wrap: pretty;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -156,7 +156,7 @@
 
 .screen[data-widget="true"] .alexa {
   font-family: var(--font-body), sans-serif;
-  font-weight: 450;
+  font-weight: 400;
   font-size: var(--fs-small);
   line-height: 1.2;
   letter-spacing: 0;
@@ -227,8 +227,9 @@
 }
 
 .screen[data-device="echo-show-15"][data-widget="true"] .alexa {
-  font-family: var(--font-display), serif;
-  font-weight: 500;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 650;
+  letter-spacing: -0.01em;
   font-size: var(--fs-lead);
   line-height: 1.12;
   -webkit-line-clamp: 9;
@@ -283,8 +284,9 @@
 }
 
 .screen[data-device="phone"][data-widget="true"] .alexa {
-  font-family: var(--font-display), serif;
-  font-weight: 500;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 650;
+  letter-spacing: -0.01em;
   font-size: 22px;
   line-height: 1.15;
   -webkit-line-clamp: 4;
@@ -340,15 +342,15 @@
 }
 
 .settled svg {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 .settledText {
-  font-family: var(--font-display), serif;
-  font-weight: 500;
+  font-family: var(--font-display), sans-serif;
+  font-weight: 650;
   font-size: var(--fs-display);
   line-height: 1.12;
-  letter-spacing: -0.012em;
+  letter-spacing: -0.01em;
   text-wrap: pretty;
 }
 

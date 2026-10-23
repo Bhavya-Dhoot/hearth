@@ -22,7 +22,7 @@
   justify-content: center;
   gap: var(--space-2);
   border-radius: var(--radius-button);
-  border: 1px solid var(--color-graphite);
+  border: 1px solid var(--color-stone);
   background: none;
   color: var(--text);
   font-weight: 500;
@@ -33,28 +33,28 @@
 }
 
 .mic {
-  background: var(--color-brass);
-  border-color: var(--color-brass);
-  color: var(--color-soot);
+  background: var(--color-signal);
+  border-color: var(--color-signal);
+  color: var(--color-ink);
   font-weight: 600;
   touch-action: none;
   user-select: none;
 }
 
 .mic:hover:not(:disabled) {
-  background: color-mix(in srgb, var(--color-brass) 86%, var(--color-parchment));
+  background: color-mix(in srgb, var(--color-signal) 86%, var(--color-bone));
 }
 
 .mic[data-live] {
-  background: var(--color-parchment);
-  border-color: var(--color-parchment);
+  background: var(--color-bone);
+  border-color: var(--color-bone);
 }
 
 .wake:hover:not(:disabled),
 .send:hover:not(:disabled),
 .mute:hover {
-  border-color: var(--color-brass);
-  color: var(--color-brass);
+  border-color: var(--color-signal);
+  color: var(--color-signal);
 }
 
 .mic:active:not(:disabled),
@@ -78,8 +78,8 @@
 }
 
 .mute[aria-pressed="true"] {
-  color: var(--color-brass);
-  border-color: var(--color-brass);
+  color: var(--color-signal);
+  border-color: var(--color-signal);
 }
 
 .input {
@@ -87,7 +87,7 @@
   min-inline-size: 0;
   background: none;
   border: 0;
-  border-block-end: 1px solid var(--color-graphite);
+  border-block-end: 1px solid var(--color-stone);
   color: var(--text);
   padding: 0 var(--space-2);
   font-size: 1rem;
@@ -101,7 +101,7 @@
 
 .input:focus {
   outline: none;
-  border-block-end-color: var(--color-brass);
+  border-block-end-color: var(--color-signal);
 }
 
 .hint {
@@ -114,7 +114,7 @@
 }
 
 .hint[data-live] {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 @media (max-width: 639px) {

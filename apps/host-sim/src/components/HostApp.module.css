@@ -38,9 +38,9 @@
 }
 
 .wordmark {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 650;
   letter-spacing: -0.02em;
   line-height: 1;
 }
@@ -72,7 +72,7 @@
 
 .deviceBtn[aria-checked="true"] {
   color: var(--text);
-  border-block-end-color: var(--color-brass);
+  border-block-end-color: var(--color-signal);
 }
 
 .chip {
@@ -81,7 +81,7 @@
   align-items: baseline;
   gap: var(--space-2);
   padding: 4px var(--space-3);
-  border: 1px solid var(--color-graphite);
+  border: 1px solid var(--color-stone);
   border-radius: var(--radius-chip);
   font-family: var(--font-mono), monospace;
   font-size: 0.75rem;
@@ -97,10 +97,10 @@
 }
 
 .chip[data-link="linked"] b {
-  color: var(--color-verdigris);
+  color: var(--color-moss);
 }
 .chip[data-link="unauthorized"] b {
-  color: var(--color-copper);
+  color: var(--color-hazard);
 }
 
 /* ---------------- device ---------------- */
@@ -139,7 +139,7 @@
   max-inline-size: 860px;
   margin-inline: auto;
   padding: var(--space-2) var(--space-3);
-  border-inline-start: 3px solid var(--color-copper);
+  border-inline-start: 3px solid var(--color-hazard);
   background: var(--surface);
   font-size: 0.875rem;
 }
@@ -181,7 +181,7 @@
 }
 
 .foot a:hover {
-  color: var(--color-brass);
+  color: var(--color-signal);
 }
 
 /* ---------------- narrow: stack, inspector becomes a bottom sheet ---------------- */

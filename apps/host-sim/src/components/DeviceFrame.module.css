@@ -37,7 +37,7 @@
   inline-size: 100%;
   block-size: 100%;
   overflow: hidden;
-  background: var(--color-soot);
+  background: var(--color-ink);
 }
 
 .camera {
@@ -48,21 +48,21 @@
   block-size: 10px;
   margin-inline-start: -5px;
   border-radius: 50%;
-  background: var(--color-soot);
-  outline: 2px solid color-mix(in srgb, var(--color-graphite) 40%, var(--color-soot));
+  background: var(--color-ink);
+  outline: 2px solid color-mix(in srgb, var(--color-stone) 40%, var(--color-ink));
 }
 
 /* ---- Echo Show 8: matte charcoal, deep bezel, a plain stand ---- */
 .frame[data-hardware="echo-show-8"] .body {
-  background: color-mix(in srgb, var(--color-ash) 82%, var(--color-parchment));
+  background: color-mix(in srgb, var(--color-deep) 82%, var(--color-bone));
   border-radius: 40px;
-  outline: 1px solid color-mix(in srgb, var(--color-parchment) 14%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--color-bone) 14%, transparent);
   outline-offset: -1px;
 }
 
 .frame[data-hardware="echo-show-8"] .glass {
   border-radius: 10px;
-  outline: 3px solid var(--color-soot);
+  outline: 3px solid var(--color-ink);
 }
 
 .foot {
@@ -72,17 +72,17 @@
   inline-size: 360px;
   block-size: var(--foot);
   margin-inline-start: -180px;
-  background: color-mix(in srgb, var(--color-ash) 70%, var(--color-parchment));
+  background: color-mix(in srgb, var(--color-deep) 70%, var(--color-bone));
   border-radius: 0 0 28px 28px;
-  outline: 1px solid color-mix(in srgb, var(--color-parchment) 10%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--color-bone) 10%, transparent);
   outline-offset: -1px;
 }
 
 /* ---- Echo Show 15: a thin wall frame, landscape ---- */
 .frame[data-hardware="echo-show-15"] .body {
-  background: color-mix(in srgb, var(--color-graphite) 34%, var(--color-soot));
+  background: color-mix(in srgb, var(--color-stone) 34%, var(--color-ink));
   border-radius: 12px;
-  outline: 1px solid color-mix(in srgb, var(--color-parchment) 16%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--color-bone) 16%, transparent);
   outline-offset: -1px;
 }
 
@@ -100,15 +100,15 @@
 
 /* ---- Phone: flat rounded rect, light screen ---- */
 .frame[data-hardware="phone"] .body {
-  background: color-mix(in srgb, var(--color-graphite) 40%, var(--color-soot));
+  background: color-mix(in srgb, var(--color-stone) 40%, var(--color-ink));
   border-radius: 56px;
-  outline: 1px solid color-mix(in srgb, var(--color-parchment) 18%, transparent);
+  outline: 1px solid color-mix(in srgb, var(--color-bone) 18%, transparent);
   outline-offset: -1px;
 }
 
 .frame[data-hardware="phone"] .glass {
   border-radius: 44px;
-  background: var(--color-parchment);
+  background: var(--color-bone);
 }
 
 .frame[data-hardware="phone"] .camera {
@@ -123,5 +123,5 @@
   block-size: 30px;
   margin-inline-start: -56px;
   border-radius: 999px;
-  background: var(--color-soot);
+  background: var(--color-ink);
 }

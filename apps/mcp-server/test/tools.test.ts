@@ -343,7 +343,7 @@ describe("prepare_pro_brief", () => {
     expect(issues.find((i) => i.playbookId === "disposal-leak-body")).toMatchObject({ status: "escalated" });
   });
 
-  it("renders the public brief page on kraft paper, and 404s a wrong token", async () => {
+  it("renders the public brief page on blueprint paper, and 404s a wrong token", async () => {
     const r = await call("prepare_pro_brief", args);
     const page = await fetch(as(ProBriefOutput, r).shareUrl);
     expect(page.status).toBe(200);
